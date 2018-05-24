@@ -8,12 +8,30 @@
         <script type = "text/javascript" src = "scripts/battleship_functions.js" ></script>
     </head>
     <body>
-      <!--Header-->
-      <div class="main">
-        <p class="name">Katie Pucci</p>
-        <p class="sub">Mechanical Engineer | Computer Engineering Student | Hockey Player</p>
-        <button id="learn-more-button" type="button" onclick="">Learn More</button>
-      </div>
+    <!--Header-->
+    <div class="main">
+        <div class="header">
+            <p class="name">Katie Pucci</p>
+            <p class="sub">Mechanical Engineer | Computer Engineering Student</p>
+            <div class="button-container">
+                <a href="#about" class="btn-link">Learn More</a>
+            </div>
+        </div>
+    </div>
 
-  </body>
+    <!--Navigation-->
+    <div class="nav">
+        <nav>
+            <div class="menu-container">
+                <ul class="main-menu">
+                    <li class="menu-item" id="home"><a href="{{ url_for('default') }}">Home</a></li>
+                    <li class="menu-item" id="about-us"><a href="">About Us</a></li>
+                    <li class="menu-item" id="calendar"><a href="">Event Calendar</a></li>
+                    <li class="menu-item" id="contact"><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    </body>
 </html>
