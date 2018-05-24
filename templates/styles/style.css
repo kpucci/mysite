@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+/* font-family: 'Shadows Into Light', cursive;
+font-family: 'Maven Pro', sans-serif; */
+
+html{
+    background-image: url("../images/usa_hockey.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Barlow', sans-serif;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-attachment: fixed;
+}
+
+p.name{
+    margin: 0 auto;
+    color: white;
+    /* text-shadow: 1px 1px 1px black; */
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    font-size: 40px;
+}
+
+p.sub{
+    margin: 0 auto;
+    color: white;
+    /* text-shadow: 1px 1px 1px black; */
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    font-size: 20px;
+}
+
+div.main{
+    margin: auto;
+    width: 90%;
+    height: 100%;
+    display: block;
+    z-index: 1; /* Sit on top */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Add Zoom Animation */
+/*.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}*/
+
+/*@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}*/
+
+/*@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}*/
