@@ -1,0 +1,81 @@
+* {box-sizing: border-box;}
+
+html{
+  background-image: url("kitten_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Barlow', sans-serif;
+  /*font-family: 'Gloria Hallelujah', cursive;*/
+  overflow-x: auto;
+  overflow-y: auto;
+  background-attachment: fixed;
+}
+
+div.header-container{
+    margin: 0 auto;
+    width: 100%;
+}
+
+h1{
+    font-family: 'Gloria Hallelujah', cursive;
+    color: white;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+h3{
+	text-align: center;
+	color: #27eacd;
+	font-size: 25px;
+}
+
+div.user-form-container{
+	clear: both;
+	color: white;
+	padding: 5px;
+	text-align: center;
+}
+
+/*div.login-form-container{
+	background-color: rgb(64, 64, 64);
+	outline: 1px solid red;
+	height: 225px;
+	width: 350px;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 10px;
+}*/
+
+div.input-container{
+	margin: 0 auto;
+	text-align: center;
+}
+
+input[type="text"],input[type="password"]{
+	margin: 5px auto;
+	border: 2px solid #27eacd;
+	height: 30px;
+	font-size: 16px;
+	padding: 5px;
+	border-radius: 5px;
+	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+}
+
+button.form-button{
+	font-size: 12px;
+	border-radius: 5px;
+	background-color: white;
+    margin: 10px;
+}
+button.form-button:hover{
+    background-color: rgb(39, 234, 205);
+}
+
+/* -----Flash Messages-----*/
+
+div.flash{
+	background: #27eacd;
+	padding: 10px;
+	text-align: center;
+    border: 1px solid black;
+}

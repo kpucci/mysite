@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    {% block title %}{% endblock %}
+	{% block style %}{% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Barlow|Gloria+Hallelujah" rel="stylesheet">
+	{% block script %}{% endblock %}
+</head>
+<body>
+{% block header %}
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+
+{% for message in get_flashed_messages() %}
+	    <div class="flash">{{ message }}</div>
+{% endfor %}
+</body>
+</html>

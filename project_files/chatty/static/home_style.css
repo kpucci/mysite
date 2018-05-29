@@ -1,0 +1,50 @@
+/* Styling for home.html */
+
+* {box-sizing: border-box;}
+
+html{
+  background-image: url("kitten_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Barlow', sans-serif;
+  /*font-family: 'Gloria Hallelujah', cursive;*/
+  overflow-x: auto;
+  overflow-y: auto;
+  background-attachment: fixed;
+}
+
+div.header-container{
+    margin: 0 auto;
+    width: 100%;
+}
+
+h1{
+    font-family: 'Gloria Hallelujah', cursive;
+    color: white;
+    text-align: center;
+}
+
+div.home-button-container{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+button.form-button{
+	font-size: 12px;
+	border-radius: 5px;
+	background-color: white;
+    margin: 10px;
+}
+button.form-button:hover{
+    background-color: rgb(39, 234, 205);
+}
+
+/* -----Flash Messages-----*/
+
+div.flash{
+	background: #27eacd;
+	padding: 10px;
+	text-align: center;
+    border: 1px solid black;
+}

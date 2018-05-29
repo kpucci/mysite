@@ -9,7 +9,7 @@ function setup()
     // Get the offset position of the navbar
     var sticky = navbar.offsetTop;
 
-    document.getElementById("all-button").focus();
+    // document.getElementById("all-button").focus();
     loadAll();
 
     // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position

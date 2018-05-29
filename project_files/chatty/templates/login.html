@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+{% block style %}
+	<link href="{{url_for('static', filename='login_style.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+	<div class="header-container">
+		<h1 class="header-text">Chatty Kathy</h1>
+	<div>
+{% endblock %}
+
+{% block body %}
+	<div class="login-form-container">
+		<form class="login-form" action="" method="post">
+			<h3>Login</h3>
+			<div class="user-info-container">
+				<div class="username-container">
+					<!-- <label id="username-label">Username:</label> -->
+					<input id="username-input" type="text" placeholder="Username" name="username">
+				</div>
+				<div class="password-container">
+					<!-- <label id="password-label">Password:</label> -->
+					<input id="password-input" type="password" placeholder="Password" name="password">
+				</div>
+			</div>
+			<div class="login-buttons">
+				<button id="submit-button" class="form-button" name="login-button" type="submit" value="submit">Submit</button>
+				<button id="cancel-button" class="form-button" name="login-button" type="submit" value="cancel">Cancel</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}

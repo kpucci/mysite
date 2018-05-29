@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Account</title>
+{% endblock %}
+
+{% block style %}
+	<link href="{{url_for('static', filename='account_style.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+	<script type = "text/javascript" src = "{{url_for('static', filename='account.js')}}" ></script>
+{% endblock %}
+
+{% block header %}
+	<div class="header-container">
+		<h1 class="header-text">Chatty Kathy</h1>
+	<div>
+	<div class="logout-button-container">
+		<button id="logout-button" class="form-button" name="logout-button" type="button" value="{{ username }}" onclick="window.location.href={{url_for('logout')}};">Logout</button>
+	</div>
+{% endblock %}
+
+{% block body %}
+	<div class="chatroom-list-container">
+		<h3>Chatrooms</h3>
+        <div class="chatroom-form-container">
+    		<form class="chatrooms-form" method="post">
+    			<div class="chatroom-table-container">
+    				<table id="chatroom-table">
+    				</table>
+    			</div>
+            </form>
+        </div>
+	</div>
+
+	<div class="create-chatroom-container">
+		<form class="new-chatroom-form" action="" method="post">
+			<div class="new-chatroom">
+				<input id="new-chatroom-name" type="text" name="chatroom-name" placeholder="Chatroom Name" size="35"/>
+				<button id="new-chatroom-button" class="form-button" name="new-chatroom-button" type="button" value="{{ username }}">Create New Chatroom</button>
+			</div>
+		</form>
+	</div>
+
+{% endblock %}

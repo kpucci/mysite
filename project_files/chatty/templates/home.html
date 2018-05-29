@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Chatty Kathy</title>
+{% endblock %}
+
+{% block style %}
+	<link href="{{url_for('static', filename='home_style.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+	<div class="header-container">
+		<h1 class="header-text">Chatty Kathy</h1>
+	<div>
+{% endblock %}
+
+{% block body %}
+	<div class="home-button-container">
+		<form class="button-form" action="" method="get">
+			<button class="form-button" id="login-button" type="button" onclick="window.location.href={{url_for('login')}};">Login</button>
+			<button class="form-button" id="signup-button" type="button" onclick="window.location.href={{url_for('signup')}};">Signup</button>
+		</form>
+	</div>
+{% endblock %}

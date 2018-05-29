@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>{{ room_name }}</title>
+{% endblock %}
+
+{% block style %}
+	<link href="{{url_for('static', filename='chatroom_style.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+	<script type = "text/javascript" src = "{{url_for('static', filename='chatroom.js')}}" ></script>
+{% endblock %}
+
+{% block header %}
+	<div class="header-container">
+		<h1 class="header-text">Chatty Kathy</h1>
+	<div>
+	<div class="logout-button-container" id="logout-div">
+        <button id="leave-button" class="form-button" name="leave-button" type="button" value="{{ current_user }}" onclick="window.location.href='{{url_for('leaveChatroom',room_name=room_name)}}';">Leave Room</button>
+		<button id="logout-button" class="form-button" name="logout-button" type="button" value="{{ current_user }}" onclick="window.location.href={{url_for('logout')}};">Logout</button>
+        <!-- <button id="delete-button" class="form-button" name="delete-button" type="button" value="{{ current_user }}">Delete</button> -->
+    </div>
+{% endblock %}
+
+{% block body %}
+	<div class="message-list-container">
+		<h3 id="chatroom-name">{{ room_name }}</h3>
+		<div class="table-container" id="table-container">
+			<table id="message-table">
+			</table>
+		</div>
+
+		{% if logged_in %}
+		<div class="create-message-container">
+			<form class="new-message-form" id="new-message-form" action="" method="post">
+				<div class="new-message">
+					<input id="new-message-text" type="text" name="message-text" size="50" autocomplete="off"/>
+					<button id="new-message-button" class="form-button" name="new-message-button" type="button" value="{{ room_creator }}">Send</button>
+				</div>
+			</form>
+		</div>
+		{% else %}
+		<div class="create-message-container">
+			<p class="error">You must be logged in to post new messages to a chatroom.</p>
+		</div>
+		{% endif %}
+	</div>
+
+{% endblock %}
