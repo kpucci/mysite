@@ -5,13 +5,14 @@
         <title>KatiePucci</title>
         <link href="styles/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Barlow|Source+Sans+Pro:200" rel="stylesheet">
-        <script type = "text/javascript" src = "scripts/battleship_functions.js" ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type = "text/javascript" src = "mysite_script_test.js" ></script>
     </head>
     <body>
     <!--Header-->
     <div class="main">
         <div class="header">
-            <p class="name">Katie Pucci</p>
+            <p class="name" id="home">Katie Pucci</p>
             <p class="sub">Mechanical Engineer | Computer Engineering Student</p>
             <div class="button-container">
                 <a href="#about" class="btn-link">Learn More</a>
@@ -20,23 +21,94 @@
     </div>
 
     <!--Navigation-->
-    <div class="nav">
-        <nav>
-            <div class="menu-container">
-                <ul class="main-menu">
-                    <li class="menu-item" id="home"><a href="{{ url_for('default') }}">About Me</a></li>
-                    <li class="menu-item" id="about-us"><a href="">Resume</a></li>
-                    <li class="menu-item" id="calendar"><a href="">Portfolio</a></li>
-                    <li class="menu-item" id="contact"><a href="">Skills</a></li>
-                    <li class="menu-item" id="contact"><a href="">Contact</a></li>
-                </ul>
+    <div class="nav" id="navbar">
+            <ul class="main-menu" id="navmenu">
+                <li class="menu-item left-item" id="kp-item"><a href="#home">KP</a></li>
+                <li class="menu-item right-item" id="contact-item"><a href="#contact">Contact</a></li>
+                <li class="menu-item right-item" id="certificates-item"><a href="#certificates">Certificates</a></li>
+                <li class="menu-item right-item" id="skills-item"><a href="#skills">Skills</a></li>
+                <li class="menu-item right-item" id="portfolio-item"><a href="#portfolio">Portfolio</a></li>
+                <li class="menu-item right-item" id="resume-item"><a href="#about">Resume</a></li>
+                <li class="menu-item right-item" id="about-item"><a href="#about">About Me</a></li>
+            </ul>
+    </div>
+
+    <div class="about-container" id="about">
+        <div class="left">
+            <div id="picture">
+
             </div>
-        </nav>
+        </div>
+        <div class="about-mid">
+            <p class="section-header">About Me</p>
+            <hr class="section-break" id="about-break">
+            <p class="about-text">Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        </div>
     </div>
 
-    <div class="about">
-        
+    <div class="portfolio-container" id="portfolio">
+        <div class="portfolio-header">
+            <p class="section-header">Portfolio</p>
+            <hr class="section-break" id="portfolio-break">
+        </div>
+        <div class="portfolio-menu">
+            <button id="all-button" type="button" onclick="LoadAll();">All</button>
+            <button id="web-button" type="button" onclick="LoadWeb();">Web Design</button>
+            <button id="art-button" type="button" onclick="LoadArt();">Art</button>
+        </div>
+        <div class="portfolio-viewer">
+            <p class="section-text">Under construction</p>
+        </div>
     </div>
 
+    <div class="skills-container" id="skills">
+        <div class="skills-header">
+            <p class="section-header">Skills</p>
+            <hr class="section-break" id="skills-break">
+        </div>
+        <div class="skills-viewer">
+            <p class="section-text">Under construction</p>
+        </div>
+    </div>
+
+    <div class="certificates-container" id="certificates">
+        <div class="certificates-header">
+            <p class="section-header">Certificates</p>
+            <hr class="section-break" id="certificates-break">
+        </div>
+        <div class="certificates-viewer">
+            <p class="section-text">Under construction</p>
+        </div>
+    </div>
+
+    <div class="contact-container" id="contact">
+        <div class="contact-header">
+            <p class="section-header">Contact Me</p>
+            <hr class="section-break" id="contact-break">
+        </div>
+        <div class="contact-viewer">
+            <p class="section-text">Under construction</p>
+        </div>
+    </div>
+    <!--Smooth scrolling-->
+    <script>
+        $('a[href^="#"]').on('click', function(event) {
+            var navHeight = $("ul#navmenu").height();
+            var target = $(this.getAttribute('href'));
+            var a = $("div#navbar").attr('class');
+            if(target.length) {
+                event.preventDefault();
+                if(a == "nav sticky" && target.attr('class') == "about-container"){
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                }else{
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - navHeight
+                    }, 1000);
+                }
+            }
+        });
+    </script>
     </body>
 </html>

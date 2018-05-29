@@ -87,7 +87,38 @@ a:link {
 	border-radius: 0;
 }
 
-.btn-link:hover, .btn-link:focus, .btn-link.focus, .btn-link:active{
+.btn-link:hover, .btn-link:focus, .btn-link.focus, .btn-link:active, .btn-link.active{
+	color: #fff;
+	background-color: #290051;
+	border-color: #290051;
+}
+
+button{
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    color: #fff;
+	background-color: transparent;
+	border-color: #fff;
+	padding: 5px 10px;
+	margin: 10px 10px;
+	font-size: 12px;
+	border-radius: 0;
+}
+
+button:hover, button:focus, button.focus, button:active, button.active{
 	color: #fff;
 	background-color: #290051;
 	border-color: #290051;
@@ -100,19 +131,26 @@ div.nav{
     background-color: #290051; /* Fallback color */
     /* background-color: rgba(0,0,0,0.8); */
     text-align: center;
-    /* outline: 1px solid red; */
+    /* outline: 1px solid green; */
 }
 
-/* Menu container */
-div.menu-container{
-    text-align: center;
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .about-container {
+  padding-top: 70px;
+  width: 100%;
 }
 
 /* Unordered list for menu */
 ul.main-menu{
     list-style: none;
     text-align: center;
-    padding: 15px;
+    /* padding: 15px; */
+    overflow: hidden;
 }
 
 /* List items that are direct children of ul */
@@ -137,6 +175,131 @@ li > a{
 /* Menu item hover */
 li > a:hover{
     color: #BA284C;
+}
+
+.left-item{
+    float: left;
+}
+
+.right-item{
+    float: right;
+}
+
+p.about-text{
+    /* margin: 1000px; */
+    /* text-align: center; */
+    /* margin: 10px; */
+    margin-right: 50px;
+    margin-top: 20px;
+    color: #290051;
+}
+
+p.section-text{
+    /* margin: 1000px; */
+    text-align: center;
+    /* margin: 10px; */
+    margin-top: 20px;
+    color: #290051;
+    font-size: 24px;
+}
+
+p.section-header{
+    /* margin: 0 auto; */
+    /* margin-top: 20px; */
+    color: #290051;
+    /* text-shadow: 1px 1px 1px black; */
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 40px;
+    padding: 10px;
+}
+
+hr.section-break{
+    height: 3px;
+    background-color: #290051;
+    border: 0;
+}
+
+#about-break{
+    width: 150px;
+}
+
+#portfolio-break{
+    margin-left: 40%;
+    margin-right: 40%;
+    /* outline: 1px solid red; */
+}
+
+#skills-break{
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+#certificates-break{
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+#contact-break{
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+#picture{
+    width: 200px;
+    height: 200px;
+    background-image: url("../images/me.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 50px;
+    border-radius: 100px;
+    border: 10px solid #290051;
+}
+
+div.about-container{
+    width: 100%;
+    overflow: hidden;
+    /* outline: 1px solid red; */
+}
+
+div.left{
+    float: left;
+}
+
+div.mid{
+    /* margin: 10px; */
+}
+
+div.portfolio-container{
+    background-color: #f4c3bd;
+    height: 500px;
+    text-align: center;
+    /* overflow: hidden; */
+    /* outline: 1px solid green; */
+}
+
+div.portfolio-header{
+    text-align: center;
+    /* overflow: hidden; */
+    /* outline: 1px solid green; */
+}
+
+div.skills-container{
+    height: 500px;
+    text-align: center;
+    /* outline: 1px solid blue; */
+}
+
+div.certificates-container{
+    background-color: #f4c3bd;
+    height: 500px;
+    text-align: center;
+    /* outline: 1px solid blue; */
+}
+
+div.contact-container{
+    height: 500px;
+    text-align: center;
+    /* outline: 1px solid purple; */
 }
 
 /* Add Zoom Animation */

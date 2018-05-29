@@ -1,120 +1,120 @@
-{% extends "base.html" %}
-
-{% block title %}
-    <title>Money on My Mind</title>
-{% endblock %}
-
-{% block style %}
-	<link href="{{url_for('static', filename='home_style.css')}}" rel="stylesheet">
-{% endblock %}
-
-{% block script %}
-	<script type = "text/javascript" src = "{{url_for('static', filename='budget_app.js')}}" ></script>
-{% endblock %}
-
-{% block header %}
-	<div class="header-container">
-		<h1 class="header-text">Money on My Mind</h1>
-	</div>
-{% endblock %}
-
-{% block body %}
-    <div id="edit-cat-modal" class="edit-cat-modal">
-        <div id="edit-cat-container" class="edit-cat-container">
-            <h3 id="edit-cat-header"></h3>
-            <div class="edit-input-container">
-                <label class="edit-label">Budget:</label>
-                <input id="edit-budget-input" class="cat-edit-input" type="text" name="cat-budget">
-            </div>
-            <div class="edit-button-container">
-                <button id="save-button" class="form-button" name="save-button" type="button" value="save">Save</button>
-				<button id="delete-button" class="form-button" name="delete-button" type="button" value="delete">Delete</button>
-                <button id="cancel-button" class="form-button" name="cancel-button" type="button" value="cancel" onclick="closeModal();">Cancel</button>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>KatiePucci</title>
+        <link href="{{url_for('static', filename='home.css')}}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Barlow|Source+Sans+Pro:200" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type = "text/javascript" src = "{{url_for('static', filename='mysite.js')}}" ></script>
+    </head>
+    <body>
+    <!--Header-->
+    <div class="main">
+        <div class="header">
+            <p class="name" id="home">Katie Pucci</p>
+            <p class="sub">Mechanical Engineer</p>
+            <p class="sub">Computer Engineering Student</p>
+            <div class="button-container">
+                <a href="#about" class="btn-link">Learn More</a>
             </div>
         </div>
     </div>
-    <div class="date-selection-container">
-        <div class="form-container">
-            <div class="label-container">
-                <label>Show summaries for:</label>
-            </div>
-            <div class="input-container">
-                <select id="month-dropdown" name="month-dropdown">
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-            </div>
-            <div class="input-container">
-                <select id="year-dropdown" name="year-dropdown">
-                </select>
-            </div>
-            <div class="clear"></div>
-        </div>
+
+    <!--Navigation-->
+    <div class="nav" id="navbar">
+            <ul class="main-menu" id="navmenu">
+                <li class="menu-item left-item" id="kp-item"><a href="#home">KP</a></li>
+                <li class="menu-item right-item" id="contact-item"><a href="#contact">Contact</a></li>
+                <li class="menu-item right-item" id="certificates-item"><a href="#certificates">Certificates</a></li>
+                <li class="menu-item right-item" id="skills-item"><a href="#skills">Skills</a></li>
+                <li class="menu-item right-item" id="portfolio-item"><a href="#portfolio">Portfolio</a></li>
+                <li class="menu-item right-item" id="resume-item"><a href="#about">Resume</a></li>
+                <li class="menu-item right-item" id="about-item"><a href="#about">About Me</a></li>
+            </ul>
     </div>
-    <div class="main-view-container">
-        <div class="categories-container" id="categories-container"></div>
-        <div class="uncategorized-container" id="uncat-container">
-            <div class="category-container">
-                <div class="cat-name-container">
-                    <h2 class="cat-name">Uncategorized</h2>
-                </div>
-                <div class="summary-container" id="uncat-summary">
-                    <div id="uncat-up-right"></div>
-                    <div id="uncat-down-right"></div>
-                    <div id="uncat-down-left"></div>
-                    <div id="uncat-up-left"></div>
-                    <div class="percent-container">
-                        <div class="number-container" id="uncat-number">0.0%</div>
-                    </div>
-                </div>
-                <div class="budget-container" id="uncat-total">Total: $0</div>
+
+    <div class="about-container" id="about">
+        <div class="left">
+            <div id="picture">
             </div>
         </div>
+        <div class="about-mid">
+            <p class="section-header">About Me</p>
+            <hr class="section-break" id="about-break">
+            <p class="about-text">I'm a graduate of the Pennsylvania State University with a BS in mechanical engineering. I'm also now a senior at the University of Pittsburgh pursuing a second BS in computer engineering. As a mechanical engineer I traveled to various power plants throughout the country, diagnosing and fixing vibrational problems in generators. I discovered a passion for coding when I bought an arduino and began working on home projects in my spare time.</p>
+            <p class="about-text">Outside the classroom I'm the goaltender for the Pitt Women's Ice Hockey Club. At Penn State I was the Vice President and co-founder of the Penn State Women's Ice Hockey Club and was chosen to travel to Erzerum, Turkey and Trentino, Italy to play for Team USA in the World University Games.</p>
+        </div>
+        <div class="clear"></div>
     </div>
-    <div class="clear"></div>
-    <div class="add-new-container">
-        <div class="form-container">
-            <div class="input-container">
-                <input id="purchase-name-input" type="text" placeholder="Purchase Name" name="purchase">
-            </div>
-            <div class="input-container">
-                <input id="purchase-amount-input" type="text" placeholder="Amount $0.00" name="amount">
-            </div>
-            <div class="input-container">
-                <select id="cat-dropdown">
-                </select>
-            </div>
-            <div class="input-container">
-                <input type="date" id="purchase-date" name="purchaseDate"/>
-            </div>
-            <div class="add-button-container">
-                <button id="add-purchase-button" class="add-button" name="add-purchase-button" type="button" value="purchasename">Add Purchase</button>
-            </div>
-            <div class="clear"></div>
+
+    <div class="portfolio-container" id="portfolio">
+        <div class="portfolio-header">
+            <p class="section-header">Portfolio</p>
+            <hr class="section-break" id="portfolio-break">
+        </div>
+        <div class="portfolio-menu">
+            <button id="all-button" type="button" onclick="loadAll();">All</button>
+            <button id="web-button" type="button" onclick="loadWeb();">Web Design</button>
+            <button id="embedded-button" type="button" onclick="loadEmbedded();">Embedded</button>
+            <button id="art-button" type="button" onclick="loadArt();">Art</button>
+        </div>
+        <div class="portfolio-viewer" id="port-view">
         </div>
     </div>
-    <div class="add-new-container">
-        <div class="form-container">
-            <div class="input-container">
-                <input id="cat-name-input" type="text" placeholder="Category Name" name="category">
-            </div>
-            <div class="input-container">
-                <input id="cat-budget-input" type="text" placeholder="Budget Amount $0.00" name="budget">
-            </div>
-            <div class="add-button-container">
-                <button id="add-cat-button" class="add-button" name="add-cat-button" type="button" value="catname">Add Category</button>
-            </div>
-            <div class="clear"></div>
+
+    <div class="skills-container" id="skills">
+        <div class="skills-header">
+            <p class="section-header">Skills</p>
+            <hr class="section-break" id="skills-break">
+        </div>
+        <div class="skills-viewer">
+            <p class="section-text">Under construction</p>
         </div>
     </div>
-{% endblock %}
+
+    <div class="certificates-container" id="certificates">
+        <div class="certificates-header">
+            <p class="section-header">Certificates</p>
+            <hr class="section-break" id="certificates-break">
+        </div>
+        <div class="certificates-viewer">
+            <p class="section-text">Under construction</p>
+        </div>
+    </div>
+
+    <div class="contact-container" id="contact">
+        <div class="contact-header">
+            <p class="section-header">Contact Me</p>
+            <hr class="section-break" id="contact-break">
+        </div>
+        <div class="contact-viewer">
+            <p class="section-text">Under construction</p>
+        </div>
+    </div>
+    <!--Smooth scrolling-->
+    <script>
+        $('a[href^="#"]').on('click', function(event) {
+            var navHeight = $("ul#navmenu").height();
+            var target = $(this.getAttribute('href'));
+            var a = $("div#navbar").attr('class');
+            if(target.length) {
+                event.preventDefault();
+                if(a == "nav sticky" && target.attr('class') == "about-container"){
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                }else{
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - navHeight
+                    }, 1000);
+                }
+            }
+        });
+    </script>
+
+    {% for message in get_flashed_messages() %}
+    	<div class="flash">{{ message }}</div>
+    {% endfor %}
+    </body>
+</html>
