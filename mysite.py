@@ -88,7 +88,7 @@ def initdb_command():
     cat1.projects.append(proj2)
     cat3.projects.append(proj2)
 
-    proj3 = Project(name='Money', img='money.png')
+    proj3 = Project(name='Budget', img='budget.png')
     db.session.add(proj3)
 
     proj3.categories.append(cat1)
