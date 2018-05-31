@@ -8,7 +8,8 @@ from sqlalchemy import exc
 from project_files.catering.models import db, Customer, Staff, Event
 
 app = Flask(__name__)
-app.static_folder = 'static'
+app.static_folder = 'project_files/catering/static'
+app.template_folder = 'project_files/catering/templates'
 
 app.config.update(dict(
 	DEBUG=True,
