@@ -1,0 +1,242 @@
+/* Styling for home.html */
+
+* {box-sizing: border-box;}
+
+html{
+  background-image: url("background3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Karla', sans-serif;
+  overflow-x: auto;
+  overflow-y: auto;
+  background-attachment: fixed;
+}
+
+
+/* -----Modal Login----- */
+
+/* Modal login container */
+#login-box{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 60px;
+    z-index: 1;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* Modal login form */
+#login-form{
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 25%;
+    text-align: center;
+    font-size: 26px;
+    padding: 10px;
+}
+
+/* Username & password container */
+div.user-info-container{
+  margin: 0 auto;
+}
+
+/* Username input box */
+#username-input{
+  height: 24px;
+  width: 75%;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Password input box */
+#password-input{
+  height: 24px;
+  width: 75%;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Username label */
+#username-label{
+    display: block;
+    width: 100%;
+}
+
+/* Modal zoom animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* -----Header----- */
+
+/* Title */
+h1{
+  margin: 0 auto;
+  padding-bottom: 15px;
+  text-shadow: 3px 3px 3px black;
+  font-family: 'Satisfy', cursive;
+  font-size: 80px;
+}
+
+/* Title container */
+div.title-band{
+  background-color: white;
+  opacity: 0.75;
+  margin: 5px;
+  clear: right;
+  text-align: center;
+}
+
+/* Signin & New Customer button container */
+div.header-button-container{
+    float: right;
+    margin: 5px;
+}
+
+/* Signin & New Customer button form */
+form.header-button-form{
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    clear: right;
+}
+
+/* Signin & New Customer buttons */
+button.header-button{
+	font-size: 12px;
+	border-radius: 5px;
+	background-color: white;
+}
+button.header-button:hover{
+    background-color: rgb(39, 234, 205);
+}
+
+
+/* -----Main menu----- */
+
+/* Menu container */
+div.menu-container{
+    text-align: center;
+}
+
+/* Unordered list for menu */
+ul.main-menu{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+/* List items that are direct children of ul */
+ul > li{
+    display: inline;
+    font-size: 25px;
+    text-align: center;
+    margin: 15px;
+}
+
+/* Links that are direct children of li */
+li > a{
+    text-decoration: none;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+/* Menu item hover */
+li > a:hover{
+    color: #27eacd;
+}
+
+/* -----Main Body-----*/
+
+/* Catering menus container */
+div.menus{
+    padding: 25px;
+    text-align: center;
+}
+
+/* Individual catering menu container */
+div.catering-menu{
+    margin: 25px;
+    text-align: center;
+    width: 400px;
+    padding: 0;
+    display: inline-block;
+}
+
+/* Catering menu image container */
+div.image-container{
+    margin: 0;
+    background-color: #202020;
+}
+
+/* Hover action for catering menu item */
+div.catering-menu:hover img{
+    opacity: 0.2;
+}
+
+/* Hover action for catering menu text */
+div.catering-menu:hover p.menu-text{
+    color: #27eacd;
+}
+
+/* Catering menu image */
+img.menu-image{
+    margin: 0;
+    padding: 0;
+    width: 400px;
+    display: block;
+}
+
+/* Catering menu text container*/
+div.menu-text{
+    margin: 0;
+    text-align: center;
+    background-color: black;
+    opacity: 0.75;
+}
+
+/* Catering menu text */
+p.menu-text{
+    color: white;
+    font-family: 'Satisfy', cursive;
+    font-size: 35px;
+    display: inline-block;
+    margin: 0;
+}
+
+/* Horizontal divider in catering menu container */
+hr{
+    border-top: 2px solid #27eacd;
+    margin: 0;
+}
+
+/* -----Flash Messages-----*/
+
+div.flash{
+	background: #27eacd;
+	padding: 10px;
+	text-align: center;
+    border: 1px solid black;
+}

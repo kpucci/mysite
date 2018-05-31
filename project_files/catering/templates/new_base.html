@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Registration</title>
+{% endblock %}
+
+{% block style %}
+	<link href="{{url_for('static', filename='new_style.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+	<hgroup>
+	    <header>
+	        <div class="title-band">
+				<div class="back-home-container"><a id="back-home-link" href="{{ url_for('default') }}">Back Home</a></div>
+	            <div class="title-container"><h1>Katie's Katering</h1></div>
+				{% if loggedIn %}
+				<div class="header-button-container">
+					<form class="header-button-form" action="" method="get">
+						<button type="button" id="signout-button" class="header-button" onclick="window.location.href={{url_for('logout')}};">Sign out</button>
+						<button type="button" id="account-button" class="header-button" onclick="window.location.href={{url_for('profile')}};">Account</button>
+					</form>
+				</div>
+				{% endif %}
+	        </div>
+	    </header>
+	</hgroup>
+{% endblock %}
+
+{% block body %}
+	{% block form %}
+	{% endblock %}
+
+	{% for message in get_flashed_messages() %}
+	    <div class="flash">{{ message }}</div>
+	{% endfor %}
+{% endblock %}

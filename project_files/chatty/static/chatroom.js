@@ -75,20 +75,20 @@ function addMessage()
 function deleteChatRoom()
 {
     var chatroom = document.getElementById("chatroom-name").textContent;
-    makeReq("DELETE", "/chatrooms/"+chatroom, 204, reloadAccount);
+    makeReq("DELETE", "/chat/chatrooms/"+chatroom, 204, reloadAccount);
 }
 
 function reloadAccount()
 {
     var current_user = document.getElementById("logout-button").value;
-    window.location.href = "/account/" + current_user;
+    window.location.href = "/chat/account/" + current_user;
 }
 
 function reloadAccount2()
 {
     var current_user = document.getElementById("logout-button").value;
     alert("This chatroom has been deleted by the creator.");
-    window.location.href = "/account/" + current_user;
+    window.location.href = "/chat/account/" + current_user;
 }
 
 function makeReq(method, target, retCode, callback, data)
@@ -143,7 +143,7 @@ function makeHandler(httpRequest, retCode, callback)
 
 function poller() {
 	chatroom = document.getElementById("chatroom-name").textContent;
-	makeReq("GET", "/messages/"+chatroom, 200, repopulate);
+	makeReq("GET", "/chat/messages/"+chatroom, 200, repopulate);
 }
 
 function addUserCell(row, text) {

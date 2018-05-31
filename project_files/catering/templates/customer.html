@@ -1,0 +1,48 @@
+{% extends "profile_base.html" %}
+
+{% block body %}
+<div class="customer-container">
+<div class="create-event-container">
+	<form id="event-form" action="" method="post">
+		<h3>Request an Event</h3>
+		<div id="request-container">
+			<div class="input-container">
+				<input type="text" name="eventName" placeholder="Event Name" size="35" />
+			</div>
+			<div class="input-container">
+				<label class="date-label">Start Date</label>
+				<input type="date" name="startDate" min="{{ datemin }}" />
+			</div>
+			<div class="input-container">
+				<label class="date-label">End Date</label>
+				<input type="date" name="endDate" min="{{ datemin }}"/>
+			</div>
+			<button id="request-button" type="submit" value="request">Request Event</button>
+		</div>
+	</form>
+	{% for message in get_flashed_messages() %}
+	    <div class="flash">{{ message }}</div>
+	{% endfor %}
+</div>
+
+<div class="customer-events-container">
+	<h3 class="customer-schedule">Scheduled Events</h3>
+	{% for e in events %}
+		<div class="customer-schedule">
+			<h4 class="customer-schedule">{{ e.name }}</h4>
+			<label class="customer-schedule">Dates: </label>
+			<p class="customer-schedule">{{ e.start.strftime('%b %d, %Y') }} - {{ e.end.strftime('%b %d, %Y') }}</p>
+			<div class="button-container">
+				<form class="customer-schedule" action="" method="post">
+					<button type="submit" name="cancel_button" class="customer-schedule" value="{{ e.name }}">Cancel</button>
+				</form>
+			</div>
+		</div>
+	{% else %}
+		<div class="customer-schedule">
+			<p class="customer-schedule">No events scheduled</p>
+		</div>
+	{% endfor %}
+</div>
+</div>
+{% endblock %}

@@ -17,8 +17,8 @@
 {% block body %}
 	<div class="home-button-container">
 		<form class="button-form" action="" method="get">
-			<button class="form-button" id="login-button" type="button" onclick="window.location.href={{url_for('login')}};">Login</button>
-			<button class="form-button" id="signup-button" type="button" onclick="window.location.href={{url_for('signup')}};">Signup</button>
+			<button class="form-button" id="login-button" type="button" onclick="window.location.href='{{url_for('login')}}';">Login</button>
+			<button class="form-button" id="signup-button" type="button" onclick="window.location.href='{{url_for('signup')}}';">Signup</button>
 		</form>
 	</div>
 {% endblock %}

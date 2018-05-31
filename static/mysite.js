@@ -131,23 +131,27 @@ function showProjects(responseText)
 
     if(projects.length > 0)
     {
-    	var p, img_path, proj_img, proj_container, project_name;
+    	var p, img_path, proj_img, proj_container, proj_name, proj_link;
 
     	for(p in projects){
-            project_name = projects[p]["name"];
+            proj_name = projects[p]["name"];
     		img_path = projects[p]["img"];
+
+            proj_link = document.createElement("A");
+            proj_link.href = "/" + proj_name.toLowerCase();
 
             proj_container = document.createElement("div");
             proj_container.className = "project-image-container animate";
-            proj_container.id = project_name;
+            proj_container.id = proj_name;
 
             proj_img = document.createElement("IMG");
             proj_img.src = "/static/" + img_path;
-            proj_img.alt = project_name;
+            proj_img.alt = proj_name;
             proj_img.className = "project-image";
 
             proj_container.appendChild(proj_img);
-            viewer.appendChild(proj_container);
+            proj_link.appendChild(proj_container);
+            viewer.appendChild(proj_link);
     	}
     }
 

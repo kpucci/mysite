@@ -1,0 +1,126 @@
+* {box-sizing: border-box;}
+
+html{
+  background-image: url("wood_background2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Karla', sans-serif;
+  overflow-x: auto;
+  overflow-y: auto;
+  background-attachment: fixed;
+}
+
+/* TAKE THIS OUT BEFORE TURNING IN */
+/*div {
+    outline: 1px solid red;
+}*/
+
+/*----------------------------------*/
+
+/* ~~~~~~~~Header~~~~~~~~*/
+
+div.title-band{
+	overflow: auto;
+	/*outline: 1px solid red;*/
+}
+
+#back-home-link{
+	color: #27eacd;
+	font-size: 18px;
+}
+
+#back-home-link:link {
+    text-decoration: none;
+}
+
+#back-home-link:visited {
+    text-decoration: none;
+}
+
+#back-home-link:hover {
+    text-decoration: none;
+}
+
+#back-home-link:active {
+    text-decoration: none;
+}
+
+/* Title */
+h1{
+	color: white;
+	margin: 0 auto;
+	padding-bottom: 15px;
+	text-shadow: 1.5px 1.5px 1.5px black;
+	font-family: 'Satisfy', cursive;
+	font-size: 50px;
+}
+
+div.back-home-container{
+	float: left;
+	margin: 0 auto;
+	text-align: left;
+	width: 33.3%;
+	/*outline: 1px solid red;*/
+}
+
+div.title-container{
+	float: left;
+	text-align: center;
+	width: 33.3%;
+	/*outline: 1px solid red;*/
+}
+
+
+/*----------------------------------*/
+
+/* ~~~~~~~~Form~~~~~~~~*/
+
+h3{
+	text-align: center;
+	color: #27eacd;
+	font-size: 30px;
+}
+
+#new-user-container{
+	clear: both;
+	color: white;
+	padding: 5px;
+	text-align: center;
+}
+
+#signup-container{
+	background-color: rgb(64, 64, 64);
+	/*outline: 1px solid red;*/
+	height: 225px;
+	width: 350px;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+div.input-container{
+	margin: 0 auto;
+	text-align: center;
+}
+
+input[type="text"],input[type="password"]{
+	margin: 5px auto;
+	border: 2px solid #27eacd;
+	height: 30px;
+	font-size: 16px;
+	padding: 5px;
+	border-radius: 5px;
+	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+}
+
+#signup-button{
+	font-size: 16px;
+	margin: 10px;
+	border-radius: 5px;
+	background-color: white;
+	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+}
+
+#signup-button:hover{
+	box-shadow: 0 12px 12px 0 rgba(0,0,0,0.24);
+}

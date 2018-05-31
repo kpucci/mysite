@@ -17,7 +17,7 @@
 		<h1 class="header-text">Chatty Kathy</h1>
 	<div>
 	<div class="logout-button-container">
-		<button id="logout-button" class="form-button" name="logout-button" type="button" value="{{ username }}" onclick="window.location.href={{url_for('logout')}};">Logout</button>
+		<button id="logout-button" class="form-button" name="logout-button" type="button" value="{{ username }}" onclick="window.location.href='{{url_for('logout')}}';">Logout</button>
 	</div>
 {% endblock %}
 

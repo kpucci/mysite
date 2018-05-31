@@ -1,0 +1,35 @@
+{% extends "profile_base.html" %}
+
+{% block body %}
+<div class="new-button-container">
+	<form class="new-button-form" action="" method="get">
+		<button type="button" class="header-button" id="new-staff-button" onclick="window.location.href={{url_for('new_staff')}};">New Staff Member</button>
+	</form>
+</div>
+<div class="event-schedule-container">
+	<div class="admin-events-container">
+		<h2 class="event-schedule">Available Events</h2>
+		{% for e in events %}
+			<div class="event-schedule">
+				<h4 class="event-schedule">{{ e.name }}</h4>
+				<div class="event-info-container">
+					<label class="event-schedule">Dates: </label>
+					<p class="event-schedule">{{ e.start.strftime('%b %d, %Y') }} - {{ e.end.strftime('%b %d, %Y') }}</p>
+					<!-- <div> -->
+						<label class="event-schedule">Staff: </label>
+						{% for w in e.workers.all() %}
+							<p class="event-schedule">{{ w.firstname }} {{ w.lastname }}</p>
+						{% else %}
+							<p class="no-staff-text">No staff members</p>
+						{% endfor %}
+					<!-- </div> -->
+				</div>
+			</div>
+		{% else %}
+			<div class="event-schedule">
+				<p class="no-events-text">No events scheduled</p>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

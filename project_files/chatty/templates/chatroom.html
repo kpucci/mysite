@@ -18,7 +18,7 @@
 	<div>
 	<div class="logout-button-container" id="logout-div">
         <button id="leave-button" class="form-button" name="leave-button" type="button" value="{{ current_user }}" onclick="window.location.href='{{url_for('leaveChatroom',room_name=room_name)}}';">Leave Room</button>
-		<button id="logout-button" class="form-button" name="logout-button" type="button" value="{{ current_user }}" onclick="window.location.href={{url_for('logout')}};">Logout</button>
+		<button id="logout-button" class="form-button" name="logout-button" type="button" value="{{ current_user }}" onclick="window.location.href='{{url_for('logout')}}';">Logout</button>
         <!-- <button id="delete-button" class="form-button" name="delete-button" type="button" value="{{ current_user }}">Delete</button> -->
     </div>
 {% endblock %}

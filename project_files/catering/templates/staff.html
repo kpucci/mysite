@@ -1,0 +1,42 @@
+{% extends "profile_base.html" %}
+
+{% block body %}
+<div class="event-schedule-container">
+	<div class="staff-events-container">
+		<h2 class="staff-schedule">Your Schedule</h2>
+		{% for w in work %}
+			<div class="staff-schedule">
+				<h4 class="staff-schedule">{{ w.name }}</h4>
+				<label class="staff-schedule">Dates: </label>
+				<p class="staff-schedule">{{ w.start.strftime('%b %d, %Y') }} - {{ w.end.strftime('%b %d, %Y') }}</p>
+			</div>
+		{% else %}
+			<div class="staff-schedule">
+				<p class="staff-schedule">No scheduled events</p>
+			</div>
+		{% endfor %}
+	</div>
+	{% for message in get_flashed_messages() %}
+	    <div class="flash">{{ message }}</div>
+	{% endfor %}
+	<div class="staff-events-container">
+		<h2 class="staff-schedule">Available Events</h2>
+		{% for e in events %}
+			<div class="staff-schedule">
+				<h4 class="staff-schedule">{{ e.name }}</h4>
+				<label class="staff-schedule">Dates: </label>
+				<p class="staff-schedule">{{ e.start.strftime('%b %d, %Y') }} - {{ e.end.strftime('%b %d, %Y') }}</p>
+				<div class="button-container">
+					<form class="staff-schedule" action="" method="post">
+						<button type="submit" name="event_button" class="staff-schedule" value="{{ e.name }}">Add to Schedule</button>
+					</form>
+				</div>
+			</div>
+		{% else %}
+			<div class="staff-schedule">
+				<p class="staff-schedule">No available events</p>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,215 @@
+* {box-sizing: border-box;}
+
+html{
+  background-image: url("background3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Karla', sans-serif;
+  overflow-x: auto;
+  overflow-y: auto;
+  background-attachment: fixed;
+}
+
+/*----------------------------------*/
+
+/* ~~~~~~~~Modal~~~~~~~~*/
+
+#login-box{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 60px;
+    z-index: 1;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.5);
+}
+
+#login-form{
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 25%;
+    text-align: center;
+    font-size: 26px;
+    padding: 10px;
+}
+
+div.user-info-container{
+  margin: 0 auto;
+}
+
+#username-input{
+  height: 24px;
+  width: 75%;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+#password-input{
+  height: 24px;
+  width: 75%;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#username-label{
+    display: block;
+    width: 100%;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+
+/* TAKE THIS OUT BEFORE TURNING IN */
+/* div {
+    outline: 1px solid red;
+} */
+
+/* h1{
+    outline: 1px solid blue;
+} */
+
+/*----------------------------------*/
+
+/* ~~~~~~~~Header~~~~~~~~*/
+
+/* Title */
+h1{
+  margin: 0 auto;
+  padding-bottom: 15px;
+  text-shadow: 3px 3px 3px black;
+  font-family: 'Satisfy', cursive;
+  font-size: 80px;
+}
+
+div.title-band{
+  background-color: white;
+  opacity: 0.75;
+  margin: 5px;
+  clear: right;
+  text-align: center;
+}
+
+/* Login */
+div.header-button-container{
+    float: right;
+    margin: 5px;
+}
+
+#header-button-form{
+    background: rgba(0, 0, 0, 0); 
+    border: 0;
+    clear: right;
+}
+
+button.header-button:hover{
+    background-color: rgba(39, 234, 205, 1);
+}
+
+/* Main menu */
+li > a:hover{
+    color: #27eacd;
+}
+
+div.menu-container{
+    text-align: center;
+}
+
+ul.main-menu{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+ul > li{
+    display: inline;
+    font-size: 25px;
+    text-align: center;
+    margin: 15px;
+}
+
+li > a{
+    text-decoration: none;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+/*----------------------------------*/
+
+/* ~~~~~~~~Main Body~~~~~~~~*/
+
+div.menus{
+    padding: 25px;
+    text-align: center;
+}
+
+div.catering-menu{
+    margin: 25px;
+    text-align: center;
+    width: 400px;
+    padding: 0;
+    display: inline-block;
+}
+
+div.image-container{
+    margin: 0;
+    background-color: #202020;
+}
+
+div.catering-menu:hover img{
+    opacity: 0.2;
+}
+
+div.catering-menu:hover p.menu-text{
+    color: #27eacd;
+}
+
+img.menu-image{ 
+    margin: 0;
+    padding: 0;
+    width: 400px;
+    display: block;
+}
+
+div.menu-text{
+    margin: 0;
+    text-align: center;
+    background-color: black;
+    opacity: 0.75;
+}
+
+p.menu-text{
+    color: white;
+    font-family: 'Satisfy', cursive;
+    font-size: 35px;
+    display: inline-block;
+    margin: 0;
+}
+
+hr{
+    border-top: 2px solid #27eacd;
+    margin: 0;
+}
+

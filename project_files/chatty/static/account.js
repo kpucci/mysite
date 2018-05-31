@@ -24,7 +24,7 @@ function addChatRoom()
 	data = '{"name":"' + newChatroom + '","creator":"' + username + '"}';
 	window.clearTimeout(timeoutID);
 	// alert("about to make request");
-	makeReq("POST", "/chatrooms/", 201, poller, data);
+	makeReq("POST", "/chat/chatrooms/", 201, poller, data);
 	document.getElementById("new-chatroom-name").value = "";
 }
 
@@ -67,11 +67,11 @@ function makeHandler(httpRequest, retCode, callback) {
 }
 
 function poller() {
-	makeReq("GET", "/chatrooms/", 200, repopulate);
+	makeReq("GET", "/chat/chatrooms/", 200, repopulate);
 }
 
 function deleteChatRoom(roomID) {
-	makeReq("DELETE", "/chatrooms/" + roomID, 204, poller);
+	makeReq("DELETE", "/chat/chatrooms/" + roomID, 204, poller);
 }
 
 function addCell(row, text) {

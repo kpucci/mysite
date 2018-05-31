@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Katie's Katering</title>
+{% endblock %}
+
+{% block style %}
+	<link href="{{url_for('static', filename='home_style.css')}}" rel="stylesheet">
+{% endblock %}
+	
+{% block header %}
+    <div id="login-box" class="modal">
+        <!-- <span class="close" title="Close Modal" onclick="CloseModal('login-box');">&times;</span> -->
+        <form id="login-form" action="" class="animate" method="post">
+          <div class="user-info-container">
+            <div class="username-container">
+              <label id="username-label">Username:</label>
+              <input id="username-input" type="text" placeholder="Username" name="username">
+            </div>
+            <div class="password-container">
+              <label id="password-label">Password:</label>
+              <input id="password-input" type="password" placeholder="Password" name="password">
+            </div>
+          </div>
+          <div class="login-buttons">
+            <button id="submit-button" type="submit" value="submit">Submit</button>
+            <button id="cancel-button" type="button" onclick="CloseModal('login-box');">Cancel</button>
+          </div>
+        </form>
+    </div>
+    <hgroup>
+        {% if loggedIn %}
+            <div class="header-button-container">
+				<form class="header-button-form" action="" method="get">
+					<button type="button" id="signout-button" class="header-button" onclick="window.location.href={{url_for('logout')}};">Sign out</button>
+					<button type="button" id="account-button" class="header-button" onclick="window.location.href={{url_for('profile')}};">Account</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="header-button-container">
+                <form class="header-button-form" action="" method="get">
+                    <button type="button" id="signin-button" class="header-button" onclick="SignIn('login-box');">Sign in</button>
+                    <button type="button" id="new-button" class="header-button" onclick="window.location.href={{url_for('new_customer')}};">New Customer</button>
+                </form>
+            </div>
+        {% endif %}
+        <header>
+            <div class="title-band">
+                <h1>Katie's Katering</h1>
+            </div>
+        </header>
+        <nav>
+            <div class="menu-container">
+                <ul class="main-menu">
+                    <li class="menu-item" id="home"><a href="{{ url_for('default') }}">Home</a></li>
+                    <li class="menu-item" id="about-us"><a href="">About Us</a></li>
+                    <li class="menu-item" id="calendar"><a href="">Event Calendar</a></li>
+                    <li class="menu-item" id="contact"><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </hgroup>
+{% endblock %}
+
+{% block body %}
+	{% for message in get_flashed_messages() %}
+	    <div class="flash">{{ message }}</div>
+	{% endfor %}
+    <div class="menus">
+        <div class="catering-menu" id="breakfast-menu">
+            <a href="" class="menu-link">
+                <div class="image-container">
+                    <img src="{{url_for('static', filename='Breakfast.jpg')}}" alt="Breakfast Menu" class="menu-image"/>
+                </div>
+                <hr />
+                <div class="menu-text">
+                    <p class="menu-text">Breakfast Menu</p>
+                </div>
+            </a>
+        </div>
+        <div class="catering-menu" id="lunch-menu">
+            <a href="" class="menu-link">
+                <div class="image-container">
+                    <img src="{{url_for('static', filename='Lunch.jpg')}}" alt="Lunch Menu" class="menu-image"/>
+                </div>
+                <hr />
+                <div class="menu-text">
+                    <p class="menu-text">Lunch Menu</p>
+                </div>
+            </a>
+        </div>
+        <div class="catering-menu" id="dinner-menu">
+            <a href="" class="menu-link">
+                <div class="image-container">
+                    <img src="{{url_for('static', filename='Dinner.jpg')}}" alt="Dinner Menu" class="menu-image"/>
+                </div>
+                <hr />
+                <div class="menu-text">
+                    <p class="menu-text">Dinner Menu</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script type = "text/javascript" src = "{{url_for('static', filename='catering.js')}}" ></script>
+{% endblock %}

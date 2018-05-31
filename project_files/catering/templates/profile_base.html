@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Profile</title>
+{% endblock %}
+
+{% block style %}
+	<link href="{{url_for('static', filename='profile.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+	<header>
+		<div class="title-band">
+			<div class="back-home-container"><a id="back-home-link" href="{{ url_for('default') }}">Back Home</a></div>
+			<div class="title-container"><h1>Hi, {{username}}!</h1></div>
+			<div class="header-button-container">
+				<form class="header-button-form" action="" method="get">
+					<button type="button" id="signout-button" class="header-button" onclick="window.location.href={{url_for('logout')}};">Sign out</button>
+				</form>
+			</div>
+	    </div>
+	</header>
+{% endblock %}
+
+{% block body %}
+{% endblock %}

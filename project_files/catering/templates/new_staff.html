@@ -1,0 +1,35 @@
+{% extends "new_base.html" %}
+
+{% block form %}
+<div class="new-user-container">
+	<form class="new-user-form" action="" method="post">
+		<h3>New Staff Member</h3>
+		<div class="new-staff-container">
+			<div class="input-container">
+				<input type="text" name="firstname" placeholder="First Name" size="35" required/>
+			</div>
+			<div class="input-container">
+				<input type="text" name="lastname" placeholder="Last Name" size="35" required/>
+			</div>
+			<div class="input-container">
+				<input type="text" name="username" placeholder="Username" size="35" required/>
+			</div>
+			<div class="input-container">
+				<input type="text" name="email" placeholder="Email" size="35" required/>
+			</div>
+			<div class="input-container">
+				<input type="password" name="password" placeholder="Password" size="35" required/>
+			</div>
+			<div class="input-container">
+				<input type="password" name="password2" placeholder="Retype Password" size="35" required/>
+			</div>
+			<button class="new-user-button" type="submit" value="newstaff">Create Account</button>
+		</div>
+	</form>
+</div>
+
+<!-- {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+{% endfor %} -->
+
+{% endblock %}

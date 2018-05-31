@@ -1,0 +1,27 @@
+{% extends "profile_base.html" %}
+
+{% block body %}
+<div id="create-event-container">
+	<form id="event-form" action="" method="post">
+		<h3>Request an Event</h3>
+		<div id="request-container">
+			<div class="input-container">
+				<input type="text" name="eventName" placeholder="Event Name" size="35" />
+			</div>
+			<div class="input-container">
+				<label class="date-label">Start Date</label>
+				<input type="date" name="startDate" />
+			</div>
+			<div class="input-container">
+				<label class="date-label">End Date</label>
+				<input type="date" name="endDate" />
+			</div>
+			<button id="request-button" type="submit" value="request">Request Event</button>
+		</div>
+	</form>
+</div>
+<div id="list-of-events-container">
+
+
+</div>
+{% endblock %}
