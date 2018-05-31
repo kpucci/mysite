@@ -7,7 +7,7 @@
 {% block style %}
 	<link href="{{url_for('static', filename='home_style.css')}}" rel="stylesheet">
 {% endblock %}
-	
+
 {% block header %}
     <div id="login-box" class="modal">
         <!-- <span class="close" title="Close Modal" onclick="CloseModal('login-box');">&times;</span> -->
@@ -32,15 +32,15 @@
         {% if loggedIn %}
             <div class="header-button-container">
 				<form class="header-button-form" action="" method="get">
-					<button type="button" id="signout-button" class="header-button" onclick="window.location.href={{url_for('logout')}};">Sign out</button>
-					<button type="button" id="account-button" class="header-button" onclick="window.location.href={{url_for('profile')}};">Account</button>
+					<button type="button" id="signout-button" class="header-button" onclick="window.location.href='{{url_for('logout')}}';">Sign out</button>
+					<button type="button" id="account-button" class="header-button" onclick="window.location.href='{{url_for('profile')}}';">Account</button>
                 </form>
             </div>
         {% else %}
             <div class="header-button-container">
                 <form class="header-button-form" action="" method="get">
                     <button type="button" id="signin-button" class="header-button" onclick="SignIn('login-box');">Sign in</button>
-                    <button type="button" id="new-button" class="header-button" onclick="window.location.href={{url_for('new_customer')}};">New Customer</button>
+                    <button type="button" id="new-button" class="header-button" onclick="window.location.href='{{url_for('new_customer')}}';">New Customer</button>
                 </form>
             </div>
         {% endif %}
@@ -52,7 +52,7 @@
         <nav>
             <div class="menu-container">
                 <ul class="main-menu">
-                    <li class="menu-item" id="home"><a href="{{ url_for('default') }}">Home</a></li>
+                    <li class="menu-item" id="home"><a href="'{{ url_for('default') }}'">Home</a></li>
                     <li class="menu-item" id="about-us"><a href="">About Us</a></li>
                     <li class="menu-item" id="calendar"><a href="">Event Calendar</a></li>
                     <li class="menu-item" id="contact"><a href="">Contact</a></li>
