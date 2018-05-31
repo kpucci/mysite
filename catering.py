@@ -362,10 +362,10 @@ def staff_profile(username=None):
 			events_all = Event.query.order_by(Event.start).filter(Event.end>=datetime.datetime.now()).all()
 			for e in events_all:
 				e_workers = e.workers.all()
-                flash(str(len(e_workers)))
-                flash(str(e.start))
-                flash(str(datetime.datetime.now()))
-                flash(str(e.start >= datetime.datetime.now()))
+				flash(str(len(e_workers)))
+				flash(str(e.start))
+				flash(str(datetime.datetime.now()))
+				flash(str(e.start >= datetime.datetime.now()))
 				if len(e_workers) < 3 and staff_member not in e_workers and e.start >= datetime.datetime.now():
 					events_to_work.append(e)
 				elif staff_member in e_workers:
