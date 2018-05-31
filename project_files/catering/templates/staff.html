@@ -16,9 +16,6 @@
 			</div>
 		{% endfor %}
 	</div>
-	{% for message in get_flashed_messages() %}
-	    <div class="flash">{{ message }}</div>
-	{% endfor %}
 	<div class="staff-events-container">
 		<h2 class="staff-schedule">Available Events</h2>
 		{% for e in events %}
@@ -38,5 +35,8 @@
 			</div>
 		{% endfor %}
 	</div>
+	{% for message in get_flashed_messages() %}
+	    <div class="flash">{{ message }}</div>
+	{% endfor %}
 </div>
 {% endblock %}
