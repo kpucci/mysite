@@ -125,7 +125,7 @@ def testdb_command():
 @app.route("/", methods=['GET'])
 def default():
     if "logged_in" in session:
-            return redirect(url_for("user_account",username=session.get("logged_in")))
+        return redirect(url_for("user_account",username=session.get("logged_in")))
     return render_template("home.html")
 
 
@@ -212,7 +212,11 @@ def signup():
 def user_account(username=None):
     if "logged_in" in session and session.get("logged_in") == username:
         user = User.query.filter_by(username=username).first()
-        if request.method == "GET":
+        if not user:
+            session.pop('logged_in', None)
+            flash("Uh oh! Something went wrong.")
+            return redirect(url_for('default'))
+        elif request.method == "GET":
             return render_template("account.html", username=user.username)
         else:
             roomname = request.form["join-chat-button"]
