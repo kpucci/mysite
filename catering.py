@@ -5,7 +5,7 @@ from flask import Flask, request, abort, url_for, redirect, session, render_temp
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import exc
 
-from models import db, Customer, Staff, Event
+from project_files.catering.models import db, Customer, Staff, Event
 
 app = Flask(__name__)
 app.static_folder = 'static'
