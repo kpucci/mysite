@@ -1,0 +1,471 @@
+/* Styling for home.html */
+
+{box-sizing: border-box;}
+
+html{
+  /*background-image: url("kitten_background.jpg");*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Raleway', sans-serif;
+  overflow-x: auto;
+  overflow-y: auto;
+  background-attachment: fixed;
+}
+
+body {
+    background-color: #1d2225;
+    text-align: center;
+}
+
+div.header-container{
+    margin: 0 auto;
+    display: inline-block;
+    /*border: 1px solid red;*/
+}
+
+h1{
+    font-family: 'Sorts Mill Goudy', serif;
+    color: green;
+    text-align: left;
+}
+
+h2{
+    color: white;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h3{
+    margin-top: 5px;
+}
+
+div.edit-cat-modal{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 60px;
+    z-index: 1;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.75);
+}
+
+div.edit-cat-container{
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 25%;
+    text-align: center;
+    font-size: 26px;
+    padding: 10px;
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+label.edit-label{
+    display: block;
+    width: 100%;
+}
+
+.cat-edit-input{
+    height: 24px;
+    width: 25%;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+
+div.main-view-container{
+    margin: 0 auto;
+    text-align: center;
+    height: 315px;
+    display: inline-block;
+}
+
+div.categories-container,div.uncategorized-container{
+    margin: 0 auto;
+    padding: 15px;
+    height: 285px;
+    text-align: center;
+    float:left;
+    overflow: auto;
+}
+
+div.categories-container{
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-color: black;
+    border-width: medium;
+    width: 25vw;
+}
+/*@media(max-width: 575px){
+    div.total-spending-container{
+        width: 25vw;
+    }
+}*/
+/*@media(min-width: 800px){
+    div.categories-container{
+        width: 40vw;
+    }
+}*/
+/*@media(min-width: 1000px){
+    div.categories-container{
+        width: 50vw;
+    }
+}*/
+div.uncategorized-container{
+    border-style: solid;
+    border-color: black;
+    border-width: medium;
+}
+
+div.category-container{
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 25px;
+    text-align: center;
+    /*border: 1px solid green;*/
+    float: left;
+}
+
+div.clear{
+    clear: both;
+}
+
+div.summary-container {
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    background-color: #2f3e46;
+    font-size: 7em;
+    text-align: center;
+    border-radius: 50%;
+    /*border: 1px solid blue;*/
+}
+div.percent-container {
+    position: absolute;
+    z-index: 20;
+    top: 3px;
+    right: 3px;
+    bottom: 3px;
+    left: 3px;
+    background: #1d2225;
+    border-radius: 50%;
+}
+div.number-container {
+    position: absolute;
+    z-index: 30;
+    width: 100%;
+    height: 100%;
+    padding-top: 50%;
+    line-height: 0;
+    font-size: .3em;
+    color: #485c65;
+}
+div.slice-right {
+    position: absolute;
+    z-index: 11;
+    background-color: #ff913b;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(50% at center);
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+}
+div.slice-left {
+    position: absolute;
+    z-index: 11;
+    background-color: #ff913b;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(50% at center);
+    clip: rect(1em, 1em, 1em, 0);
+    -webkit-animation-delay: .5s;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-fill-mode: forwards;
+}
+
+div.add-new-container, div.date-selection-container{
+    margin: 10px;
+}
+
+div.form-container{
+    border: 1px solid black;
+    display: inline-block;
+}
+
+div.input-container,div.add-button-container{
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+    float: left;
+}
+
+div.label-container, div.budget-container{
+    padding-top: 15px;
+    color: white;
+}
+
+div.edit-button-container{
+    padding-top: 15px;
+}
+
+div.slice-up-right {
+    position: absolute;
+    z-index: 11;
+    background-color: #ff913b;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(50% at center);
+    -webkit-animation-duration: .1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards;
+}
+div.slice-down-right {
+    position: absolute;
+    z-index: 12;
+    background-color: #ff913b;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(50% at center);
+    clip: rect(0, 0, 0, 0);
+    -webkit-animation-duration: .1s;
+    -webkit-animation-delay: .1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards;
+}
+div.slice-down-left {
+    position: absolute;
+    z-index: 13;
+    background-color: #ff913b;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(50% at center);
+    clip: rect(0, 0, 0, 0);
+    -webkit-animation-delay: .2s;
+    -webkit-animation-duration: .1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards;
+}
+div.slice-up-left {
+    position: absolute;
+    z-index: 14;
+    background-color: #ff913b;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(50% at center);
+    clip: rect(0, 0, 0, 0);
+    -webkit-animation-delay: .3s;
+    -webkit-animation-duration: .1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards;
+}
+
+
+/* ------Animations------ */
+
+/* ----------0%---------- */
+.right-up-0{
+    clip: rect(0, 0, 0, 0);
+}
+
+/* ----------5%---------- */
+.right-up-5{
+    -webkit-animation-name: right-up-slice-5;
+}
+@-webkit-keyframes right-up-slice-5 {
+    from {clip: rect(0, .5em, .5em, .5em);}
+    to {clip: rect(0, .655em, .5em, .5em);}
+}
+
+/* ----------10%---------- */
+.right-up-10{
+    -webkit-animation-name: right-up-slice-10;
+}
+@-webkit-keyframes right-up-slice-10 {
+    from {clip: rect(0, .5em, .5em, .5em);}
+    to {clip: rect(0, .794em, .5em, .5em);}
+}
+
+/* ----------15%---------- */
+.right-up-15{
+    -webkit-animation-name: right-up-slice-15;
+}
+@-webkit-keyframes right-up-slice-15 {
+    from {clip: rect(0, .5em, .5em, .5em);}
+    to {clip: rect(0, .905em, .5em, .5em);}
+}
+
+/* ----------20%---------- */
+.right-up-20{
+    -webkit-animation-name: right-up-slice-20;
+}
+@-webkit-keyframes right-up-slice-20 {
+    from {clip: rect(0, 1em, 0, .5em);}
+    to {clip: rect(0, 1em, .345em, .5em);}
+}
+
+/* ----------25%---------- */
+.right-up-25{
+    -webkit-animation-name: right-up-slice-25;
+}
+@-webkit-keyframes right-up-slice-25 {
+    from {clip: rect(0, 1em, 0, .5em);}
+    to {clip: rect(0, 1em, .5em, .5em);}
+}
+
+/* ----------30%---------- */
+.right-down-30{
+    -webkit-animation-name: right-down-slice-30;
+}
+@-webkit-keyframes right-down-slice-30 {
+    from {clip: rect(0, 1em, .5em, .5em);}
+    to {clip: rect(0, 1em, .655em, .5em);}
+}
+
+/* ----------35%---------- */
+.right-down-35{
+    -webkit-animation-name: right-down-slice-35;
+}
+@-webkit-keyframes right-down-slice-35 {
+    from {clip: rect(0, 1em, .5em, .5em);}
+    to {clip: rect(0, 1em, .794em, .5em);}
+}
+
+/* ----------40%---------- */
+.right-down-40{
+    -webkit-animation-name: right-down-slice-40;
+}
+@-webkit-keyframes right-down-slice-40 {
+    from {clip: rect(0, 1em, 1em, 1em);}
+    to {clip: rect(0, 1em, 1em, .794em);}
+}
+
+/* ----------45%---------- */
+.right-down-45{
+    -webkit-animation-name: right-down-slice-45;
+}
+@-webkit-keyframes right-down-slice-45 {
+    from {clip: rect(0, 1em, 1em, 1em);}
+    to {clip: rect(0, 1em, 1em, .654em);}
+}
+
+/* ----------50%---------- */
+.right-down-50{
+    -webkit-animation-name: right-down-slice-50;
+}
+@-webkit-keyframes right-down-slice-50 {
+    from {clip: rect(0, 1em, 1em, 1em);}
+    to {clip: rect(0, 1em, 1em, .5em);}
+}
+
+/* ----------55%---------- */
+.left-down-55{
+    -webkit-animation-name: left-down-slice-55;
+}
+@-webkit-keyframes left-down-slice-55 {
+    from {clip: rect(.5em, .5em, 1em, .5em);}
+    to {clip: rect(.5em, .5em, 1em, .345em);}
+}
+
+/* ----------60%---------- */
+.left-down-60{
+    -webkit-animation-name: left-down-slice-60;
+}
+@-webkit-keyframes left-down-slice-60 {
+    from {clip: rect(.5em, .5em, 1em, .5em);}
+    to {clip: rect(.5em, .5em, 1em, .206em);}
+}
+
+/* ----------65%---------- */
+.left-down-65{
+    -webkit-animation-name: left-down-slice-65;
+}
+@-webkit-keyframes left-down-slice-65 {
+    from {clip: rect(.5em, .5em, 1em, .5em);}
+    to {clip: rect(.5em, .5em, 1em, .095em);}
+}
+
+/* ----------70%---------- */
+.left-down-70{
+    -webkit-animation-name: left-down-slice-70;
+}
+@-webkit-keyframes left-down-slice-70 {
+    from {clip: rect(1em, .5em, 1em, 0);}
+    to {clip: rect(.654em, .5em, 1em, 0);}
+}
+
+/* ----------75%---------- */
+.left-down-75{
+    -webkit-animation-name: left-down-slice-75;
+}
+@-webkit-keyframes left-down-slice-75 {
+    from {clip: rect(1em, .5em, 1em, 0);}
+    to {clip: rect(.5em, .5em, 1em, 0);}
+}
+
+/* ----------80%---------- */
+.left-up-80{
+    -webkit-animation-name: left-up-slice-80;
+}
+@-webkit-keyframes left-up-slice-80 {
+    from {clip: rect(.5em, .5em, 1em, 0);}
+    to {clip: rect(.345em, .5em, 1em, 0);}
+}
+
+/* ----------85%---------- */
+.left-up-85{
+    -webkit-animation-name: left-up-slice-85;
+}
+@-webkit-keyframes left-up-slice-85 {
+    from {clip: rect(.5em, .5em, 1em, 0);}
+    to {clip: rect(.206em, .5em, 1em, 0);}
+}
+
+/* ----------90%---------- */
+.left-up-90{
+    -webkit-animation-name: left-up-slice-90;
+}
+@-webkit-keyframes left-up-slice-90 {
+    from {clip: rect(0, 0, .5em, 0);}
+    to {clip: rect(0, .294em, .5em, 0);}
+}
+
+/* ----------95%---------- */
+.left-up-95{
+    -webkit-animation-name: left-up-slice-95;
+}
+@-webkit-keyframes left-up-slice-95 {
+    from {clip: rect(0, 0, .5em, 0);}
+    to {clip: rect(0, .345em, .5em, 0);}
+}
+
+/* ----------100%---------- */
+.left-up-100{
+    -webkit-animation-name: left-up-slice-100;
+}
+@-webkit-keyframes left-up-slice-100 {
+    from {clip: rect(0, 0, .5em, 0);}
+    to {clip: rect(0, .5em, .5em, 0);}
+}

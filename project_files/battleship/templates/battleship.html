@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Battleship</title>
+        <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One|Russo+One" rel="stylesheet">
+        <script type = "text/javascript" src = "{{url_for('static', filename='battleship_functions.js')}}" ></script>
+    </head>
+    <body>
+      <!--Player info-->
+      <div id="player" class="info modal">
+        <span onclick="ClosePlayerInfo();" class="close" title="Close Modal">&times;</span>
+        <form class="animate">
+          <div class="container">
+            <div class="player-name">
+              <label id="player-nlabel">Player 1</label>
+              <input id="player-ninput" type="text" placeholder="Your Name" name="player_name">
+            </div>
+            <div class="player-ships">
+              <label id="player-slabel">Battleships</label>
+              <input id="player-sinput" type="text" placeholder="Ex. A:A1-A5;B:B6-E6; S:H3-J3" name="player_ships">
+            </div>
+          </div>
+          <div class="player-buttons">
+            <button id="submit-button" type="button" onclick="SubmitButton();">Submit</button>
+            <button id="cancel-button" type="button" onclick="CancelButton('player');">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="startpage" class="start modal">
+        <form class="animate">
+          <div class="container">
+            <div class="player-start">
+              <label id="start-label"></label>
+            </div>
+          </div>
+          <div>
+            <button id="start-button" type="button" onclick="StartButton();">Start</button>
+            <button id="cancel-start" type="button" onclick="CancelButton('startpage');">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!--Header-->
+      <div class="header">
+        <h1>BATTLESHIP</h1>
+      </div>
+
+      <!--Gameboard-->
+      <div class="gameboard">
+        <div class="column left">
+          <div class="name-div">
+            <label class="info-label">Player 1: </label>
+            <p id="player1-name" class="game-info">Name</p>
+          </div>
+          <div class="score-div">
+            <label class="info-label">Score: </label>
+            <p id="player1-score" class="game-info">0</p>
+          </div>
+          <button id="player1-fire" class="fire" type="button" onclick="ShotFired();" disabled="disabled">Fire!</button>
+        </div>
+        <div class="column middle">
+          <table class="EnemyBoard">
+  			    <tr class="headings">
+        			<th> </th>
+        			<th>A</th>
+    				  <th>B</th>
+    				  <th>C</th>
+    				  <th>D</th>
+    				  <th>E</th>
+    				  <th>F</th>
+    				  <th>G</th>
+    				  <th>H</th>
+    				  <th>I</th>
+    				  <th>J</th>
+      			</tr>
+      			<tr class="row1">
+      				<th>1</th>
+      				<td id="T_A1" onclick="LockIn('T_A1');"> </td>
+      				<td id="T_B1" onclick="LockIn('T_B1');"> </td>
+      				<td id="T_C1" onclick="LockIn('T_C1');"> </td>
+      				<td id="T_D1" onclick="LockIn('T_D1');"> </td>
+      				<td id="T_E1" onclick="LockIn('T_E1');"> </td>
+      				<td id="T_F1" onclick="LockIn('T_F1');"> </td>
+      				<td id="T_G1" onclick="LockIn('T_G1');"> </td>
+      				<td id="T_H1" onclick="LockIn('T_H1');"> </td>
+      				<td id="T_I1" onclick="LockIn('T_I1');"> </td>
+      				<td id="T_J1" onclick="LockIn('T_J1');"> </td>
+      			</tr>
+      			<tr class="row2">
+      				<th>2</th>
+      				<td id="T_A2" onclick="LockIn('T_A2');"> </td>
+      				<td id="T_B2" onclick="LockIn('T_B2');"> </td>
+      				<td id="T_C2" onclick="LockIn('T_C2');"> </td>
+      				<td id="T_D2" onclick="LockIn('T_D2');"> </td>
+      				<td id="T_E2" onclick="LockIn('T_E2');"> </td>
+      				<td id="T_F2" onclick="LockIn('T_F2');"> </td>
+      				<td id="T_G2" onclick="LockIn('T_G2');"> </td>
+      				<td id="T_H2" onclick="LockIn('T_H2');"> </td>
+      				<td id="T_I2" onclick="LockIn('T_I2');"> </td>
+      				<td id="T_J2" onclick="LockIn('T_J2');"> </td>
+      			</tr>
+      			<tr class="row3">
+      				<th>3</th>
+      				<td id="T_A3" onclick="LockIn('T_A3');"> </td>
+      				<td id="T_B3" onclick="LockIn('T_B3');"> </td>
+      				<td id="T_C3" onclick="LockIn('T_C3');"> </td>
+      				<td id="T_D3" onclick="LockIn('T_D3');"> </td>
+      				<td id="T_E3" onclick="LockIn('T_E3');"> </td>
+      				<td id="T_F3" onclick="LockIn('T_F3');"> </td>
+      				<td id="T_G3" onclick="LockIn('T_G3');"> </td>
+      				<td id="T_H3" onclick="LockIn('T_H3');"> </td>
+      				<td id="T_I3" onclick="LockIn('T_I3');"> </td>
+      				<td id="T_J3" onclick="LockIn('T_J3');"> </td>
+      			</tr>
+      			<tr class="row4">
+      				<th>4</th>
+      				<td id="T_A4" onclick="LockIn('T_A4');"> </td>
+      				<td id="T_B4" onclick="LockIn('T_B4');"> </td>
+      				<td id="T_C4" onclick="LockIn('T_C4');"> </td>
+      				<td id="T_D4" onclick="LockIn('T_D4');"> </td>
+      				<td id="T_E4" onclick="LockIn('T_E4');"> </td>
+      				<td id="T_F4" onclick="LockIn('T_F4');"> </td>
+      				<td id="T_G4" onclick="LockIn('T_G4');"> </td>
+      				<td id="T_H4" onclick="LockIn('T_H4');"> </td>
+      				<td id="T_I4" onclick="LockIn('T_I4');"> </td>
+      				<td id="T_J4" onclick="LockIn('T_J4');"> </td>
+      			</tr>
+      			<tr class="row5">
+      				<th>5</th>
+      				<td id="T_A5" onclick="LockIn('T_A5');"> </td>
+      				<td id="T_B5" onclick="LockIn('T_B5');"> </td>
+      				<td id="T_C5" onclick="LockIn('T_C5');"> </td>
+      				<td id="T_D5" onclick="LockIn('T_D5');"> </td>
+      				<td id="T_E5" onclick="LockIn('T_E5');"> </td>
+      				<td id="T_F5" onclick="LockIn('T_F5');"> </td>
+      				<td id="T_G5" onclick="LockIn('T_G5');"> </td>
+      				<td id="T_H5" onclick="LockIn('T_H5');"> </td>
+      				<td id="T_I5" onclick="LockIn('T_I5');"> </td>
+      				<td id="T_J5" onclick="LockIn('T_J5');"> </td>
+      			</tr>
+      			<tr class="row6">
+      				<th>6</th>
+      				<td id="T_A6" onclick="LockIn('T_A6');"> </td>
+      				<td id="T_B6" onclick="LockIn('T_B6');"> </td>
+      				<td id="T_C6" onclick="LockIn('T_C6');"> </td>
+      				<td id="T_D6" onclick="LockIn('T_D6');"> </td>
+      				<td id="T_E6" onclick="LockIn('T_E6');"> </td>
+      				<td id="T_F6" onclick="LockIn('T_F6');"> </td>
+      				<td id="T_G6" onclick="LockIn('T_G6');"> </td>
+      				<td id="T_H6" onclick="LockIn('T_H6');"> </td>
+      				<td id="T_I6" onclick="LockIn('T_I6');"> </td>
+      				<td id="T_J6" onclick="LockIn('T_J6');"> </td>
+      			</tr>
+      			<tr class="row7">
+      				<th>7</th>
+      				<td id="T_A7" onclick="LockIn('T_A7');"> </td>
+      				<td id="T_B7" onclick="LockIn('T_B7');"> </td>
+      				<td id="T_C7" onclick="LockIn('T_C7');"> </td>
+      				<td id="T_D7" onclick="LockIn('T_D7');"> </td>
+      				<td id="T_E7" onclick="LockIn('T_E7');"> </td>
+      				<td id="T_F7" onclick="LockIn('T_F7');"> </td>
+      				<td id="T_G7" onclick="LockIn('T_G7');"> </td>
+      				<td id="T_H7" onclick="LockIn('T_H7');"> </td>
+      				<td id="T_I7" onclick="LockIn('T_I7');"> </td>
+      				<td id="T_J7" onclick="LockIn('T_J7');"> </td>
+      			</tr>
+      			<tr class="row8">
+      				<th>8</th>
+      				<td id="T_A8" onclick="LockIn('T_A8');"> </td>
+      				<td id="T_B8" onclick="LockIn('T_B8');"> </td>
+      				<td id="T_C8" onclick="LockIn('T_C8');"> </td>
+      				<td id="T_D8" onclick="LockIn('T_D8');"> </td>
+      				<td id="T_E8" onclick="LockIn('T_E8');"> </td>
+      				<td id="T_F8" onclick="LockIn('T_F8');"> </td>
+      				<td id="T_G8" onclick="LockIn('T_G8');"> </td>
+      				<td id="T_H8" onclick="LockIn('T_H8');"> </td>
+      				<td id="T_I8" onclick="LockIn('T_I8');"> </td>
+      				<td id="T_J8" onclick="LockIn('T_J8');"> </td>
+      			</tr>
+      			<tr class="row9">
+      				<th>9</th>
+      				<td id="T_A9" onclick="LockIn('T_A9');"> </td>
+      				<td id="T_B9" onclick="LockIn('T_B9');"> </td>
+      				<td id="T_C9" onclick="LockIn('T_C9');"> </td>
+      				<td id="T_D9" onclick="LockIn('T_D9');"> </td>
+      				<td id="T_E9" onclick="LockIn('T_E9');"> </td>
+      				<td id="T_F9" onclick="LockIn('T_F9');"> </td>
+      				<td id="T_G9" onclick="LockIn('T_G9');"> </td>
+      				<td id="T_H9" onclick="LockIn('T_H9');"> </td>
+      				<td id="T_I9" onclick="LockIn('T_I9');"> </td>
+      				<td id="T_J9" onclick="LockIn('T_J9');"> </td>
+      			</tr>
+      			<tr class="row10">
+      				<th>10</th>
+      				<td id="T_A10" onclick="LockIn('T_A10');"> </td>
+      				<td id="T_B10" onclick="LockIn('T_B10');"> </td>
+      				<td id="T_C10" onclick="LockIn('T_C10');"> </td>
+      				<td id="T_D10" onclick="LockIn('T_D10');"> </td>
+      				<td id="T_E10" onclick="LockIn('T_E10');"> </td>
+      				<td id="T_F10" onclick="LockIn('T_F10');"> </td>
+      				<td id="T_G10" onclick="LockIn('T_G10');"> </td>
+      				<td id="T_H10" onclick="LockIn('T_H10');"> </td>
+      				<td id="T_I10" onclick="LockIn('T_I10');"> </td>
+      				<td id="T_J10" onclick="LockIn('T_J10');"> </td>
+      			</tr>
+  		    </table>
+			<table class="PlayerBoard">
+  			    <tr class="headings">
+        			<th> </th>
+        			<th>A</th>
+    				  <th>B</th>
+    				  <th>C</th>
+    				  <th>D</th>
+    				  <th>E</th>
+    				  <th>F</th>
+    				  <th>G</th>
+    				  <th>H</th>
+    				  <th>I</th>
+    				  <th>J</th>
+      			</tr>
+            <tr class="row1">
+      				<th>1</th>
+      				<td id="B_A1"> </td>
+      				<td id="B_B1"> </td>
+      				<td id="B_C1"> </td>
+      				<td id="B_D1"> </td>
+      				<td id="B_E1"> </td>
+      				<td id="B_F1"> </td>
+      				<td id="B_G1"> </td>
+      				<td id="B_H1"> </td>
+      				<td id="B_I1"> </td>
+      				<td id="B_J1"> </td>
+      			</tr>
+      			<tr class="row2">
+      				<th>2</th>
+      				<td id="B_A2"> </td>
+      				<td id="B_B2"> </td>
+      				<td id="B_C2"> </td>
+      				<td id="B_D2"> </td>
+      				<td id="B_E2"> </td>
+      				<td id="B_F2"> </td>
+      				<td id="B_G2"> </td>
+      				<td id="B_H2"> </td>
+      				<td id="B_I2"> </td>
+      				<td id="B_J2"> </td>
+      			</tr>
+      			<tr class="row3">
+      				<th>3</th>
+      				<td id="B_A3"> </td>
+      				<td id="B_B3"> </td>
+      				<td id="B_C3"> </td>
+      				<td id="B_D3"> </td>
+      				<td id="B_E3"> </td>
+      				<td id="B_F3"> </td>
+      				<td id="B_G3"> </td>
+      				<td id="B_H3"> </td>
+      				<td id="B_I3"> </td>
+      				<td id="B_J3"> </td>
+      			</tr>
+      			<tr class="row4">
+      				<th>4</th>
+      				<td id="B_A4"> </td>
+      				<td id="B_B4"> </td>
+      				<td id="B_C4"> </td>
+      				<td id="B_D4"> </td>
+      				<td id="B_E4"> </td>
+      				<td id="B_F4"> </td>
+      				<td id="B_G4"> </td>
+      				<td id="B_H4"> </td>
+      				<td id="B_I4"> </td>
+      				<td id="B_J4"> </td>
+      			</tr>
+      			<tr class="row5">
+      				<th>5</th>
+      				<td id="B_A5"> </td>
+      				<td id="B_B5"> </td>
+      				<td id="B_C5"> </td>
+      				<td id="B_D5"> </td>
+      				<td id="B_E5"> </td>
+      				<td id="B_F5"> </td>
+      				<td id="B_G5"> </td>
+      				<td id="B_H5"> </td>
+      				<td id="B_I5"> </td>
+      				<td id="B_J5"> </td>
+      			</tr>
+      			<tr class="row6">
+      				<th>6</th>
+      				<td id="B_A6"> </td>
+      				<td id="B_B6"> </td>
+      				<td id="B_C6"> </td>
+      				<td id="B_D6"> </td>
+      				<td id="B_E6"> </td>
+      				<td id="B_F6"> </td>
+      				<td id="B_G6"> </td>
+      				<td id="B_H6"> </td>
+      				<td id="B_I6"> </td>
+      				<td id="B_J6"> </td>
+      			</tr>
+      			<tr class="row7">
+      				<th>7</th>
+      				<td id="B_A7"> </td>
+      				<td id="B_B7"> </td>
+      				<td id="B_C7"> </td>
+      				<td id="B_D7"> </td>
+      				<td id="B_E7"> </td>
+      				<td id="B_F7"> </td>
+      				<td id="B_G7"> </td>
+      				<td id="B_H7"> </td>
+      				<td id="B_I7"> </td>
+      				<td id="B_J7"> </td>
+      			</tr>
+      			<tr class="row8">
+      				<th>8</th>
+      				<td id="B_A8"> </td>
+      				<td id="B_B8"> </td>
+      				<td id="B_C8"> </td>
+      				<td id="B_D8"> </td>
+      				<td id="B_E8"> </td>
+      				<td id="B_F8"> </td>
+      				<td id="B_G8"> </td>
+      				<td id="B_H8"> </td>
+      				<td id="B_I8"> </td>
+      				<td id="B_J8"> </td>
+      			</tr>
+      			<tr class="row9">
+      				<th>9</th>
+      				<td id="B_A9"> </td>
+      				<td id="B_B9"> </td>
+      				<td id="B_C9"> </td>
+      				<td id="B_D9"> </td>
+      				<td id="B_E9"> </td>
+      				<td id="B_F9"> </td>
+      				<td id="B_G9"> </td>
+      				<td id="B_H9"> </td>
+      				<td id="B_I9"> </td>
+      				<td id="B_J9"> </td>
+      			</tr>
+      			<tr class="row10">
+      				<th>10</th>
+      				<td id="B_A10"> </td>
+      				<td id="B_B10"> </td>
+      				<td id="B_C10"> </td>
+      				<td id="B_D10"> </td>
+      				<td id="B_E10"> </td>
+      				<td id="B_F10"> </td>
+      				<td id="B_G10"> </td>
+      				<td id="B_H10"> </td>
+      				<td id="B_I10"> </td>
+      				<td id="B_J10"> </td>
+      			</tr>
+  		    </table>
+        </div>
+      <div class="column right">
+        <div class="name-div">
+          <label class="info-label">Player 2:</label>
+          <p id="player2-name" class="game-info">Name</p>
+        </div>
+        <div class="score-div">
+          <label class="info-label">Score: </label>
+          <p id="player2-score" class="game-info">0</p>
+        </div>
+        <button id="player2-fire" class="fire" type="button" onclick="ShotFired();" disabled="disabled">Fire!</button>
+      </div>
+      </div>
+  </body>
+</html>
