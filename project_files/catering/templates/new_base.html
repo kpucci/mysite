@@ -17,8 +17,8 @@
 				{% if loggedIn %}
 				<div class="header-button-container">
 					<form class="header-button-form" action="" method="get">
-						<button type="button" id="signout-button" class="header-button" onclick="window.location.href={{url_for('logout')}};">Sign out</button>
-						<button type="button" id="account-button" class="header-button" onclick="window.location.href={{url_for('profile')}};">Account</button>
+						<button type="button" id="signout-button" class="header-button" onclick="window.location.href='{{url_for('logout')}}';">Sign out</button>
+						<button type="button" id="account-button" class="header-button" onclick="window.location.href='{{url_for('profile')}}';">Account</button>
 					</form>
 				</div>
 				{% endif %}

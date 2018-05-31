@@ -15,7 +15,7 @@
 			<div class="title-container"><h1>Hi, {{username}}!</h1></div>
 			<div class="header-button-container">
 				<form class="header-button-form" action="" method="get">
-					<button type="button" id="signout-button" class="header-button" onclick="window.location.href={{url_for('logout')}};">Sign out</button>
+					<button type="button" id="signout-button" class="header-button" onclick="window.location.href='{{url_for('logout')}}';">Sign out</button>
 				</form>
 			</div>
 	    </div>
