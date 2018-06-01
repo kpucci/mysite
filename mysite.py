@@ -108,11 +108,27 @@ def initdb_command():
 
     print('Initialized the database.')
 
+#--------------------------------------------------------------------------------------------
+# Skills
+
+skills = [
+	{'Name':'Java', 'Level':'Expert'},
+	{'Name':'Python', 'Level':'Advanced'},
+	{'Name':'JavaScript', 'Level':'Advanced'},
+	{'Name':'HTML5', 'Level':'Advanced'},
+	{'Name':'MAPDL', 'Level':'Proficient'},
+	{'Name':'SolidWorks', 'Level':'Expert'},
+	{'Name':'ANSYS', 'Level':'Advanced'},
+	{'Name':'AutoCAD', 'Level':'Proficient'}
+]
+
+#--------------------------------------------------------------------------------------------
+
 # Home page:
 # GET - Visit home page
 # POST - Signin --> Redirect to profile page if successful
 @app.route("/")
 def default():
-    return render_template("home.html")
+    return render_template("home.html", skills=skills)
 
 #--------------------------------------------------------------------------------------------

@@ -23,7 +23,7 @@ div.main{
 
 p.name{
     margin: 0 auto;
-    color: white;
+    color: #F8F8FF;
     /* text-shadow: 1px 1px 1px black; */
     font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
@@ -32,7 +32,7 @@ p.name{
 
 p.sub{
     margin: 0 auto;
-    color: white;
+    color: #F8F8FF;
     /* text-shadow: 1px 1px 1px black; */
     font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
@@ -40,7 +40,7 @@ p.sub{
 }
 
 div.header{
-    /* margin: auto; */
+    padding-top: 10px;
     display: block;
     z-index: 1; /* Sit on top */
     background-color: rgb(0,0,0); /* Fallback color */
@@ -59,7 +59,7 @@ div.button-container{
 
 a:link {
     text-decoration: none;
-    color: white;
+    color: #F8F8FF;
 }
 
 .btn-link{
@@ -78,9 +78,9 @@ a:link {
             user-select: none;
     background-image: none;
     border: 1px solid transparent;
-    color: #fff;
+    color: #F8F8FF;
 	background-color: transparent;
-	border-color: #fff;
+	border-color: #F8F8FF;
 	padding: 10px 20px;
 	margin: 0;
 	font-size: 16px;
@@ -88,7 +88,7 @@ a:link {
 }
 
 .btn-link:hover, .btn-link:focus, .btn-link.focus, .btn-link:active, .btn-link.active{
-	color: #fff;
+	color: #F8F8FF;
 	background-color: #290051;
 	border-color: #290051;
 }
@@ -109,17 +109,17 @@ button{
             user-select: none;
     background-image: none;
     border: 1px solid transparent;
-    color: #fff;
+    color: #F8F8FF;
 	background-color: transparent;
-	border-color: #fff;
+	border-color: #F8F8FF;
 	padding: 5px 10px;
 	margin: 10px 10px;
 	font-size: 12px;
 	border-radius: 0;
 }
 
-button:hover, button:focus, button.focus, button:active, button.active{
-	color: #fff;
+button:hover, button:focus, button.focus, button:active, button.active, button.btn-clicked{
+	color: #F8F8FF;
 	background-color: #290051;
 	border-color: #290051;
 }
@@ -132,6 +132,7 @@ div.nav{
     /* background-color: rgba(0,0,0,0.8); */
     text-align: center;
     /* outline: 1px solid green; */
+	padding: 0 75px;
 }
 
 .sticky {
@@ -141,7 +142,7 @@ div.nav{
 }
 
 .sticky + .about-container {
-  padding-top: 70px;
+  padding-top: 100px;
   width: 100%;
 }
 
@@ -156,7 +157,7 @@ ul.main-menu{
 /* List items that are direct children of ul */
 ul > li{
     display: inline;
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
     margin: 15px;
 }
@@ -164,7 +165,7 @@ ul > li{
 /* Links that are direct children of li */
 li > a{
     text-decoration: none;
-    color: white;
+    color: #F8F8FF;
     /* text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
@@ -174,7 +175,7 @@ li > a{
 
 /* Menu item hover */
 li > a:hover{
-    color: #BA284C;
+    color: #ec8879;
 }
 
 .left-item{
@@ -195,6 +196,12 @@ p.about-text{
     text-align: justify;
 }
 
+div.section-header{
+	/* margin-top: 50px; */
+	/* padding-top: 25px; */
+	/* outline: 1px solid red; */
+}
+
 p.section-text{
     /* margin: 1000px; */
     text-align: center;
@@ -204,10 +211,20 @@ p.section-text{
     font-size: 24px;
 }
 
-p.section-header{
+p.section-header-dark{
+    /* margin-top: 50px; */
+    color: #290051;
+    /* text-shadow: 1px 1px 1px black; */
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 40px;
+    padding: 10px 0;
+	/* outline: 1px solid red; */
+}
+
+p.section-header-light{
     /* margin: 0 auto; */
     /* margin-top: 20px; */
-    color: #290051;
+    color: #F8F8FF;
     /* text-shadow: 1px 1px 1px black; */
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 40px;
@@ -216,33 +233,27 @@ p.section-header{
 
 hr.section-break{
     height: 3px;
+    border: 0;
+	margin-bottom: 20px;
+	margin-left: 40%;
+    margin-right: 40%;
+	/* outline: 1px solid red; */
+}
+
+hr.dark-break{
+	background-color: #290051;
+}
+
+hr.light-break{
+    background-color: #F8F8FF;
+}
+
+hr.about-break{
+	height: 3px;
     background-color: #290051;
     border: 0;
-}
-
-#about-break{
-    width: 150px;
-}
-
-#portfolio-break{
-    margin-left: 40%;
-    margin-right: 40%;
-    /* outline: 1px solid red; */
-}
-
-#skills-break{
-    margin-left: 40%;
-    margin-right: 40%;
-}
-
-#certificates-break{
-    margin-left: 40%;
-    margin-right: 40%;
-}
-
-#contact-break{
-    margin-left: 40%;
-    margin-right: 40%;
+	margin-bottom: 10px;
+    width: 155px;
 }
 
 #picture{
@@ -251,16 +262,19 @@ hr.section-break{
     background-image: url("me.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 50px;
+    margin-left: 50px;
     border-radius: 100px;
     border: 10px solid #290051;
 }
 
 div.about-container{
+	background-color: #F8F8FF;
     display: flex;
+	height: auto;
+	padding: 40px;
 }
 
-div.left{
+div.about-left{
     flex: 0 0 25%;
 }
 
@@ -269,35 +283,36 @@ div.about-mid{
     margin-bottom: 20px;
 }
 
-div.portfolio-container{
-    background-color: #f4c3bd;
-    height: 500px;
-    text-align: center;
+div.about-right{
+    flex: 0 0 10%;
+	/* outline: 1px solid blue; */
 }
 
-div.portfolio-header{
-    text-align: center;
-    /* overflow: hidden; */
-    /* outline: 1px solid green; */
+img.resume-icon{
+	width: 100px;
+	margin: 5% 12.5%;
+	/* outline: 1px solid blue; */
 }
 
-div.skills-container{
-    height: 500px;
-    text-align: center;
+p.caption{
+	font-size: 14px;
+	text-align: center;
+	font-style: italic;
+}
+
+div.section-container-light{
+	background-color: #F8F8FF;
+	text-align: center;
+	height: auto;
+	padding: 40px;
     /* outline: 1px solid blue; */
 }
 
-div.certificates-container{
-    background-color: #f4c3bd;
-    height: 500px;
+div.section-container-dark{
+	background-color: #ec8879;
     text-align: center;
-    /* outline: 1px solid blue; */
-}
-
-div.contact-container{
-    height: 500px;
-    text-align: center;
-    /* outline: 1px solid purple; */
+	height: auto;
+	padding: 40px;
 }
 
 .project-image{
@@ -306,8 +321,8 @@ div.contact-container{
 }
 
 div.project-image-container{
-    width: 200px;
-    margin: 10px;
+    width: 250px;
+    margin: 20px;
     display: inline-block;
     /* outline: 1px solid purple; */
     padding: 0;
@@ -315,11 +330,107 @@ div.project-image-container{
 
 div.portfolio-viewer{
     display: inline-block;
-    margin-left: 10%;
+    /* margin-left: 10%;
     margin-right: 10%;
-    margin-top: 4%;
+    margin-top: 4%; */
+	margin: 25px;
     /* outline: 1px solid purple; */
     overflow-y: auto;
+}
+
+div.empty-portfolio{
+	height: 238px;
+	padding-top: 50px;
+}
+
+div.skill-container{
+	display: inline-block;
+	/* outline: 1px solid purple; */
+	text-align: center;
+	margin: 50px;
+}
+
+div.skill{
+	width: 300px;
+	padding: 5px;
+	margin: auto;
+	overflow-y: hidden;
+	text-align: center;
+}
+
+div.Expert{
+	background-color: #290051;
+	background: linear-gradient(to left, #290051 50%, #f6c3bc 50%);
+    background-size: 300% 100%;
+    background-position:right bottom;
+	transition:all 3s ease;
+}
+
+div.Advanced{
+	background-color: #290051;
+	background: linear-gradient(to left, #290051 75%, #f6c3bc 75%);
+    background-size: 300% 100%;
+    background-position:right bottom;
+	transition:all 1.75s ease;
+}
+
+div.Proficient{
+	background-color: #290051;
+	background: linear-gradient(to left, #290051 80%, #f6c3bc 80%);
+    background-size: 300% 100%;
+    background-position:right bottom;
+	transition:all 1.5s ease;
+}
+
+div.Basic{
+	background-color: #290051;
+	background: linear-gradient(to left, #290051 90%, #f6c3bc 90%);
+    background-size: 300% 100%;
+    background-position:right bottom;
+	transition:all 1.25s ease;
+}
+
+.skill-name{
+	text-align: left;
+	margin-bottom: 5px;
+}
+
+.skill-level{
+	text-align: right;
+	margin-top: 5px;
+}
+
+div.timeline-viewer{
+	background-color: #f3aca5;
+	overflow-x: auto;
+}
+
+
+
+div.contact-viewer{
+	margin-top: 25px;
+	margin-bottom: 100px;
+	display: inline-block;
+	text-align: center;
+	/* outline: 1px solid green; */
+}
+
+div.contact-item{
+	display: inline-block;
+	text-align: center;
+	margin: 10px 25px;
+	/* outline: 1px solid purple; */
+	width: 200px;
+}
+
+.contact-item-img{
+	width: 50px;
+	height: 50px;
+}
+
+.contact-text{
+	font-size: 18px;
+	color: #290051;
 }
 
 /* Add Zoom Animation */
