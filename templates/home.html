@@ -24,40 +24,40 @@
 
     <!--Navigation-->
     <div class="nav" id="navbar">
-        <div class="dropdown-navbar">
+        <a href="#home" target="#home" class="nav-item left-item">KP</a>
+        <div class="dropdown-btn-container">
             <button class="dropdown-btn"></button>
-            <ul class="main-menu" id="navmenu">
-                <li class="menu-item left-item" id="kp-item"><a href="#home" target="#home">KP</a></li>
-                <li class="menu-item right-item" id="contact-item"><a href="#contact" target="#contact">Contact</a></li>
-                <li class="menu-item right-item" id="timeline-item"><a href="#timeline" target="#timeline">Timeline</a></li>
-                <li class="menu-item right-item" id="skills-item"><a href="#skills" target="#skills">Skills</a></li>
-                <li class="menu-item right-item" id="portfolio-item"><a href="#portfolio" target="#portfolio">Portfolio</a></li>
-                <li class="menu-item right-item" id="resume-item"><a href="{{url_for('static', filename='KatiePucciResume.pdf')}}">Resume</a></li>
-                <li class="menu-item right-item" id="about-item"><a href="#about" target="#about">About</a></li>
-            </ul>
+        </div>
+        <div class="dropdown-content" id="navmenu">
+            <a href="#contact" target="#contact" class="dropdown-item right-item">Contact</a>
+            <a href="#timeline" target="#timeline" class="dropdown-item right-item">Timeline</a>
+            <a href="#skills" target="#skills" class="dropdown-item right-item">Skills</a>
+            <a href="#portfolio" target="#portfolio" class="dropdown-item right-item">Portfolio</a>
+            <a href="{{url_for('static', filename='KatiePucciResume.pdf')}}" class="dropdown-item right-item">Resume</a>
+            <a href="#about" target="#about" class="dropdown-item right-item">About</a>
         </div>
     </div>
 
-    <!-- <div class="about-container" id="about">
+    <div class="about-container" id="about">
         <div class="about-viewer">
             <div class="about-left">
                 <div id="picture">
                 </div>
             </div>
             <div class="about-mid">
-                <p class="section-header-dark">About Me</p>
+                <p class="about-header">About Me</p>
                 <hr class="about-break">
                 <p class="about-text">I'm a graduate of the Pennsylvania State University with a BS in mechanical engineering. I'm also now a senior at the University of Pittsburgh pursuing a second BS in computer engineering. As a mechanical engineer I traveled to various power plants throughout the country, diagnosing and fixing vibrational problems in generators. I discovered a passion for coding when I bought an arduino and began working on home projects in my spare time.</p>
                 <p class="about-text">Outside the classroom I'm the goaltender for the Pitt Women's Ice Hockey Club. At Penn State I was the Vice President and co-founder of the Penn State Women's Ice Hockey Club and was chosen to travel to Erzerum, Turkey and Trentino, Italy to play for Team USA in the World University Games.</p>
             </div>
-            <div class="about-right">
+            <!-- <div class="about-right">
     			<a href="{{url_for('static', filename='KatiePucciResume.pdf')}}">
     				<img src="{{url_for('static', filename='resume.png')}}" alt="Resume" class="resume-icon"/>
     				<p class="caption">View My Resume</p>
     			</a>
-    		</div>
+    		</div> -->
         </div>
-    </div> -->
+    </div>
 
     <!-- <div class="section-container-dark" id="portfolio">
         <div class="section-header">
