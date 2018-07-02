@@ -112,13 +112,13 @@ def initdb_command():
 # Skills
 
 skills = [
-	{'Name':'Java', 'Level':'Expert'},
-	{'Name':'Python', 'Level':'Advanced'},
-	{'Name':'JavaScript', 'Level':'Advanced'},
-	{'Name':'HTML5', 'Level':'Advanced'},
+	{'Name':'Java', 'Level':'Advanced'},
+	{'Name':'Python', 'Level':'Proficient'},
+	{'Name':'JavaScript', 'Level':'Proficient'},
+	{'Name':'HTML5', 'Level':'Proficient'},
 	{'Name':'MAPDL', 'Level':'Proficient'},
 	{'Name':'SolidWorks', 'Level':'Expert'},
-	{'Name':'ANSYS', 'Level':'Advanced'},
+	{'Name':'ANSYS', 'Level':'Proficient'},
 	{'Name':'AutoCAD', 'Level':'Proficient'}
 ]
 
