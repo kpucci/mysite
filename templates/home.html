@@ -143,7 +143,7 @@
     <!--Smooth scrolling-->
     <script>
         $('a[href^="#"]').on('click', function(event) {
-            var navHeight = $("ul#navmenu").height();
+            var navHeight = $("div#navmenu").height();
             var target = $(this.getAttribute('href'));
             var a = $("div#navbar").attr('class');
             if(target.length) {
