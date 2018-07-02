@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>KatiePucci</title>
-        <link href="{{url_for('static', filename='home.css')}}" rel="stylesheet">
+        <link href="{{url_for('static', filename='home_test.css')}}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Barlow|Source+Sans+Pro:200" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type = "text/javascript" src = "{{url_for('static', filename='mysite.js')}}" ></script>
@@ -25,8 +25,8 @@
     <!--Navigation-->
     <div class="nav" id="navbar">
         <a href="#home" target="#home" class="nav-item left-item">KP</a>
-        <div class="dropdown-btn-container">
-            <button class="dropdown-btn"></button>
+        <div class="dropdown-btn-container" id="nav-btn-container" onclick="showNav();">
+            <button class="dropdown-btn" id="nav-btn"></button>
         </div>
         <div class="dropdown-content" id="navmenu">
             <a href="#contact" target="#contact" class="dropdown-item right-item">Contact</a>
@@ -38,105 +38,107 @@
         </div>
     </div>
 
-    <div class="about-container" id="about">
-        <div class="about-viewer">
-            <div class="about-left">
-                <div id="picture">
-                </div>
-            </div>
-            <div class="about-mid">
-                <p class="about-header">About Me</p>
-                <hr class="about-break">
-                <p class="about-text">I'm a graduate of the Pennsylvania State University with a BS in mechanical engineering. I'm also now a senior at the University of Pittsburgh pursuing a second BS in computer engineering. As a mechanical engineer I traveled to various power plants throughout the country, diagnosing and fixing vibrational problems in generators. I discovered a passion for coding when I bought an arduino and began working on home projects in my spare time.</p>
-                <p class="about-text">Outside the classroom I'm the goaltender for the Pitt Women's Ice Hockey Club. At Penn State I was the Vice President and co-founder of the Penn State Women's Ice Hockey Club and was chosen to travel to Erzerum, Turkey and Trentino, Italy to play for Team USA in the World University Games.</p>
-            </div>
-            <!-- <div class="about-right">
-    			<a href="{{url_for('static', filename='KatiePucciResume.pdf')}}">
-    				<img src="{{url_for('static', filename='resume.png')}}" alt="Resume" class="resume-icon"/>
-    				<p class="caption">View My Resume</p>
-    			</a>
-    		</div> -->
-        </div>
-    </div>
+	<div class="main-content">
+	    <div class="about-container" id="about">
+	        <div class="about-viewer">
+	            <div class="about-left">
+	                <div id="picture">
+	                </div>
+	            </div>
+	            <div class="about-mid">
+	                <p class="about-header">About Me</p>
+	                <hr class="about-break">
+	                <p class="about-text">I'm a graduate of the Pennsylvania State University with a BS in mechanical engineering. I'm also now a senior at the University of Pittsburgh pursuing a second BS in computer engineering. As a mechanical engineer I traveled to various power plants throughout the country, diagnosing and fixing vibrational problems in generators. I discovered a passion for coding when I bought an arduino and began working on home projects in my spare time.</p>
+	                <p class="about-text">Outside the classroom I'm the goaltender for the Pitt Women's Ice Hockey Club. At Penn State I was the Vice President and co-founder of the Penn State Women's Ice Hockey Club and was chosen to travel to Erzerum, Turkey and Trentino, Italy to play for Team USA in the World University Games.</p>
+	            </div>
+	            <!-- <div class="about-right">
+	    			<a href="{{url_for('static', filename='KatiePucciResume.pdf')}}">
+	    				<img src="{{url_for('static', filename='resume.png')}}" alt="Resume" class="resume-icon"/>
+	    				<p class="caption">View My Resume</p>
+	    			</a>
+	    		</div> -->
+	        </div>
+	    </div>
 
-    <!-- <div class="section-container-dark" id="portfolio">
-        <div class="section-header">
-            <p class="section-header-light">Portfolio</p>
-            <hr class="section-break light-break" id="portfolio-break">
-        </div>
-        <div class="portfolio-menu">
-            <button class="btn" id="all-button" type="button" onclick="loadAll();">All</button>
-            <button class="btn" id="web-button" type="button" onclick="loadWeb();">Web Design</button>
-            <button class="btn" id="embedded-button" type="button" onclick="loadEmbedded();">Embedded</button>
-            <button class="btn" id="art-button" type="button" onclick="loadArt();">Art</button>
-        </div>
-        <div class="portfolio-viewer" id="port-view">
-        </div>
-    </div> -->
+	    <div class="section-container-dark" id="portfolio">
+	        <div class="section-header">
+	            <p class="section-header-light">Portfolio</p>
+	            <hr class="section-break light-break" id="portfolio-break">
+	        </div>
+	        <div class="portfolio-menu">
+	            <button class="btn" id="all-button" type="button" onclick="loadAll();">All</button>
+	            <button class="btn" id="web-button" type="button" onclick="loadWeb();">Web Design</button>
+	            <button class="btn" id="embedded-button" type="button" onclick="loadEmbedded();">Embedded</button>
+	            <button class="btn" id="art-button" type="button" onclick="loadArt();">Art</button>
+	        </div>
+	        <div class="portfolio-viewer" id="port-view">
+	        </div>
+	    </div>
 
-    <!-- <div class="section-container-light" id="skills">
-        <div class="section-header">
-            <p class="section-header-dark">Skills</p>
-            <hr class="section-break dark-break" id="skills-break">
-        </div>
-        <div class="skills-viewer">
-			{% for skill in skills %}
-				<div class="skill-container">
-					<h3 class="skill-name">{{skill.Name}}</h3>
-					<div class="skill {{skill.Level}}" id={{skill.Name}}></div>
-					<h3 class="skill-level">{{skill.Level}}</h3>
+	    <div class="section-container-light" id="skills">
+	        <div class="section-header">
+	            <p class="section-header-dark">Skills</p>
+	            <hr class="section-break dark-break" id="skills-break">
+	        </div>
+	        <div class="skills-viewer">
+				{% for skill in skills %}
+					<div class="skill-container">
+						<h3 class="skill-name">{{skill.Name}}</h3>
+						<div class="skill {{skill.Level}}" id={{skill.Name}}></div>
+						<h3 class="skill-level">{{skill.Level}}</h3>
+					</div>
+				{% endfor %}
+	        </div>
+	    </div>
+
+	    <div class="section-container-dark" id="timeline">
+	        <div class="section-header">
+	            <p class="section-header-light">Timeline</p>
+	            <hr class="section-break light-break" id="timeline-break">
+	        </div>
+	        <div class="timeline-viewer">
+				<div class="timeline-navbar-container">
+					<ul class="timeline-navbar" id="timeline-navmenu">
+		                <li class="year" id="2010"><a href="#2010" target="#2010">2010</a></li>
+		                <li class="year" id="2011"><a href="#2011" target="#2011">2011</a></li>
+		                <li class="year" id="2012"><a href="#2012" target="#2012">2012</a></li>
+		                <li class="year" id="2013"><a href="#2013" target="#2013">2013</a></li>
+		                <li class="year" id="2014"><a href="#2014" target="#2014">2014</a></li>
+		                <li class="year" id="2015"><a href="#2015" target="#2015">2015</a></li>
+		                <li class="year" id="2016"><a href="#2016" target="#2016">2016</a></li>
+						<li class="year" id="2017"><a href="#2017" target="#2017">2017</a></li>
+						<li class="year" id="2018"><a href="#2018" target="#2018">2018</a></li>
+		            </ul>
 				</div>
-			{% endfor %}
-        </div>
-    </div> -->
+	            <p class="section-text">Coming soon!</p>
+	        </div>
+	    </div>
 
-    <!-- <div class="section-container-dark" id="timeline">
-        <div class="section-header">
-            <p class="section-header-light">Timeline</p>
-            <hr class="section-break light-break" id="timeline-break">
-        </div>
-        <div class="timeline-viewer">
-			<div class="timeline-navbar-container">
-				<ul class="timeline-navbar" id="timeline-navmenu">
-	                <li class="year" id="2010"><a href="#2010" target="#2010">2010</a></li>
-	                <li class="year" id="2011"><a href="#2011" target="#2011">2011</a></li>
-	                <li class="year" id="2012"><a href="#2012" target="#2012">2012</a></li>
-	                <li class="year" id="2013"><a href="#2013" target="#2013">2013</a></li>
-	                <li class="year" id="2014"><a href="#2014" target="#2014">2014</a></li>
-	                <li class="year" id="2015"><a href="#2015" target="#2015">2015</a></li>
-	                <li class="year" id="2016"><a href="#2016" target="#2016">2016</a></li>
-					<li class="year" id="2017"><a href="#2017" target="#2017">2017</a></li>
-					<li class="year" id="2018"><a href="#2018" target="#2018">2018</a></li>
-	            </ul>
-			</div>
-            <p class="section-text">Coming soon!</p>
-        </div>
-    </div> -->
-
-    <!-- <div class="section-container-light" id="contact">
-        <div class="section-header">
-            <p class="section-header-dark">Contact Me</p>
-            <hr class="section-break dark-break" id="contact-break">
-        </div>
-        <div class="contact-viewer">
-			<div class="contact-item" id="phone-contact">
-				<img src="{{url_for('static', filename='phone.png')}}" alt="Phone Number:" class="contact-item-img"/>
-				<p class="contact-text">(412) 863-6196</p>
-			</div>
-			<div class="contact-item" id="email-contact">
-				<a href="mailto:k.pucci103@gmail.com">
-					<img src="{{url_for('static', filename='email.png')}}" alt="Email:" class="contact-item-img"/>
-					<p class="contact-text">k.pucci103@gmail.com</p>
-				</a>
-			</div>
-			<div class="contact-item" id="address-contact">
-				<a href="https://goo.gl/maps/yjTdM2ydShL2">
-					<img src="{{url_for('static', filename='pin.png')}}" alt="Address:" class="contact-item-img"/>
-					<p class="contact-text">229 Rothman Street</p>
-				</a>
-			</div>
-        </div>
-    </div> -->
+	    <div class="section-container-light" id="contact">
+	        <div class="section-header">
+	            <p class="section-header-dark">Contact Me</p>
+	            <hr class="section-break dark-break" id="contact-break">
+	        </div>
+	        <div class="contact-viewer">
+				<div class="contact-item" id="phone-contact">
+					<img src="{{url_for('static', filename='phone.png')}}" alt="Phone Number:" class="contact-item-img"/>
+					<p class="contact-text">(412) 863-6196</p>
+				</div>
+				<div class="contact-item" id="email-contact">
+					<a href="mailto:k.pucci103@gmail.com">
+						<img src="{{url_for('static', filename='email.png')}}" alt="Email:" class="contact-item-img"/>
+						<p class="contact-text">k.pucci103@gmail.com</p>
+					</a>
+				</div>
+				<!-- <div class="contact-item" id="address-contact">
+					<a href="https://goo.gl/maps/yjTdM2ydShL2">
+						<img src="{{url_for('static', filename='pin.png')}}" alt="Address:" class="contact-item-img"/>
+						<p class="contact-text">229 Rothman Street</p>
+					</a>
+				</div> -->
+	        </div>
+	    </div>
+	</div>
 
     <!--Smooth scrolling-->
     <script>
@@ -158,24 +160,24 @@
             }
         });
 
-		// $(document).bind('scroll', function(ev){
-    	// 	var scrollOffset = $(document).scrollTop();
-    	// 	var containerOffset = $('#skills').offset().top - window.innerHeight;
-    	// 	if (scrollOffset > containerOffset){
-      	// 		var animate = setInterval(function(){
-        // 			$('#Java').css('background-position', 'left bottom');
-		// 			$('#Python').css('background-position', 'left bottom');
-		// 			$('#JavaScript').css('background-position', 'left bottom');
-		// 			$('#HTML5').css('background-position', 'left bottom');
-		// 			$('#MAPDL').css('background-position', 'left bottom');
-		// 			$('#SolidWorks').css('background-position', 'left bottom');
-		// 			$('#ANSYS').css('background-position', 'left bottom');
-		// 			$('#AutoCAD').css('background-position', 'left bottom');
-      	// 		}, 0);
-        //
-        // 		$(document).unbind('scroll');
-    	// 	}
-		// });
+		$(document).bind('scroll', function(ev){
+    		var scrollOffset = $(document).scrollTop();
+    		var containerOffset = $('#skills').offset().top - window.innerHeight;
+    		if (scrollOffset > containerOffset){
+      			var animate = setInterval(function(){
+        			$('#Java').css('background-position', 'left bottom');
+					$('#Python').css('background-position', 'left bottom');
+					$('#JavaScript').css('background-position', 'left bottom');
+					$('#HTML5').css('background-position', 'left bottom');
+					$('#MAPDL').css('background-position', 'left bottom');
+					$('#SolidWorks').css('background-position', 'left bottom');
+					$('#ANSYS').css('background-position', 'left bottom');
+					$('#AutoCAD').css('background-position', 'left bottom');
+      			}, 0);
+
+        		$(document).unbind('scroll');
+    		}
+		});
     </script>
 
     {% for message in get_flashed_messages() %}

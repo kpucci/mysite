@@ -1,0 +1,551 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: 'Source Sans Pro', sans-serif;
+	overflow: auto;
+}
+
+body{
+    font-size: 100%;
+}
+
+/* -------------------------------------------------- */
+/* -----Intro Page----- */
+
+div.intro{
+    background-image: url("landscape_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Barlow', sans-serif;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    /* outline: 1px solid blue; */
+}
+
+div.header{
+    padding-top: 1vh;
+	padding-bottom: 1vh;
+    display: block;
+    z-index: 1;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+p.name, p.sub{
+    margin: 0.5vh auto;
+    color: #F8F8FF;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+}
+
+/* Learn More button */
+a:link {
+    text-decoration: none;
+    color: #F8F8FF;
+}
+
+.btn{
+    display: inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    font-weight: normal;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    color: #F8F8FF;
+	background-color: transparent;
+	border-color: #F8F8FF;
+    border-radius: 0;
+}
+
+.btn:hover, .btn:focus, .btn.focus, .btn:active, .btn.active, .btn-clicked{
+	color: #F8F8FF;
+	background-color: #290051;
+	border-color: #290051;
+}
+
+.link{
+    font-size: 1em;
+    padding: 8px 12px;
+    margin: 3vh 0.5vw;
+}
+
+/* -------------------------------------------------- */
+/* -----Navigation Bar----- */
+
+div.nav{
+    background-color: #DF5C63;
+    text-align: center;
+    /* overflow: hidden; */
+	/* padding: 0 75px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw;
+	width: 100vw;
+}
+
+.nav-item{
+    text-decoration: none;
+    color: #F8F8FF;
+	/* outline: 1px solid green; */
+}
+
+.nav-item:hover, .dropdown-item:hover{
+    color: #ec8879;
+}
+
+/* KP navbar item */
+.left-item{
+    float: left;
+}
+
+/* .dropdown-btn{
+    background-color: transparent;
+    border: none;
+	outline: 1px solid green;
+} */
+
+.dropdown-btn-container{
+    background-image: url("nav.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 25px;
+    height: auto;
+    /* display: none; */
+    display: inline-block;
+    float:right;
+	/* outline: 1px solid green; */
+}
+
+.dropdown-content{
+    /* text-align: center; */
+    /* display: none; */
+    display: none;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    /* position: absolute; */
+    z-index: 1;
+    font-size: 1em;
+    background-color: #DF5C63;
+    width: 100vw;
+    /* outline: 1px solid blue; */
+}
+
+.dropdown-item{
+    text-decoration: none;
+    color: #F8F8FF;
+    margin: 0 1vw;
+}
+
+.dropdown-btn:hover .dropdown-content{
+    display: block;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .about-container {
+  padding-top: 100px;
+  width: 100%;
+}
+
+/* -------------------------------------------------- */
+/* -----General Section Styles----- */
+
+div.section-container-light{
+	background-color: #F8F8FF;
+	text-align: center;
+	height: auto;
+	padding: 40px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+    /* outline: 1px solid blue; */
+}
+
+div.section-container-dark{
+	background-color: #ec8879;
+    text-align: center;
+	height: auto;
+	padding: 40px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+div.section-header{
+	/* margin-top: 50px; */
+	/* padding-top: 25px; */
+	/* outline: 1px solid red; */
+}
+
+p.section-header-dark{
+    /* margin-top: 50px; */
+    color: #290051;
+    /* text-shadow: 1px 1px 1px black; */
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 40px;
+    padding: 10px 0;
+	/* outline: 1px solid red; */
+}
+
+p.section-header-light{
+    /* margin: 0 auto; */
+    /* margin-top: 20px; */
+    color: #F8F8FF;
+    /* text-shadow: 1px 1px 1px black; */
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 40px;
+    padding: 10px;
+}
+
+p.section-text{
+    /* margin: 1000px; */
+    text-align: center;
+    /* margin: 10px; */
+    margin-top: 20px;
+    color: #290051;
+    font-size: 24px;
+}
+
+hr.section-break{
+    height: 3px;
+    border: 0;
+	margin-bottom: 20px;
+	margin-left: 40%;
+    margin-right: 40%;
+	/* outline: 1px solid red; */
+}
+
+hr.dark-break{
+	background-color: #290051;
+}
+
+hr.light-break{
+    background-color: #F8F8FF;
+}
+
+/* -------------------------------------------------- */
+/* -----About Section----- */
+
+div.about-viewer{
+	background-color: #F8F8FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* outline: 1px solid purple; */
+	/* height: auto; */
+}
+
+div.about-left{
+    /* flex: 1 1 25%; */
+	margin: 10px;
+}
+
+#picture{
+    /* width: 200px;
+    height: 200px; */
+    background-image: url("me.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	border: 5px solid #290051;
+	margin: 1vh 1vw;
+}
+
+.about-header{
+    color: #290051;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+p.about-text{
+    color: #290051;
+    text-align: justify;
+	margin: 15px auto;
+}
+
+hr.about-break{
+	height: 3px;
+    background-color: #290051;
+    border: 0;
+	margin-bottom: 10px;
+    width: 155px;
+}
+
+.about-mid{
+	margin: 10px;
+}
+
+/* -------------------------------------------------- */
+/* -----Portfolio Section----- */
+
+div.portfolio-viewer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    width: 80%;
+    margin: 25px auto;
+    /* outline: 1px solid purple; */
+}
+
+div.project-image-container{
+    display: inline-block;
+    width: 240px;
+    margin: 20px;
+    padding: 0;
+    /* outline: 1px solid purple; */
+}
+
+.project-image{
+    max-width:100%;
+    max-height:100%;
+}
+
+div.empty-portfolio{
+	height: 238px;
+	padding-top: 50px;
+}
+
+/* -------------------------------------------------- */
+/* -----Skills Section----- */
+
+div.skills-viewer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: space-around;
+    /* outline: 1px solid purple; */
+}
+
+div.skill-container{
+    flex-direction: row;
+    display: inline-block;
+	text-align: center;
+	margin: 50px;
+    /* outline: 1px solid purple; */
+}
+
+div.skill{
+	width: 300px;
+	padding: 5px;
+	margin: auto;
+	overflow-y: hidden;
+	text-align: center;
+    background-color: #290051;
+}
+
+div.Expert{
+	background: linear-gradient(to left, #290051 50%, #f6c3bc 50%);
+    background-size: 300% 100%;
+    background-position:right bottom;
+	transition:all 3s ease;
+}
+
+div.Advanced{
+	background: linear-gradient(to left, #290051 75%, #f6c3bc 75%);
+    background-size: 300% 100%;
+    background-position:right bottom;
+	transition:all 1.75s ease;
+}
+
+div.Proficient{
+	background: linear-gradient(to left, #290051 80%, #f6c3bc 80%);
+    background-size: 300% 100%;
+    background-position:right bottom;
+	transition:all 1.5s ease;
+}
+
+div.Basic{
+	background: linear-gradient(to left, #290051 90%, #f6c3bc 90%);
+    background-size: 300% 100%;
+    background-position:right bottom;
+	transition:all 1.25s ease;
+}
+
+.skill-name{
+	text-align: left;
+	margin-bottom: 5px;
+}
+
+.skill-level{
+	text-align: right;
+	margin-top: 5px;
+}
+
+/* -------------------------------------------------- */
+/* -----Timeline Section----- */
+
+div.timeline-viewer{
+	background-color: #f3aca5;
+	overflow-x: auto;
+}
+
+/* -------------------------------------------------- */
+/* -----Contact Section----- */
+
+div.contact-viewer{
+	margin-top: 25px;
+	margin-bottom: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	/* outline: 1px solid green; */
+}
+
+div.contact-item{
+	display: inline-block;
+	text-align: center;
+	margin: 10px 25px;
+	width: 175px;
+	flex-basis: 25%;
+}
+
+.contact-item-img{
+	width: 50px;
+	height: 50px;
+}
+
+.contact-text{
+	font-size: 18px;
+	color: #290051;
+}
+
+/* -------------------------------------------------- */
+/* -----Animation----- */
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 1s;
+    animation: animatezoom 1s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* -------------------------------------------------- */
+/* -----Responsive----- */
+
+@media(max-width: 240px)
+{
+	p.name{
+		font-size: 2em;
+	}
+	body{
+        overflow-x: scroll;
+    }
+	div.header,div.intro,div.nav,div.main-content{
+		width: 240px;
+	}
+	div.skill{
+		width: 175px;
+	}
+	div.skill{
+		width: 100px;
+	}
+	div.skill-container{
+		margin: 15px;
+	}
+}
+@media(min-width: 240px){
+	p.name,.about-header{
+		font-size: 2.5em;
+	}
+	p.sub{
+        font-size: 1.25em;
+    }
+    .about-text{
+        font-size: 1em;
+    }
+	.link{
+        font-size: 1.25em;
+        padding: 10px 15px;
+    }
+}
+@media(max-width: 300px)
+{
+	div.skill{
+		width: 150px;
+	}
+	div.skill-container{
+		margin: 15px;
+	}
+	div.project-image-container{
+		width: 200px;
+		margin: 10px;
+	}
+}
+@media(min-width: 300px)
+{
+	div.skill{
+		width: 250px;
+	}
+	div.skill-container{
+		margin: 25px;
+	}
+}
+@media(min-width: 400px){
+	div.about-viewer{
+		flex-direction: row;
+	}
+    .dropdown-content{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        align-items: space-evenly;
+    }
+    .dropdown-btn-container{
+        display: none;
+    }
+}
+@media(max-width: 550px){
+    div.intro{
+		background-image: url("portrait_background.jpg");
+        background-position: center;
+    }
+}
+@media(min-width: 550px)
+{
+	div.contact-viewer{
+		flex-direction: row;
+	}
+}
