@@ -523,7 +523,7 @@ div.contact-item{
 		margin: 25px;
 	}
 }
-@media(min-width: 400px){
+@media(min-width: 440px){
 	div.about-viewer{
 		flex-direction: row;
 	}
@@ -537,13 +537,13 @@ div.contact-item{
         display: none;
     }
 }
-@media(max-width: 550px){
+@media(max-width: 600px){
     div.intro{
 		background-image: url("portrait_background.jpg");
         background-position: center;
     }
 }
-@media(min-width: 550px)
+@media(min-width: 600px)
 {
 	div.contact-viewer{
 		flex-direction: row;
