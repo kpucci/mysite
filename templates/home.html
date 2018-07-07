@@ -38,7 +38,7 @@
         </div>
     </div>
 
-	<div class="main-content">
+	<div class="main-content" id="main">
 	    <div class="about-container" id="about">
 	        <div class="about-viewer">
 	            <div class="about-left">
@@ -134,8 +134,9 @@
 	    </div>
 	</div>
 
-    <!--Smooth scrolling-->
+
     <script>
+		// Smooth scrolling
         $('a[href^="#"]').on('click', function(event) {
             var navHeight = $("div#navmenu").height();
             var target = $(this.getAttribute('href'));

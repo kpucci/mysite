@@ -88,10 +88,24 @@ a:link {
 }
 
 /* -------------------------------------------------- */
+/* -----Main Content----- */
+
+div.main-content{
+	background-color: #F8F8FF;
+	padding-top: 0;
+}
+
+div.main-content-sticky{
+	background-color: #F8F8FF;
+	padding-top: 50px;
+}
+
+/* -------------------------------------------------- */
 /* -----Navigation Bar----- */
 
 div.nav{
     background-color: #DF5C63;
+	/* background-color: rgba(201, 76, 76, 0.3); */
     text-align: center;
     /* overflow: hidden; */
 	/* padding: 0 75px; */
@@ -101,6 +115,7 @@ div.nav{
     align-items: center;
     padding: 1vw;
 	width: 100vw;
+	height: 50px;
 }
 
 .nav-item{
@@ -168,8 +183,8 @@ div.nav{
   width: 100%;
 }
 
-.sticky + .about-container {
-  padding-top: 100px;
+.main-content + .sticky-container{
+  padding-top: 500px;
   width: 100%;
 }
 
@@ -524,9 +539,6 @@ div.contact-item{
 	}
 }
 @media(min-width: 440px){
-	div.about-viewer{
-		flex-direction: row;
-	}
     .dropdown-content{
         display: flex;
         flex-direction: row-reverse;
@@ -545,6 +557,9 @@ div.contact-item{
 }
 @media(min-width: 600px)
 {
+	div.about-viewer{
+		flex-direction: row;
+	}
 	div.contact-viewer{
 		flex-direction: row;
 	}
