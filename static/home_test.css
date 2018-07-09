@@ -24,7 +24,7 @@ div.intro{
     background-attachment: fixed;
     background-position: center;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -43,7 +43,7 @@ div.header{
 
 p.name, p.sub{
     margin: 0.5vh auto;
-    color: #F8F8FF;
+    color: #F7F7F2;
     font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
 }
@@ -51,7 +51,7 @@ p.name, p.sub{
 /* Learn More button */
 a:link {
     text-decoration: none;
-    color: #F8F8FF;
+    color: #F7F7F2;
 }
 
 .btn{
@@ -69,34 +69,31 @@ a:link {
             user-select: none;
     background-image: none;
     border: 1px solid transparent;
-    color: #F8F8FF;
+    color: #F7F7F2;
 	background-color: transparent;
-	border-color: #F8F8FF;
+	border-color: #F7F7F2;
     border-radius: 0;
+	font-size: 1em;
+    padding: 8px 12px;
+    margin: 3vh 0.5vw;
 }
 
 .btn:hover, .btn:focus, .btn.focus, .btn:active, .btn.active, .btn-clicked{
-	color: #F8F8FF;
-	background-color: #290051;
-	border-color: #290051;
-}
-
-.link{
-    font-size: 1em;
-    padding: 8px 12px;
-    margin: 3vh 0.5vw;
+	color: #F7F7F2;
+	background-color: #20282B;
+	border-color: #20282B;
 }
 
 /* -------------------------------------------------- */
 /* -----Main Content----- */
 
 div.main-content{
-	background-color: #F8F8FF;
+	background-color: #F7F7F2;
 	padding-top: 0;
 }
 
 div.main-content-sticky{
-	background-color: #F8F8FF;
+	background-color: #F7F7F2;
 	padding-top: 50px;
 }
 
@@ -104,7 +101,7 @@ div.main-content-sticky{
 /* -----Navigation Bar----- */
 
 div.nav{
-    background-color: #DF5C63;
+    background-color: #20282B;
 	/* background-color: rgba(201, 76, 76, 0.3); */
     text-align: center;
     /* overflow: hidden; */
@@ -114,18 +111,19 @@ div.nav{
     justify-content: space-between;
     align-items: center;
     padding: 1vw;
-	width: 100vw;
+	width: 100%;
 	height: 50px;
+	border: 0;
 }
 
 .nav-item{
     text-decoration: none;
-    color: #F8F8FF;
-	/* outline: 1px solid green; */
+    color: #F7F7F2;
+	font-size: 2em;
 }
 
 .nav-item:hover, .dropdown-item:hover{
-    color: #ec8879;
+    color: #F05D5E;
 }
 
 /* KP navbar item */
@@ -162,15 +160,16 @@ div.nav{
     /* position: absolute; */
     z-index: 1;
     font-size: 1em;
-    background-color: #DF5C63;
+    background-color: #20282B;
     width: 100vw;
     /* outline: 1px solid blue; */
 }
 
 .dropdown-item{
     text-decoration: none;
-    color: #F8F8FF;
+    color: #F7F7F2;
     margin: 0 1vw;
+	font-size: 1.5em;
 }
 
 .dropdown-btn:hover .dropdown-content{
@@ -192,7 +191,7 @@ div.nav{
 /* -----General Section Styles----- */
 
 div.section-container-light{
-	background-color: #F8F8FF;
+	background-color: #F7F7F2;
 	text-align: center;
 	height: auto;
 	padding: 40px;
@@ -204,7 +203,7 @@ div.section-container-light{
 }
 
 div.section-container-dark{
-	background-color: #ec8879;
+	background-color: #0F7173;
     text-align: center;
 	height: auto;
 	padding: 40px;
@@ -221,31 +220,23 @@ div.section-header{
 }
 
 p.section-header-dark{
-    /* margin-top: 50px; */
-    color: #290051;
-    /* text-shadow: 1px 1px 1px black; */
+    color: #20282B;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 40px;
+    font-size: 4em;
     padding: 10px 0;
-	/* outline: 1px solid red; */
 }
 
 p.section-header-light{
-    /* margin: 0 auto; */
-    /* margin-top: 20px; */
-    color: #F8F8FF;
-    /* text-shadow: 1px 1px 1px black; */
+    color: #F7F7F2;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 40px;
+    font-size: 4em;
     padding: 10px;
 }
 
 p.section-text{
-    /* margin: 1000px; */
     text-align: center;
-    /* margin: 10px; */
     margin-top: 20px;
-    color: #290051;
+    color: #20282B;
     font-size: 24px;
 }
 
@@ -253,71 +244,68 @@ hr.section-break{
     height: 3px;
     border: 0;
 	margin-bottom: 20px;
-	margin-left: 40%;
-    margin-right: 40%;
-	/* outline: 1px solid red; */
+	margin-left: 25%;
+    margin-right: 25%;
 }
 
 hr.dark-break{
-	background-color: #290051;
+	background-color: #20282B;
 }
 
 hr.light-break{
-    background-color: #F8F8FF;
+    background-color: #F7F7F2;
 }
 
 /* -------------------------------------------------- */
 /* -----About Section----- */
 
 div.about-viewer{
-	background-color: #F8F8FF;
+	background-color: #F7F7F2;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    /* outline: 1px solid purple; */
-	/* height: auto; */
+	/* outline: 1px solid red; */
 }
 
-div.about-left{
-    /* flex: 1 1 25%; */
-	margin: 10px;
+div.about-photo{
+	margin: auto;
+	display: block;
 }
 
 #picture{
-    /* width: 200px;
-    height: 200px; */
     background-image: url("me.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 200px;
 	height: 200px;
 	border-radius: 100px;
-	border: 5px solid #290051;
+	border: 5px solid #20282B;
 	margin: 1vh 1vw;
+	/* outline: 1px solid red; */
+	display: block;
 }
 
 .about-header{
-    color: #290051;
+    color: #20282B;
     font-family: 'Source Sans Pro', sans-serif;
+	text-align: center;
 }
 
 p.about-text{
-    color: #290051;
+    color: #20282B;
     text-align: justify;
-	margin: 15px auto;
+	margin: 2vh 2vw;
+	/* outline: 1px solid red; */
 }
 
 hr.about-break{
 	height: 3px;
-    background-color: #290051;
+    background-color: #20282B;
     border: 0;
 	margin-bottom: 10px;
     width: 155px;
-}
-
-.about-mid{
-	margin: 10px;
+	/* outline: 1px solid red; */
 }
 
 /* -------------------------------------------------- */
@@ -378,32 +366,32 @@ div.skill{
 	margin: auto;
 	overflow-y: hidden;
 	text-align: center;
-    background-color: #290051;
+    background-color: #20282B;
 }
 
 div.Expert{
-	background: linear-gradient(to left, #290051 50%, #f6c3bc 50%);
+	background: linear-gradient(to left, #20282B 50%, #16a3a6 50%);
     background-size: 300% 100%;
     background-position:right bottom;
 	transition:all 3s ease;
 }
 
 div.Advanced{
-	background: linear-gradient(to left, #290051 75%, #f6c3bc 75%);
+	background: linear-gradient(to left, #20282B 75%, #16a3a6 75%);
     background-size: 300% 100%;
     background-position:right bottom;
 	transition:all 1.75s ease;
 }
 
 div.Proficient{
-	background: linear-gradient(to left, #290051 80%, #f6c3bc 80%);
+	background: linear-gradient(to left, #20282B 80%, #16a3a6 80%);
     background-size: 300% 100%;
     background-position:right bottom;
 	transition:all 1.5s ease;
 }
 
 div.Basic{
-	background: linear-gradient(to left, #290051 90%, #f6c3bc 90%);
+	background: linear-gradient(to left, #20282B 90%, #16a3a6 90%);
     background-size: 300% 100%;
     background-position:right bottom;
 	transition:all 1.25s ease;
@@ -423,7 +411,7 @@ div.Basic{
 /* -----Timeline Section----- */
 
 div.timeline-viewer{
-	background-color: #f3aca5;
+	background-color: #0F7173;
 	overflow-x: auto;
 }
 
@@ -455,7 +443,7 @@ div.contact-item{
 
 .contact-text{
 	font-size: 18px;
-	color: #290051;
+	color: #20282B;
 }
 
 /* -------------------------------------------------- */
@@ -500,6 +488,9 @@ div.contact-item{
 	div.skill-container{
 		margin: 15px;
 	}
+	p.section-header-dark,p.section-header-light{
+		font-size: 2em;
+	}
 }
 @media(min-width: 240px){
 	p.name,.about-header{
@@ -509,7 +500,7 @@ div.contact-item{
         font-size: 1.25em;
     }
     .about-text{
-        font-size: 1em;
+        font-size: 1.25em;
     }
 	.link{
         font-size: 1.25em;
@@ -538,8 +529,24 @@ div.contact-item{
 		margin: 25px;
 	}
 }
-@media(min-width: 440px){
-    .dropdown-content{
+@media(max-width: 600px){
+    div.intro{
+		background-image: url("portrait_background.jpg");
+        background-position: center;
+    }
+	p.section-header-dark,p.section-header-light{
+		font-size: 3em;
+	}
+}
+@media(min-width: 600px)
+{
+	div.contact-viewer{
+		flex-direction: row;
+	}
+}
+@media(min-width: 650px)
+{
+	.dropdown-content{
         display: flex;
         flex-direction: row-reverse;
         justify-content: flex-start;
@@ -548,19 +555,4 @@ div.contact-item{
     .dropdown-btn-container{
         display: none;
     }
-}
-@media(max-width: 600px){
-    div.intro{
-		background-image: url("portrait_background.jpg");
-        background-position: center;
-    }
-}
-@media(min-width: 600px)
-{
-	div.about-viewer{
-		flex-direction: row;
-	}
-	div.contact-viewer{
-		flex-direction: row;
-	}
 }

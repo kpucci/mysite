@@ -17,7 +17,7 @@
             <p class="sub">Mechanical Engineer</p>
             <p class="sub">Computer Engineering Student</p>
             <div class="button-container">
-                <a href="#about" class="btn link">Learn More</a>
+                <a href="#about" class="btn">Learn More</a>
             </div>
         </div>
     </div>
@@ -29,11 +29,12 @@
             <button class="dropdown-btn" id="nav-btn"></button>
         </div>
         <div class="dropdown-content" id="navmenu">
-            <a href="#contact" target="#contact" class="dropdown-item right-item">Contact</a>
+			<a href="https://github.com/kpucci" class="dropdown-item right-item">GitHub</a>
+			<a href="{{url_for('static', filename='KatiePucciResume.pdf')}}" class="dropdown-item right-item">Resume</a>
+			<a href="#contact" target="#contact" class="dropdown-item right-item">Contact</a>
             <a href="#timeline" target="#timeline" class="dropdown-item right-item">Timeline</a>
             <a href="#skills" target="#skills" class="dropdown-item right-item">Skills</a>
             <a href="#portfolio" target="#portfolio" class="dropdown-item right-item">Portfolio</a>
-            <a href="{{url_for('static', filename='KatiePucciResume.pdf')}}" class="dropdown-item right-item">Resume</a>
             <a href="#about" target="#about" class="dropdown-item right-item">About</a>
         </div>
     </div>
@@ -41,29 +42,21 @@
 	<div class="main-content" id="main">
 	    <div class="about-container" id="about">
 	        <div class="about-viewer">
-	            <div class="about-left">
+                <p class="section-header-dark">About Me</p>
+                <!-- <hr class="about-break"> -->
+				<div class="about-photo">
 	                <div id="picture">
 	                </div>
 	            </div>
-	            <div class="about-mid">
-	                <p class="about-header">About Me</p>
-	                <hr class="about-break">
-	                <p class="about-text">I'm a graduate of the Pennsylvania State University with a BS in mechanical engineering. I'm also now a senior at the University of Pittsburgh pursuing a second BS in computer engineering. As a mechanical engineer I traveled to various power plants throughout the country, diagnosing and fixing vibrational problems in generators. I discovered a passion for coding when I bought an arduino and began working on home projects in my spare time.</p>
-	                <p class="about-text">Outside the classroom I'm the goaltender for the Pitt Women's Ice Hockey Club. At Penn State I was the Vice President and co-founder of the Penn State Women's Ice Hockey Club and was chosen to travel to Erzerum, Turkey and Trentino, Italy to play for Team USA in the World University Games.</p>
-	            </div>
-	            <!-- <div class="about-right">
-	    			<a href="{{url_for('static', filename='KatiePucciResume.pdf')}}">
-	    				<img src="{{url_for('static', filename='resume.png')}}" alt="Resume" class="resume-icon"/>
-	    				<p class="caption">View My Resume</p>
-	    			</a>
-	    		</div> -->
+                <p class="about-text">I'm a graduate of the Pennsylvania State University with a BS in mechanical engineering. I'm also now a senior at the University of Pittsburgh pursuing a second BS in computer engineering. As a mechanical engineer I traveled to various power plants throughout the country, diagnosing and fixing vibrational problems in generators. I discovered a passion for coding when I bought an arduino and began working on home projects in my spare time.</p>
+                <p class="about-text">Outside the classroom I'm the goaltender for the Pitt Women's Ice Hockey Club. At Penn State I was the Vice President and co-founder of the Penn State Women's Ice Hockey Club and was chosen to travel to Erzerum, Turkey and Trentino, Italy to play for Team USA in the World University Games.</p>
 	        </div>
 	    </div>
 
 	    <div class="section-container-dark" id="portfolio">
 	        <div class="section-header">
 	            <p class="section-header-light">Portfolio</p>
-	            <hr class="section-break light-break" id="portfolio-break">
+	            <!-- <hr class="section-break light-break" id="portfolio-break"> -->
 	        </div>
 	        <div class="portfolio-menu">
 	            <button class="btn" id="all-button" type="button" onclick="loadAll();">All</button>
@@ -78,7 +71,7 @@
 	    <div class="section-container-light" id="skills">
 	        <div class="section-header">
 	            <p class="section-header-dark">Skills</p>
-	            <hr class="section-break dark-break" id="skills-break">
+	            <!-- <hr class="section-break dark-break" id="skills-break"> -->
 	        </div>
 	        <div class="skills-viewer">
 				{% for skill in skills %}
@@ -94,7 +87,7 @@
 	    <div class="section-container-dark" id="timeline">
 	        <div class="section-header">
 	            <p class="section-header-light">Timeline</p>
-	            <hr class="section-break light-break" id="timeline-break">
+	            <!-- <hr class="section-break light-break" id="timeline-break"> -->
 	        </div>
 	        <div class="timeline-viewer">
 				<div class="timeline-navbar-container">
@@ -117,7 +110,7 @@
 	    <div class="section-container-light" id="contact">
 	        <div class="section-header">
 	            <p class="section-header-dark">Contact Me</p>
-	            <hr class="section-break dark-break" id="contact-break">
+	            <!-- <hr class="section-break dark-break" id="contact-break"> -->
 	        </div>
 	        <div class="contact-viewer">
 				<div class="contact-item" id="phone-contact">

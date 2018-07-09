@@ -1,0 +1,54 @@
+{% extends "project_page.html" %}
+
+{% block project_description %}
+<p class="project-description">So You Think You Can Cater is a website that helps manage for a mock catering company called Katie's Katering. It considers three classes of users: administrators, staff, and customers. Customers can request events on given days, staff can sign up to work events, and the owner is given a summary of the overall schedule. The company cannot schedule more than 1 event per day, and each event needs only 3 Staff members to run.
+
+This was the third project in the course COE1520: Programming Languages for Web Applications. The main purpose for this project was to create database models for events and for the three types of users, and also to learn the basics of authentication. Please keep in mind that this website is not fully-functional and was created to meet the following project requirements:</p>
+
+<div class="requirements">
+
+<p class="first-level">1. You must build your website using Python 3.6 or greater, Flask 0.12, SQLAlchemy, and the Flask-SQLAlchemy extension.
+
+2. Managing users:</li>
+</p>
+<ul class="second-level">
+    <li> Each user (Owner, Staff, or Customer) should have a username and password.</li>
+    <li> Customers are free to register for their own account.</li>
+    <li> Staff accounts must be created by the Owner (it is fine for the Owner to set passwords for the Staff).</li>
+    <li> If a user is logged in, no matter what page they are on, they should have access to a logout link.</li>
+</ul>
+<p class="first-level">3. Owner:</p>
+<ul class="second-level">
+    <li> Should be able to login with the username “owner” and password “pass”.</li>
+    <li> Once logged in, the Owner should be presented with a link to create new staff accounts, and a list of all scheduled events.</li>
+</ul>
+<ul class="third-level">
+    <li> For each event, the Staff members signed up to work that event should be listed.</li>
+    <li> If no events are scheduled, a message should be displayed informing the Owner of this explicitly.</li>
+    <li> If any scheduled event has no staff signed up to work, a message should be displayed informing the Owner of this explicitly.</li>
+</ul>
+<p class="first-level">4. Staff:</p>
+<ul class="second-level">
+    <li> Once logged in, Staff members should be presented with a list of events they are scheduled to work and a list of events that they can sign up to work.</li>
+</ul>
+<ul class="third-level">
+    <li> For each event that a Staff member can sign up to work, they should be provided a link to sign up for that event.</li>
+    <li> No event that already has 3 Staff members signed up to work should be presented as a sign up option for other Staff members.</li>
+</ul>
+<p class="first-level">5. Customers:</p>
+<ul class="second-level">
+    <li> Once logged in, Customers should be presented with a form to request a new event, and a list of events they have already requested.</li>
+</ul>
+<ul class="third-level">
+    <li> If a Customer requests an event on a date when another event is already scheduled, they should be presented with an message saying that the company is already booked for that date.</li>
+    <li> For each requested event, the Customer should be provided with a link to cancel that event.</li>
+</ul>
+<p class="first-level">6. Data Management:</p>
+<ul class="second-level">
+    <li> To ease bootstrapping and testing of your application, hardcode the Owner’s username and password in your app to be “owner” and “pass”.</li>
+    <li>All other data for your application should be stored in an SQLite database named “catering.db” using SQLAlchemy’s ORM and the Flask-SQLAlchemy extension.</li>
+</ul>
+
+</div>
+
+{% endblock %}

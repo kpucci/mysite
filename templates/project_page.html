@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ projectname }}</title>
+	<link href="{{url_for('static', filename='project_page.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow|Source+Sans+Pro:200" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type = "text/javascript" src = "{{url_for('static', filename='project_page.js')}}" ></script>
+</head>
+<body>
+	<div class="project-content">
+        <div class="project-image" id="project-image">
+            <div class="overlay">
+                <div class="project-header">
+                    <div class="nav">
+                        {% if previous%}
+                        <a href="{{ previous }}" class="nav-btn" id="next-btn">Previous Project</a>
+                        {% endif %}
+                        <a href="www.katiepucci.com" class="nav-btn" id="home-btn">Home</a>
+                        {% if next%}
+                        <a href="{{ next }}" class="nav-btn" id="home-btn">Next Project</a>
+                        {% endif %}
+                    </div>
+                    <div class="project-name-container" id="project-name-container">
+                        <hr />
+            			<h1 class="project-name" id="project-name">{{ projectname }}</h1>
+                        <hr />
+            		</div>
+                    <p class="tagline">{{ tagline }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="project-description-container">
+            <h2>Description</h2>
+    		{% block project_description %}
+            {% endblock %}
+    	</div>
+        <div class="disclaimer-container">
+            <p class="disclaimer">DISCLAIMER: This application was originally intended for a desktop view. It does not support responsive design and may not display properly on all devices.
+            </p>
+        </div>
+		<div class="launch-btn-container">
+            <a href="{{ launch }}" class="launch-btn">Launch Project</a>
+		</div>
+	</div>
+
+{% for message in get_flashed_messages() %}
+	<div class="flash">{{ message }}</div>
+{% endfor %}
+
+    <script>
+        document.getElementById("project-image").style.backgroundImage = "url({{ image }})";
+    </script>
+
+</body>
+</html>

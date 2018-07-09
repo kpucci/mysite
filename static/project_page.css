@@ -1,0 +1,235 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: 'Source Sans Pro', sans-serif;
+	overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body{
+    font-size: 100%;
+}
+
+/* -------------------------------------------------- */
+/* -----Intro Page----- */
+
+div.project-content{
+    display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+    align-items: center;
+    /* outline: 10px solid blue; */
+    /* height: 100vh; */
+    width: 100%;
+}
+
+div.project-image{
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Barlow', sans-serif;
+    background-position: center;
+    height: 40vh;
+    width: 100%;
+    /* outline: 5px solid purple; */
+}
+
+div.overlay{
+    display: block;
+    z-index: 1;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    /* outline: 5px solid red; */
+    height: 40vh;
+}
+
+div.project-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* outline: 5px solid green; */
+    height: 40vh;
+    /* padding-bottom: 5vh; */
+}
+
+div.project-name-container{
+    /* outline: 5px solid green; */
+}
+
+h1{
+    color: #F7F7F2;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 3em;
+    padding: 8px 0;
+}
+
+h2{
+    color: #20282B;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2.5em;
+    padding: 8px 0;
+    text-align: center;
+    margin-top: 2vh;
+}
+
+p.tagline{
+    color: #F7F7F2;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.25em;
+    padding: 10px;
+}
+
+div.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100vw;
+    padding: 1vh 2vw;
+}
+
+a:link {
+    text-decoration: none;
+    color: #F7F7F2;
+}
+
+.nav-btn{
+    padding: 0;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: normal;
+    color: #F7F7F2;
+}
+
+.nav-btn:hover, .nav-btn:focus, .nav-btn.focus, .nav-btn:active, .nav-btn.active, .nav-btn-clicked{
+	color: #0F7173;
+}
+
+div.launch-btn-container{
+    position: fixed;
+    top: 90vh;
+    /* width: 100%; */
+}
+
+.launch-btn{
+    display: table-cell;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    font-weight: normal;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background-image: none;
+    color: #F7F7F2;
+	background-color: #20282B;
+	font-size: 2em;
+    /* padding: 8px 12px; */
+    width: 100vw;
+    height: 10vh;
+}
+
+.launch-btn:hover, .launch-btn:focus, .launch-btn.focus, .launch-btn:active, .launch-btn.active, .launch-btn-clicked{
+	color: #20282B;
+	background-color: #F7F7F2;
+	border-color: #20282B;
+}
+
+p.project-description{
+    margin-top: 2vh;
+    white-space: pre-wrap;
+    padding: 1vh 2vw;
+    font-size: 1.25em;
+    text-align: justify;
+    /* border-right: solid 1px #20282B; */
+}
+
+div.requirements{
+    padding: 1vh 2vw;
+    font-size: 1.25em;
+    text-align: justify;
+}
+
+p.first-level{
+    margin-left: 20px;
+    padding-left: 0;
+    white-space: pre-wrap;
+    padding: 1vh 2vw;
+}
+
+ul.second-level{
+    margin-left: 60px;
+    padding: 1vh 2vw;
+}
+
+ul.third-level{
+    margin-left: 100px;
+    padding: 1vh 2vw;
+}
+
+ul.fourth-level{
+    margin-left: 140px;
+    padding: 1vh 2vw;
+}
+
+div.disclaimer-container{
+    color: #20282B;
+    background-color: #16a3a6;
+    padding: 1vh 2vw;
+    font-size: 1.25em;
+    text-align: justify;
+    margin-bottom: 10vh;
+    width: 100%;
+}
+
+/* -------------------------------------------------- */
+/* -----Responsive----- */
+
+@media(max-width: 250px)
+{
+	body{
+        overflow-x: scroll;
+    }
+    div.project-content,div.project-image,div.nav,.launch-btn,.launch-btn-container{
+        width: 250px;
+    }
+    div.nav{
+        font-size: 0.85em;
+    }
+}
+@media(max-height: 500px)
+{
+	body{
+        overflow-y: scroll;
+    }
+    div.project-image,div.overlay,div.project-header{
+        height: 200px;
+    }
+}
+@media(max-width: 325px)
+{
+	h1{
+        font-size: 3em;
+    }
+    div.nav{
+        font-size: 0.85em;
+    }
+    p.project-description, div.requirements, div.disclaimer{
+        font-size: 1em;
+    }
+}
+@media(max-width: 550px)
+{
+	p.tagline{
+        font-size: 1em;
+    }
+}

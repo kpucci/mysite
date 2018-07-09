@@ -1,0 +1,91 @@
+{% extends "project_page.html" %}
+
+{% block project_description %}
+<p class="project-description">Battleship is a web-browser version of the classic boardgame.
+
+This was the second project in the course COE1520: Programming Languages for Web Applications. The main purpose for this project was to demonstrate an understanding of how to utilize Javascript to collect, persist, and manipulate data, and to respond to user interactions to dynamically change the DOM. Please keep in mind that this application is not fully-functional and was created to meet the following project requirements:</p>
+
+<div class="requirements">
+
+<p class="first-level">1. For this version, you will assume that only one user is viewing the page that presents your game at a time (e.g., the two players are using a laptop that they pass back and forth between turns).
+
+2. Your game will be built on a 10x10 grids, with rows labeled 1-10 and columns labeled A-J.
+
+3. We will assume that players will place 3 game pieces:</p>
+<ul class="second-level">
+    <li> an aircraft carrier (5 spaces long)</li>
+    <li> a battleship (4 spaces long)</li>
+    <li> a submarine (3 spaces long)</li>
+</ul>
+<p class="first-level">
+4. Pieces can be placed either horizontally or vertically, and cannot overlap.
+
+5. When the page is loaded, your game should begin by asking the first player for her name (for example, lets assume that the first player is Alice), and a string representing her ship placements.</p>
+<ul class="second-level">
+    <li> Your game should be flexible in accepting the syntax of a ship placement string. Specifically, it should accept strings of the following forms as equivalent, with each resulting in an aircraft carrier placed on A1, A2, A3, A4, A5; a battleship at B6, C6, D6, E6; and a submarine at H3, I3, J3:</li>
+</ul>
+<ul class="third-level">
+    <li> A:A1-A5;B:B6-E6; S:H3-J3</li>
+    <li> A(A1-A5); B(B6-E6); S(H3-J3);</li>
+    <li> B(B6-E6);S(H3-J3);A(A1-A5)</li>
+</ul>
+<ul class="second-level">
+    <li> Use a regex function to validate the strings.</li>
+</ul>
+<p class="first-level">
+6. After gathering the first player's name and ship placement, your game should prompt the second player for their name and ship placement (for example, lets assume the second player is Bob).
+
+7. With this starting info in hand, your game should begin the first player's turn.</p>
+<ul class="second-level">
+    <li> At the start of a turn, your game should pop up an alert indicating whose turn it is (e.g., "Click OK to begin Alice's turn").</li>
+    <li> After the prompt is dismissed, your game should render 2 10x10 grids, one at the top of the window, and the other just below it, closer to the bottom of the browser window.</li>
+</ul>
+<ul class="third-level">
+    <li> Both grids should have a light blue background.</li>
+    <li> The top grid should represent the current players target (i.e., the grid where the other player's ships reside), while the bottom represents the current player's ship deployment.</li>
+</ul>
+<ul class="fourth-level">
+    <li> At the start of the first player's first turn, the top grid will be completely empty, and the bottom grid will show only the location of the first player's ships.</li>
+</ul>
+<ul class="third-level">
+    <li> On the bottom grid, each space occupied by part of an aircraft carrier should contain an "A", each space occupied by part of a battleship should contain a "B", each space occupied by part of a submarine should contain an "S".</li>
+</ul>
+<ul class="second-level">
+    <li> The player is then free to click a space into top grid to "fire" at.</li>
+</ul>
+<ul class="third-level">
+    <li> Clicks on the lower grid should have no effect.</li>
+    <li> The game should pop up an alert to inform the player whether the shot was a hit or a miss.</li>
+    <li> If the player clicks on a space where no part of any of the other player's ships was placed, the shot is a miss, and the space should be colored white.</li>
+    <li> If some part of one of the other player's ships was placed in the clicked space, the shot is a hit, and the space should be colored red.</li>
+</ul>
+<ul class="fourth-level">
+    <li> If this hit represents the final portion of a ship (i.e., the 5th hit on an aircraft carrier, the 4th hit on a battleship, or the 3rd hit on a submarine), the player should be alerted as to which of the other player's ships they have sunk.</li>
+</ul>
+<ul class="second-level">
+    <li> After the player has clicked on their target space and the hit or miss has been reported, the player's turn is ended and the other player's turn should begin with a popup (e.g., "Click to begin Bob's turn").</li>
+</ul>
+<ul class="third-level">
+    <li> Note: that this will require blanking the page before the alert is created to prevent Bob from seeing Alice's ship placement (and vice-versa), and will require a rearranging of the page after the alert is dismissed so that Bob's target grid appears at the top of the page, and his ship placement appears on the bottom.</li>
+</ul>
+<p class="first-level">
+8. At any point in time, the current player's top grid should display all the hits(red spaces) and misses (white spaces) that they have fired, while the bottom grid shows all of the hits and misses their opponents have fired along with their ship placements.
+The game continues until all of one player's ships have been sunk, at which point the other player wins the game.</p>
+<ul class="second-level">
+    <li> Once a winner has been established, your game should compute the winner's score as 24 - (2 points for each hit against them)</li>
+</ul>
+<ul class="third-level">
+    <li> 10 points for sinking the opponent's aircraft carrier</li>
+    <li> 8 points for sinking the opponent's battleship</li>
+    <li> 6 points for sinking the opponent's submarine</li>
+</ul>
+<ul class="second-level">
+    <li> Your game should keep track of the names and scores of the 10 highest scores in local storage.</li>
+</ul>
+<ul class="third-level">
+    <li> If 10 players have all achieved the max score (24), no further updates to local storage are required.</li>
+</ul>
+
+</div>
+
+{% endblock %}

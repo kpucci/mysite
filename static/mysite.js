@@ -201,7 +201,7 @@ function showProjects(responseText, cat)
     		img_path = projects[p]["img"];
 
             proj_link = document.createElement("A");
-            proj_link.href = "/" + proj_name.toLowerCase();
+            proj_link.href = "/project/" + proj_name.toLowerCase();
 
             proj_container = document.createElement("div");
             proj_container.className = "project-image-container animate";

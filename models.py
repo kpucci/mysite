@@ -25,19 +25,18 @@ categories = db.Table('categories',
 class Project(db.Model):
     name = db.Column(db.String(80), unique = True, primary_key = True)
     img = db.Column(db.String(80), unique = True)
+    text = db.Column(db.String(80))
+    tagline = db.Column(db.String(120))
+    next = db.Column(db.String(120))
+    previous = db.Column(db.String(120))
 
     categories = db.relationship('Category', secondary='categories',lazy='dynamic',backref='project')
-
-    # curr_room_id = db.Column(db.String, db.ForeignKey('chat_room.name'))
-    # curr_room = db.relationship('ChatRoom',secondary='users',backref='users', lazy='dynamic')
 
     def _repr_(self):
         return "<Project {}>".format(repr(self.name))
 
 class Category(db.Model):
     name = db.Column(db.String(80), unique = True, primary_key = True)
-    # creator_id = db.Column(db.String, db.ForeignKey('user.username'))
-    # creator = db.relationship('User', backref='rooms', foreign_keys=[creator_id])
     projects = db.relationship('Project', secondary='projects',lazy='dynamic', backref='category')
 
     def _repr_(self):

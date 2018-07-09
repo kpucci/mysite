@@ -1,4 +1,4 @@
-import os
+import os, codecs
 from sqlalchemy import exc
 from flask import (
     Flask,
@@ -30,6 +30,7 @@ from resources import (
 
 app = Flask(__name__)
 app.static_folder = 'static'
+app.templates_folder = 'templates'
 api = Api(app)
 
 app.config.update(dict(
@@ -72,7 +73,14 @@ def initdb_command():
     cat5 = Category(name='art')
     db.session.add(cat5)
 
-    proj1 = Project(name='Chat', img='chat.png')
+    proj1 = Project(
+        name='chat',
+        img='chat.png',
+        text="Chatty Kathy",
+        tagline="Python | Flask | SQLAlchemy | JavaScript | HTML | CSS | AJAX",
+        next="catering",
+        previous=""
+    )
     db.session.add(proj1)
 
     proj1.categories.append(cat1)
@@ -80,7 +88,14 @@ def initdb_command():
     cat1.projects.append(proj1)
     cat3.projects.append(proj1)
 
-    proj2 = Project(name='Catering', img='catering.png')
+    proj2 = Project(
+        name='catering',
+        img='catering.png',
+        text="So You Think You Can Cater",
+        tagline="Python | Flask | SQLAlchemy | JavaScript | HTML | CSS",
+        next="budget",
+        previous="chat"
+    )
     db.session.add(proj2)
 
     proj2.categories.append(cat1)
@@ -88,7 +103,14 @@ def initdb_command():
     cat1.projects.append(proj2)
     cat3.projects.append(proj2)
 
-    proj3 = Project(name='Budget', img='budget.png')
+    proj3 = Project(
+        name='budget',
+        img='budget.png',
+        text="Money on My Mind",
+        tagline="Python | Flask | SQLAlchemy | JavaScript | HTML | CSS | AJAX | REST",
+        next="battleship",
+        previous='catering'
+    )
     db.session.add(proj3)
 
     proj3.categories.append(cat1)
@@ -96,7 +118,14 @@ def initdb_command():
     cat1.projects.append(proj3)
     cat3.projects.append(proj3)
 
-    proj4 = Project(name='Battleship', img='battleship.png')
+    proj4 = Project(
+        name='battleship',
+        img='battleship.png',
+        text="You Sunk My Battleship",
+        tagline="JavaScript | HTML | CSS",
+        next="",
+        previous="budget"
+    )
     db.session.add(proj4)
 
     proj4.categories.append(cat1)
@@ -118,17 +147,27 @@ skills = [
 	{'Name':'HTML5', 'Level':'Proficient'},
 	{'Name':'MAPDL', 'Level':'Proficient'},
 	{'Name':'SolidWorks', 'Level':'Expert'},
-	{'Name':'ANSYS', 'Level':'Proficient'},
+	{'Name':'ANSYS', 'Level':'Advanced'},
 	{'Name':'AutoCAD', 'Level':'Proficient'}
 ]
 
 #--------------------------------------------------------------------------------------------
 
 # Home page:
-# GET - Visit home page
-# POST - Signin --> Redirect to profile page if successful
 @app.route("/")
 def default():
     return render_template("home.html", skills=skills)
 
 #--------------------------------------------------------------------------------------------
+
+# Project page:
+@app.route("/project/<projectname>")
+def project_page(projectname=None):
+    project = Project.query.filter_by(name=projectname.lower()).first()
+    nextURL = None
+    prevURL = None
+    if project.next:
+        nextURL = url_for('project_page', projectname=project.next)
+    if project.previous:
+        prevURL = url_for('project_page', projectname=project.previous)
+    return render_template(project.name + "_project.html", projectname=project.text, tagline=project.tagline, image=url_for('static', filename=projectname+'_project.jpg'), next=nextURL, previous=prevURL, launch='/'+project.name)
