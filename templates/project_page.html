@@ -18,7 +18,7 @@
                         {% if previous%}
                         <a href="{{ previous }}" class="nav-btn" id="next-btn">Previous Project</a>
                         {% endif %}
-                        <a href="www.katiepucci.com" class="nav-btn" id="home-btn">Home</a>
+                        <a href="{{url_for('default')}}" class="nav-btn" id="home-btn">Home</a>
                         {% if next%}
                         <a href="{{ next }}" class="nav-btn" id="home-btn">Next Project</a>
                         {% endif %}
