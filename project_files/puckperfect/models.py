@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 
 # Instantiate a database object
-puckperfect_db = SQLAlchemy()
+db = SQLAlchemy()
 
 # Player has many teams
 # Team has many players --> Many-to-many
