@@ -27,33 +27,6 @@ from resources import (
     CategoryResource,
     CategoryListResource
 )
-from puckperfect_models import (
-    db,
-    Player,
-    Coach,
-    Parent,
-    Drill,
-    Practice,
-    Playlist,
-    Team
-)
-from puckperfect_resources import (
-    PlayerResource,
-    PlayerListResource,
-    CoachResource,
-    CoachListResource,
-    ParentResource,
-    ParentListResource,
-    DrillResource,
-    DrillListResource,
-    PracticeResource,
-    PracticeListResource,
-    PlaylistResource,
-    PlaylistListResource,
-    TeamResource,
-    TeamListResource,
-    CatalogResource
-)
 
 
 app = Flask(__name__)
