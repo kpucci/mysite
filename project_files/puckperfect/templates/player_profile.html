@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Player Profile</title>
+{% endblock %}
+
+{% block style %}
+    <link href="{{url_for('static', filename='css/player_profile.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+    <script type = "text/javascript" src = "{{url_for('static', filename='js/player_profile.js')}}" ></script>
+{% endblock %}
+
+{% block body %}
+
+<!-- Top Navigation Bar -->
+<nav class="navbar navbar-dark navbar-expand-sm bg-dark p-0 fixed-top shadow topnav">
+  <a id="player-name" class="navbar-brand" href="#home">Player Name</a>
+  <button id="player-id" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#togglerData" aria-controls="togglerData" aria-expanded="false" aria-label="Toggle Navigation" value="{{ id }}">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="togglerData">
+    <a id="stats-link" class="nav-link active" href="#stats" onclick="loadStats();">Stats</a>
+    <a id="drills-link" class="nav-link" href="#drills" onclick="loadDrills();">Drills</a>
+    <a id="catalog-link" class="nav-link" href="#catalog" onclick="loadCatalog();">Catalog</a>
+    <h6 class="text-muted sidebar-heading">Account</h6>
+    <a id="settings-link" class="nav-link" href="#settings">Settings</a>
+    <a id="signout-link" class="nav-link" href="#signout">Sign out</a>
+  </div>
+
+</nav>
+
+<!-- Side Navigation Bar -->
+<div class="container-fluid">
+  <div class="row">
+    <nav class="navbar navbar-dark flex-column align-items-center justify-content-start col-auto bg-dark p-0 shadow sidebar">
+      <a id="player-name-2" class="navbar-brand navbar-name" href="#home">Player Name</a>
+      <a id="stats-link-2" class="nav-link active" href="#stats" onclick="loadStats();">Stats</a>
+      <a id="drills-link-2" class="nav-link" href="#drills" onclick="loadDrills();">Drills</a>
+      <a id="catalog-link-2" class="nav-link" href="#catalog" onclick="loadCatalog();">Catalog</a>
+      <h6 class="text-muted sidebar-heading">Account</h6>
+      <a id="settings-link-2" class="nav-link" href="#settings">Settings</a>
+      <a id="signout-link-2" class="nav-link" href="#signout">Sign out</a>
+    </nav>
+
+    <!-- <nav class="col-2 d-md-block bg-dark sidebar">
+      <div class="sidebar-sticky">
+        <a id="player-name-2" class="navbar-brand col-sm-3 col-md-2 mr-0" href="#home">Player Name</a>
+        <ul class="nav flex-column">
+
+          <li class="nav-item">
+            <a id="stats-link" class="nav-link active" href="#stats" onclick="loadStats()">
+              <span data-feather="home"></span>
+              Stats <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="drills-link" class="nav-link" href="#drills" onclick="loadDrills()">
+              <span data-feather="file"></span>
+              Drills
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="catalog-link" class="nav-link" href="#catalog" onclick="loadCatalog()">
+              <span data-feather="shopping-cart"></span>
+              Catalog
+            </a>
+          </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Account</span>
+          <a class="d-flex align-items-center text-muted" href="#account">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#settings"  onclick="loadSettings()">
+              <span data-feather="file-text"></span>
+              Settings
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
+
+    <!-- Main Content -->
+    <main role="main" class="col ml-sm-auto px-4">
+
+      <!-- Stats View -->
+      <div id="stats">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Stats</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button class="btn btn-sm btn-outline-secondary">Share</button>
+              <button class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </button>
+          </div>
+        </div>
+        <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+      </div>
+
+      <!-- Drills Carousel -->
+      <div id="drills" class="carousel slide carousel-multi-item drills" data-ride="carousel">
+        <!-- Control Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#drills" data-slide-to="0" class="active"></li>
+          <li data-target="#drills" data-slide-to="1"></li>
+          <li data-target="#drills" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Carousel Content -->
+        <div class="carousel-inner" id="drill-carousel">
+
+        </div>
+      </div>
+
+      <!-- Catalog -->
+      <div id="catalog">
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Graphs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      datasets: [{
+        data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#007bff',
+        borderWidth: 4,
+        pointBackgroundColor: '#007bff'
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: false
+          }
+        }]
+      },
+      legend: {
+        display: false,
+      }
+    }
+  });
+</script>
+{% endblock %}

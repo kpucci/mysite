@@ -121,6 +121,15 @@ function loadAll()
 /**
 * Get project list
 */
+function loadJava()
+{
+    // console.log("Get Categories");
+	makeReq("GET", "/cats/java", 200, showJavaProjects);
+}
+
+/**
+* Get project list
+*/
 function loadWeb()
 {
     // console.log("Get Categories");
@@ -151,6 +160,7 @@ function showWebProjects(responseText)
 	document.getElementById("all-button").className = "btn";
 	document.getElementById("art-button").className = "btn";
 	document.getElementById("embedded-button").className = "btn";
+    document.getElementById("java-button").className = "btn";
 	showProjects(responseText, "web");
 }
 
@@ -160,6 +170,7 @@ function showEmbeddedProjects(responseText)
 	document.getElementById("all-button").className = "btn";
 	document.getElementById("art-button").className = "btn";
 	document.getElementById("web-button").className = "btn";
+    document.getElementById("java-button").className = "btn";
 	showProjects(responseText, "embedded");
 }
 
@@ -168,8 +179,19 @@ function showAllProjects(responseText)
 	document.getElementById("all-button").className = "btn btn-clicked";
 	document.getElementById("web-button").className = "btn";
 	document.getElementById("art-button").className = "btn";
+    document.getElementById("java-button").className = "btn";
 	document.getElementById("embedded-button").className = "btn";
 	showProjects(responseText, "all");
+}
+
+function showJavaProjects(responseText)
+{
+	document.getElementById("java-button").className = "btn btn-clicked";
+    document.getElementById("art-button").className = "btn";
+	document.getElementById("all-button").className = "btn";
+	document.getElementById("web-button").className = "btn";
+	document.getElementById("embedded-button").className = "btn";
+	showProjects(responseText, "java");
 }
 
 function showArtProjects(responseText)
@@ -178,6 +200,7 @@ function showArtProjects(responseText)
 	document.getElementById("all-button").className = "btn";
 	document.getElementById("web-button").className = "btn";
 	document.getElementById("embedded-button").className = "btn";
+    document.getElementById("java-button").className = "btn";
 	showProjects(responseText, "art");
 }
 

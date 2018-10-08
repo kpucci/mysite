@@ -1,0 +1,76 @@
+{% extends "project_page.html" %}
+
+{% block project_description %}
+<p class="project-description">Adventure Game is a text-based battle simulation. The goal of the game is to defeat the Evil Wizard by choosing paths and defeating enemies along the way.
+
+This was a semester-long project in the course COE401: Intermediate Java. There were five total projects - Item Shop and four versions of the full game. </p>
+
+<h3>Item Shop</h3>
+<p class="project-description">The Item Shop allows the user to select an item to purchase, along with the quantity of that item. After obtaining the item selection and desired quantity from the user, the program processes the transaction and displays the transaction results to the user. Item Shop was designed to meet the following requirements:
+</p>
+
+<div class="requirements">
+
+<p class="first-level">1. Prompt the user for his/her name. Read the user’s input and store it in your program. Do the same for the number of gold coins that the user possesses (read this in as an integer).
+
+2. Display the following welcome message to the user, where ​username​ is the name entered by the user: Welcome to The Item Shop, ​username​!
+
+3. Display the menu on the screen, with each item and the item’s cost listed on a numbered line (see the sample runs below for an example to follow). Here are the items and the cost of each item (in units of gold coins):
+</p>
+<div class="table-div">
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Cost</th>
+        </tr>
+        <tr>
+            <td>Long Sword</td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td>Short Sword</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>Mace</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>Magic Ring</td>
+            <td>150</td>
+        </tr>
+        <tr>
+            <td>Healing Potion</td>
+            <td>10</td>
+        </tr>
+    </table>
+</div>
+
+<p class="first-level">4. Prompt the user to select an item. The user will select an item by entering the number that corresponds to the desired item. Read the user’s input and store it in your program.
+
+5. Prompt the user to enter the quantity for the selected item. Read the user’s input and store it in your program.
+</p>
+<ul class="second-level">
+    <li> Assumption #1: You may assume that the user will enter a valid item number and a valid number for the item quantity for prompted for each of these.</li>
+</ul>
+<p class="first-level">6. Calculate the total cost of the order. ​Orders of 3 or more items (i.e. orders where the quantity is at least 3) should receive a 10% discount.​ If the user earned a discount, calculate the amount of the discount (in units of gold coins).
+</p>
+<ul class="second-level">
+    <li> Assumption #2: Assume that gold coins are atomic units, and so we can never have a fraction of a gold coin. Therefore, you should always report gold coins in integral units (i.e. as whole numbers, so as 3 and not as 3.0). If a calculation yields a fractional value of gold coins (e.g. 3.5 gold coins), simply truncate the fractional part (e.g. 3.5 becomes 3). However, all prices are a multiple of 10, and so you should never have a situation where the total cost calculations yields a fraction of a coin.</li>
+</ul>
+<p class="first-level">7. Calculate the final cost by subtracting the discount amount from the total.
+
+8. Display the total cost (i.e. cost before discount), discount amount (display “0” if no discount is awarded), and final cost to the user (see the sample runs below for an example to follow).
+
+9. Determine if the user’s transaction can be processed by comparing the final cost to the user’s number of gold coins.
+</p>
+<ul class="second-level">
+    <li> If the user has sufficient funds, then display the following message to the user, where ​username​ is the name entered by the user: Thank you, ​username​! Your transaction is complete! Please stop by again!</li>
+    <li> If the user has insufficient funds, then instead display the following: username​ ­ you have insufficient funds! Please come back with more gold!</li>
+</ul>
+
+
+
+</div>
+
+{% endblock %}

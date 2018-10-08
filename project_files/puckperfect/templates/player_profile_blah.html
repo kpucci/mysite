@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Player Profile</title>
+{% endblock %}
+
+{% block style %}
+    <link href="{{url_for('static', filename='css/player_profile.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+    <script type = "text/javascript" src = "{{url_for('static', filename='js/player_profile.js')}}" ></script>
+{% endblock %}
+
+{% block body %}
+<!-- Fluid container for grid layout -->
+<div class="container-fluid">
+
+  <!-- Row encapsulating entire page -->
+  <div class="row">
+
+    <!-- Column containing sidebar -->
+    <!-- <div class="flex-column sidebar"> -->
+      <nav class="navbar navbar-dark bg-dark align-items-center">
+        <a id="player-name" class="navbar-brand" href="#home">Player Name</a>
+        <a id="stats-link" class="nav-link active" href="#stats" onclick="loadStats();">Stats</a>
+        <a id="drills-link" class="nav-link" href="#drills" onclick="loadDrills();">Drills</a>
+        <a id="catalog-link" class="nav-link" href="#catalog" onclick="loadCatalog();">Catalog</a>
+        <h6 class="text-muted">Account</h6>
+        <a id="settings-link" class="nav-link" href="#settings">Settings</a>
+        <a id="signout-link" class="nav-link" href="#signout">Sign out</a>
+      </nav>
+    <!-- </div> -->
+
+
+    <!-- Column containing main content -->
+    <div class="col">
+      <h2>Stats</h2>
+    </div>
+  </div>
+
+
+
+
+  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark flex-column">
+    <a id="player-name" class="navbar-brand" href="#home">Player Name</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navCollapseContent" aria-controls="navbarCollapseContent" aria-expanded="false" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navCollapseContent">
+      <ul class="navbar-nav mr-auto flex-md-column">
+        <li id="player-id" class="nav-item active" value="{{ id }}">
+          <a class="nav-link" href="#stats" onclick="loadStats();">Stats <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav> -->
+</div>
+
+{% endblock %}

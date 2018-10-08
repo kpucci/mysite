@@ -27,6 +27,34 @@ from resources import (
     CategoryResource,
     CategoryListResource
 )
+from puckperfect_models import (
+    db,
+    Player,
+    Coach,
+    Parent,
+    Drill,
+    Practice,
+    Playlist,
+    Team
+)
+from puckperfect_resources import (
+    PlayerResource,
+    PlayerListResource,
+    CoachResource,
+    CoachListResource,
+    ParentResource,
+    ParentListResource,
+    DrillResource,
+    DrillListResource,
+    PracticeResource,
+    PracticeListResource,
+    PlaylistResource,
+    PlaylistListResource,
+    TeamResource,
+    TeamListResource,
+    CatalogResource
+)
+
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -45,12 +73,13 @@ app.config.update(dict(
 db.init_app(app)
 
 #---------------------------------------------------------
-# Resources:
+# Site Resources:
 
 api.add_resource(ProjectListResource, '/projects')
 api.add_resource(ProjectResource, '/projects/<int:project_id>')
 api.add_resource(CategoryListResource, '/cats')
 api.add_resource(CategoryResource, '/cats/<string:cat_name>')
+
 #--------------------------------------------------------------------------------------------
 
 @app.cli.command('initdb')
@@ -67,11 +96,14 @@ def initdb_command():
     cat3 = Category(name='web')
     db.session.add(cat3)
 
-    cat4 = Category(name='embedded')
+    cat4 = Category(name='java')
     db.session.add(cat4)
 
-    cat5 = Category(name='art')
+    cat5 = Category(name='embedded')
     db.session.add(cat5)
+
+    cat6 = Category(name='art')
+    db.session.add(cat6)
 
     proj1 = Project(
         name='chat',
@@ -79,7 +111,9 @@ def initdb_command():
         text="Chatty Kathy",
         tagline="Python | Flask | SQLAlchemy | JavaScript | HTML | CSS | AJAX",
         next="catering",
-        previous=""
+        previous="",
+        type="web",
+        url="/chat"
     )
     db.session.add(proj1)
 
@@ -94,7 +128,9 @@ def initdb_command():
         text="So You Think You Can Cater",
         tagline="Python | Flask | SQLAlchemy | JavaScript | HTML | CSS",
         next="budget",
-        previous="chat"
+        previous="chat",
+        type="web",
+        url="/catering"
     )
     db.session.add(proj2)
 
@@ -109,7 +145,9 @@ def initdb_command():
         text="Money on My Mind",
         tagline="Python | Flask | SQLAlchemy | JavaScript | HTML | CSS | AJAX | REST",
         next="battleship",
-        previous='catering'
+        previous='catering',
+        type='web',
+        url='/budget'
     )
     db.session.add(proj3)
 
@@ -124,7 +162,9 @@ def initdb_command():
         text="You Sunk My Battleship",
         tagline="JavaScript | HTML | CSS",
         next="",
-        previous="budget"
+        previous="budget",
+        type="web",
+        url="/battleship"
     )
     db.session.add(proj4)
 
@@ -132,6 +172,21 @@ def initdb_command():
     proj4.categories.append(cat3)
     cat1.projects.append(proj4)
     cat3.projects.append(proj4)
+
+    proj5 = Project(
+        name='adventure',
+        img='adventure.png',
+        text="Adventure Game",
+        tagline="Java | JavaFX",
+        next="",
+        previous="budget",
+        type="web",
+        url="https://github.com/kpucci/java_projects/tree/master/AdventureGame"
+    )
+    db.session.add(proj5)
+
+    proj5.categories.append(cat4)
+    cat4.projects.append(proj5)
 
     db.session.commit()
 
@@ -170,4 +225,4 @@ def project_page(projectname=None):
         nextURL = url_for('project_page', projectname=project.next)
     if project.previous:
         prevURL = url_for('project_page', projectname=project.previous)
-    return render_template(project.name + "_project.html", projectname=project.text, tagline=project.tagline, image=url_for('static', filename=projectname+'_project.jpg'), next=nextURL, previous=prevURL, launch='/'+project.name)
+    return render_template(project.name + "_project.html", projectname=project.text, tagline=project.tagline, image=url_for('static', filename=projectname+'_project.jpg'), next=nextURL, previous=prevURL, launch=project.url, type=project.type)

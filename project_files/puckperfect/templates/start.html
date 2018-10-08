@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Start Page</title>
+{% endblock %}
+
+{% block body %}
+    <div id="button-box" class="button-box">
+        <button type="button" id="login-button" class="start-button" onclick="window.location.href={{url_for('login')}};">Login</button>
+        <button type="button" id="register-button" class="start-button" onclick="window.location.href={{url_for('register')}};">Register</button>
+    </div>
+{% endblock %}

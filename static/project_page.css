@@ -6,6 +6,7 @@
 
 html{
     font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
 	overflow-y: auto;
     overflow-x: hidden;
 }
@@ -66,6 +67,7 @@ h1{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 3em;
     padding: 8px 0;
+    font-weight: regular;
 }
 
 h2{
@@ -75,6 +77,12 @@ h2{
     padding: 8px 0;
     text-align: center;
     margin-top: 2vh;
+    font-weight: regular;
+}
+
+h3{
+    font-weight: regular;
+    text-align: center;
 }
 
 p.tagline{
@@ -189,6 +197,30 @@ div.disclaimer-container{
     text-align: justify;
     margin-bottom: 10vh;
     width: 100%;
+}
+
+table, th, td {
+    font-family: 'Source Sans Pro', sans-serif;
+    /* border: 1px solid black; */
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+th{
+    font-weight: normal;
+}
+
+div.table-div{
+    display: flex;
+    /* outline: 5px solid green; */
+    flex-direction: row;
+	justify-content: center;
+    align-items: center;
 }
 
 /* -------------------------------------------------- */

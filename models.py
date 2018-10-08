@@ -29,6 +29,8 @@ class Project(db.Model):
     tagline = db.Column(db.String(120))
     next = db.Column(db.String(120))
     previous = db.Column(db.String(120))
+    type = db.Column(db.String(50))
+    url = db.Column(db.String(100))
 
     categories = db.relationship('Category', secondary='categories',lazy='dynamic',backref='project')
 

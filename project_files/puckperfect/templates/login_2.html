@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+{% block style %}
+    <link href="{{url_for('static', filename='css/login.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+    <script type = "text/javascript" src = "{{url_for('static', filename='js/login.js')}}" ></script>
+{% endblock %}
+
+{% block body %}
+<div class="login-box">
+    <h1>Please sign in</h1>
+    <div class="control-box">
+        <form id="login-form" action="" method="post">
+            <input type="email" id="email-input" class="form-control" placeholder="Email address" name="email" required autofocus>
+            <input type="password" id="password-input" class="form-control" placeholder="Password" name= "password" required>
+            <div class="checkbox">
+              <label class="remember-label">
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+        <hr />
+        <h3>Not a member?</h3>
+        <button class="btn btn-lg btn-primary btn-block" id="register-button" type="button" value="register" onclick="window.location.href={{url_for('register')}};">Create New Account</button>
+    </div>
+</div>
+{% endblock %}
