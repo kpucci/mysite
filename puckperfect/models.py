@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
-from puckperfect import bcrypt
+# from puckperfect import bcrypt
 
 # Instantiate a database object
 db = SQLAlchemy()
