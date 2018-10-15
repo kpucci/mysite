@@ -7,7 +7,7 @@ from sqlalchemy import exc
 from datetime import datetime, timedelta
 from flask.ext.bcrypt import Bcrypt
 from flask_httpauth import HTTPBasicAuth
-from resources import (
+from project_files.puckperfect.resources import (
     PlayerResource,
     PlayerListResource,
     CoachResource,
@@ -32,7 +32,7 @@ from flask_restful import (
     Resource
 )
 
-from models import (
+from project_files.puckperfect.models import (
     db,
     Player,
     Coach,
@@ -154,108 +154,108 @@ def get_auth_token():
     token = g.player.generate_auth_token()
     return jsonify({ 'token': token.decode('ascii') })
 
-# # Login page:
-# @app.route("/", methods=['GET','POST'])
-# def login():
-#     # TODO: Add authentication
-#     # TODO: Remember me functionality
-#
-#     if request.method == "GET":
-#         if "logged_in" in session:
-#             return render_template("login.html", loggedIn=True)
-#         else:
-#             return render_template("login.html", loggedIn=False)
-#     elif request.method == "POST":
-#         player = Player.query.filter(Player.email.like(request.form["email"]), Player.password.like(request.form["password"])).scalar()
-#         coach = Coach.query.filter(Coach.email.like(request.form["email"]), Coach.password.like(request.form["password"])).scalar()
-#         parent = Parent.query.filter(Parent.email.like(request.form["email"]), Parent.password.like(request.form["password"])).scalar()
-#
-#         if player is not None:
-#             session['logged_in'] = request.form["email"]
-#             return redirect(url_for("player_profile", id=player.id))
-#         elif coach is not None:
-#             session['logged_in'] = request.form["email"]
-#             return redirect(url_for("coach_profile", id=coach.id))
-#         elif parent is not None:
-#             session['logged_in'] = request.form["email"]
-#             return redirect(url_for("parent_profile", id=parent.id))
-#         else:
-#             flash('Incorrect email or password')
-#             return render_template("login.html", loggedIn=False)
-#     else:
-#         return render_template("login.html", loggedIn=False)
-#
-#     return render_template("login.html")
-#
-# #--------------------------------------------------------------------------------------------
-#
-# # Logout
-# @app.route("/logout/")
-# def logout():
-# 	session.pop("logged_in", None)
-# 	flash("You've been signed out.")
-# 	return redirect(url_for('default'))
-#
-# #--------------------------------------------------------------------------------------------
-#
-# # Registration page:
-# @app.route("/register/", methods=['GET','POST'])
-# def register():
-#     return render_template("register.html")
-#
-# #--------------------------------------------------------------------------------------------
-#
-# # Player profile page:
-# @app.route("/player/<id>", methods=['GET'])
-# def player_profile(id=None):
-#     return render_template("player_profile.html", id=id)
-#
-# #--------------------------------------------------------------------------------------------
-#
-# # Coach profile page:
-# @app.route("/coach/<id>", methods=['GET'])
-# def coach_profile(id=None):
-#     return render_template("coach_profile.html")
-#
-# #--------------------------------------------------------------------------------------------
-#
-# # Parent profile page:
-# @app.route("/parent/<id>", methods=['GET'])
-# def parent_profile(id=None):
-#     return render_template("parent_profile.html")
-#
-# #--------------------------------------------------------------------------------------------
-#
-# # Drill catalog page:
-# @app.route("/catalog/", methods=['GET'])
-# def catalog(id=None):
-#     # Get player
-#     # Get player's playlist
-#     # Get all drills
-#     # Filter out drills that are already in the playlist
-#     return render_template("catalog.html")
-#
-#
-# #--------------------------------------------------------------------------------------------
-#
-# # Drill page:
-# @app.route("/drill/<id>", methods=['GET'])
-# def drill(id=None):
-#     return render_template("drill.html")
-#
-# #--------------------------------------------------------------------------------------------
-#
-# # Practice page:
-# @app.route("/practice/<id>", methods=['GET'])
-# def practice(id=None):
-#     return render_template("practice.html")
-#
-# #--------------------------------------------------------------------------------------------
-#
-# # Practice plan page:
-# @app.route("/practice_plan/", methods=['GET'])
-# def practice_plan(id=None):
-#     return render_template("practice_plan.html")
+# Login page:
+@app.route("/", methods=['GET','POST'])
+def login():
+    # TODO: Add authentication
+    # TODO: Remember me functionality
+
+    if request.method == "GET":
+        if "logged_in" in session:
+            return render_template("login.html", loggedIn=True)
+        else:
+            return render_template("login.html", loggedIn=False)
+    elif request.method == "POST":
+        player = Player.query.filter(Player.email.like(request.form["email"]), Player.password.like(request.form["password"])).scalar()
+        coach = Coach.query.filter(Coach.email.like(request.form["email"]), Coach.password.like(request.form["password"])).scalar()
+        parent = Parent.query.filter(Parent.email.like(request.form["email"]), Parent.password.like(request.form["password"])).scalar()
+
+        if player is not None:
+            session['logged_in'] = request.form["email"]
+            return redirect(url_for("player_profile", id=player.id))
+        elif coach is not None:
+            session['logged_in'] = request.form["email"]
+            return redirect(url_for("coach_profile", id=coach.id))
+        elif parent is not None:
+            session['logged_in'] = request.form["email"]
+            return redirect(url_for("parent_profile", id=parent.id))
+        else:
+            flash('Incorrect email or password')
+            return render_template("login.html", loggedIn=False)
+    else:
+        return render_template("login.html", loggedIn=False)
+
+    return render_template("login.html")
+
+#--------------------------------------------------------------------------------------------
+
+# Logout
+@app.route("/logout/")
+def logout():
+	session.pop("logged_in", None)
+	flash("You've been signed out.")
+	return redirect(url_for('default'))
+
+#--------------------------------------------------------------------------------------------
+
+# Registration page:
+@app.route("/register/", methods=['GET','POST'])
+def register():
+    return render_template("register.html")
+
+#--------------------------------------------------------------------------------------------
+
+# Player profile page:
+@app.route("/player/<id>", methods=['GET'])
+def player_profile(id=None):
+    return render_template("player_profile.html", id=id)
+
+#--------------------------------------------------------------------------------------------
+
+# Coach profile page:
+@app.route("/coach/<id>", methods=['GET'])
+def coach_profile(id=None):
+    return render_template("coach_profile.html")
+
+#--------------------------------------------------------------------------------------------
+
+# Parent profile page:
+@app.route("/parent/<id>", methods=['GET'])
+def parent_profile(id=None):
+    return render_template("parent_profile.html")
+
+#--------------------------------------------------------------------------------------------
+
+# Drill catalog page:
+@app.route("/catalog/", methods=['GET'])
+def catalog(id=None):
+    # Get player
+    # Get player's playlist
+    # Get all drills
+    # Filter out drills that are already in the playlist
+    return render_template("catalog.html")
+
+
+#--------------------------------------------------------------------------------------------
+
+# Drill page:
+@app.route("/drill/<id>", methods=['GET'])
+def drill(id=None):
+    return render_template("drill.html")
+
+#--------------------------------------------------------------------------------------------
+
+# Practice page:
+@app.route("/practice/<id>", methods=['GET'])
+def practice(id=None):
+    return render_template("practice.html")
+
+#--------------------------------------------------------------------------------------------
+
+# Practice plan page:
+@app.route("/practice_plan/", methods=['GET'])
+def practice_plan(id=None):
+    return render_template("practice_plan.html")
 
 
 if __name__ == "__main__":

@@ -42,7 +42,6 @@ playlists = db.Table('playlists',
     db.Column('playlist_id', db.Integer, db.ForeignKey('playlist.id'))
 )
 
-
 class Player(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
     email = db.Column(db.String(80), unique = True, nullable = False)
