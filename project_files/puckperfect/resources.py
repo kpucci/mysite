@@ -15,6 +15,10 @@ player_fields = {
     'hand': fields.Boolean
 }
 
+player_email_fields = {
+	'email': fields.String
+}
+
 coach_fields = {
     'id': fields.Integer,
 	'email': fields.String,
@@ -179,6 +183,11 @@ class PlayerListResource(Resource):
         db.session.commit()
 
         return player, 201
+
+class PlayerEmailsResource(Resource):
+    @marshal_with(player_email_fields)
+    def get(self):
+        return Player.query.all()
 
 class CoachResource(Resource):
     @marshal_with(coach_fields)
