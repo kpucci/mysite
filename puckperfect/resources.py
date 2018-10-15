@@ -112,7 +112,6 @@ team_parser.add_argument('league', type=str, location='json')
 team_parser.add_argument('name', type=str, location='json')
 
 class PlayerResource(Resource):
-    @oauth.require_oauth('email')
     @marshal_with(player_fields)
     def get(self, id):
         player = Player.query.filter_by(id=id).first()
