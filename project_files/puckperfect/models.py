@@ -2,8 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 import sys, os
-sys.path.append(os.path.abspath(os.path.join('..','..')))
-from puckperfect import app, bcrypt
+sys.path.append(os.path.abspath(os.path.join('..','..','mysite')))
+from mysite.puckperfect import app, bcrypt
 
 # Instantiate a database object
 db = SQLAlchemy()
