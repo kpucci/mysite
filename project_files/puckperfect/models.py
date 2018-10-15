@@ -3,7 +3,7 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 import sys, os
 sys.path.append(os.path.abspath(os.path.join('..','..','mysite')))
-from mysite.puckperfect import app, bcrypt
+from puckperfect import app, bcrypt
 
 # Instantiate a database object
 db = SQLAlchemy()
