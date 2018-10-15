@@ -1,6 +1,7 @@
 from flask_restful import Resource, fields, reqparse, marshal_with, inputs
 from flask import request, abort, flash, jsonify, json
 from models import db, Player, Coach, Parent, Drill, Practice, Playlist, Team
+from datetime import datetime, timedelta
 
 # NOTE: Marshal fields determine what kind of data is returned
 #       from a request
@@ -111,6 +112,7 @@ team_parser.add_argument('league', type=str, location='json')
 team_parser.add_argument('name', type=str, location='json')
 
 class PlayerResource(Resource):
+    @oauth.require_oauth('email')
     @marshal_with(player_fields)
     def get(self, id):
         player = Player.query.filter_by(id=id).first()
@@ -169,9 +171,11 @@ class PlayerListResource(Resource):
         else:
             player_id = args['id']
 
-        player = Player(id=player_id, email=args['email'], password=args['password'],
+        player = Player(id=player_id, email=args['email'],
             first_name=args['first_name'], last_name=args['last_name'], hockey_level=args['hockey_level'],
             skill_level=args['skill_level'], hand=args['hand'])
+
+        player.hash_password(args['password'])
 
         db.session.add(player)
 
