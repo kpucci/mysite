@@ -185,11 +185,9 @@ class PlayerListResource(Resource):
         return player, 201
 
 class PlayerEmailsResource(Resource):
-    # @marshal_with(player_email_fields)
+    @marshal_with(player_email_fields)
     def get(self):
-        players = Player.query.all()
-        emails = [player.email for player in players]
-        return emails
+        return Player.query.all()
 
 class CoachResource(Resource):
     @marshal_with(coach_fields)
