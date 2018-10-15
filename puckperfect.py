@@ -138,7 +138,7 @@ def initdb_command():
 #--------------------------------------------------------------------------------------------
 
 @basic_auth.check_credentials
-def check_credentials(username,password):
+def check_credentials(self,username,password):
     player = Player.query.filter_by(email=username).first()
     return player.check_password(password)
 
