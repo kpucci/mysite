@@ -7,7 +7,7 @@ from sqlalchemy import exc
 from datetime import datetime, timedelta
 from flask.ext.bcrypt import Bcrypt
 from flask_httpauth import HTTPBasicAuth
-from project_files.puckperfect.resources import (
+from puckperfect_resources import (
     PlayerResource,
     PlayerListResource,
     CoachResource,
@@ -32,7 +32,7 @@ from flask_restful import (
     Resource
 )
 
-from project_files.puckperfect.models import (
+from puckperfect_models import (
     db,
     Player,
     Coach,

@@ -1,6 +1,6 @@
 from flask_restful import Resource, fields, reqparse, marshal_with, inputs
 from flask import request, abort, flash, jsonify, json
-from models import db, Player, Coach, Parent, Drill, Practice, Playlist, Team
+from puckperfect_models import db, Player, Coach, Parent, Drill, Practice, Playlist, Team
 from datetime import datetime, timedelta
 
 # NOTE: Marshal fields determine what kind of data is returned
