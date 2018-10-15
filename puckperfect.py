@@ -4,6 +4,10 @@ import re
 from flask import Flask, request, abort, url_for, redirect, session, render_template, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import exc
+from functools import wraps
+from flask_basicauth import BasicAuth
+from itsdangerous import (TimedJSONWebSignatureSerializer
+                          as Serializer, BadSignature, SignatureExpired)
 
 from project_files.puckperfect.resources import (
     PlayerResource,
@@ -45,6 +49,7 @@ app = Flask(__name__)
 app.static_folder = 'project_files/puckperfect/static'
 app.template_folder = 'project_files/puckperfect/templates'
 api = Api(app)
+basic_auth = BasicAuth(app)
 
 app.config.update(dict(
     DEBUG=True,
@@ -131,6 +136,28 @@ def initdb_command():
 
 #--------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------
+
+@basic_auth.check_credentials
+def check_credentials(username,password):
+    player = Player.query.filter_by(email=username).first()
+    return player.check_password(password)
+
+@app.route("/api/token")
+@basic_auth.required
+def get_token():
+    s = Serializer(app.config['SECRET_KEY'], expires_in=600)
+    return s.dumps({'id': self.id})
+
+def verify_auth_token(token):
+        s = Serializer(app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except SignatureExpired:
+            return None    # valid token, but expired
+        except BadSignature:
+            return None    # invalid token
+        user = User.query.get(data['id'])
+        return user
 
 # Login page:
 @app.route("/", methods=['GET','POST'])

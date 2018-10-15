@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Instantiate a database object
 db = SQLAlchemy()
@@ -71,6 +72,23 @@ class Player(db.Model):
     def _repr_(self):
         return "<Player {}>".format(repr(self.id))
 
+    def __init__(self, email, password, first_name, last_name, hockey_level, skill_level, age, hand):
+        self.email = email
+        self.set_password(password)
+        self.first_name = first_name
+        self.last_name = last_name
+        self.hockey_level = hockey_level
+        self.skill_level = skill_level
+        self.age = age
+        self.hand = hand
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+
 class Coach(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
     email = db.Column(db.String(80), unique = True, nullable = False)
@@ -84,6 +102,7 @@ class Coach(db.Model):
 
     def _repr_(self):
         return "<Coach {}>".format(repr(self.id))
+
 
 class Parent(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
