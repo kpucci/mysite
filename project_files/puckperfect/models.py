@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from itsdangerous import (TimedJSONWebSignatureSerializer
-                          as Serializer, BadSignature, SignatureExpired)
+# from itsdangerous import (TimedJSONWebSignatureSerializer
+#                           as Serializer, BadSignature, SignatureExpired)
 # from puckperfect import bcrypt
 
 # Instantiate a database object
@@ -73,27 +73,27 @@ class Player(db.Model):
     def _repr_(self):
         return "<Player {}>".format(repr(self.id))
 
-    def hash_password(self, password):
-        self.password = bcrypt.generate_password_hash(password)
-
-    def verify_password(self, password):
-        return bcrypt.check_password_hash(self.password, password)
-
-    def generate_auth_token(self, expiration = 600):
-        s = Serializer(app.config['SECRET_KEY'], expires_in = expiration)
-        return s.dumps({ 'id': self.id })
-
-    @staticmethod
-    def verify_auth_token(token):
-        s = Serializer(app.config['SECRET_KEY'])
-        try:
-            data = s.loads(token)
-        except SignatureExpired:
-            return None # valid token, but expired
-        except BadSignature:
-            return None # invalid token
-        player = Player.query.get(data['id'])
-        return player
+    # def hash_password(self, password):
+    #     self.password = bcrypt.generate_password_hash(password)
+    #
+    # def verify_password(self, password):
+    #     return bcrypt.check_password_hash(self.password, password)
+    #
+    # def generate_auth_token(self, expiration = 600):
+    #     s = Serializer(app.config['SECRET_KEY'], expires_in = expiration)
+    #     return s.dumps({ 'id': self.id })
+    #
+    # @staticmethod
+    # def verify_auth_token(token):
+    #     s = Serializer(app.config['SECRET_KEY'])
+    #     try:
+    #         data = s.loads(token)
+    #     except SignatureExpired:
+    #         return None # valid token, but expired
+    #     except BadSignature:
+    #         return None # invalid token
+    #     player = Player.query.get(data['id'])
+    #     return player
 
 class Coach(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)

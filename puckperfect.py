@@ -4,9 +4,9 @@ import re
 from flask import Flask, request, abort, url_for, redirect, session, render_template, flash, g
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import exc
-from datetime import datetime, timedelta
-from flask.ext.bcrypt import Bcrypt
-from flask_httpauth import HTTPBasicAuth
+# from datetime import datetime, timedelta
+# from flask.ext.bcrypt import Bcrypt
+# from flask_httpauth import HTTPBasicAuth
 from project_files.puckperfect.resources import (
     PlayerResource,
     PlayerListResource,
@@ -44,8 +44,8 @@ from project_files.puckperfect.models import (
 )
 
 app = Flask(__name__)
-bcrypt = Bcrypt(app)
-auth = HTTPBasicAuth()
+# bcrypt = Bcrypt(app)
+# auth = HTTPBasicAuth()
 app.static_folder = 'project_files/puckperfect/static'
 app.template_folder = 'project_files/puckperfect/templates'
 api = Api(app)
@@ -136,23 +136,23 @@ def initdb_command():
 #--------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------
 
-@auth.verify_password
-def verify_password(email_or_token, password):
-    # first try to authenticate by token
-    player = Player.verify_auth_token(email_or_token)
-    if not player:
-        # try to authenticate with username/password
-        player = Player.query.filter_by(email = email_or_token).first()
-        if not player or not player.verify_password(password):
-            return False
-    g.player = player
-    return True
-
-@app.route('/api/token')
-@auth.login_required
-def get_auth_token():
-    token = g.player.generate_auth_token()
-    return jsonify({ 'token': token.decode('ascii') })
+# @auth.verify_password
+# def verify_password(email_or_token, password):
+#     # first try to authenticate by token
+#     player = Player.verify_auth_token(email_or_token)
+#     if not player:
+#         # try to authenticate with username/password
+#         player = Player.query.filter_by(email = email_or_token).first()
+#         if not player or not player.verify_password(password):
+#             return False
+#     g.player = player
+#     return True
+#
+# @app.route('/api/token')
+# @auth.login_required
+# def get_auth_token():
+#     token = g.player.generate_auth_token()
+#     return jsonify({ 'token': token.decode('ascii') })
 
 # Login page:
 @app.route("/", methods=['GET','POST'])
