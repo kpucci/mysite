@@ -51,7 +51,6 @@ class Player(db.Model):
 
     hockey_level = db.Column(db.Integer)
     skill_level = db.Column(db.Integer)
-    age = db.Column(db.Integer)
     hand = db.Column(db.Boolean)
 
     # Playlist has one player
@@ -72,14 +71,14 @@ class Player(db.Model):
     def _repr_(self):
         return "<Player {}>".format(repr(self.id))
 
-    def __init__(self, email, password, first_name, last_name, hockey_level, skill_level, age, hand):
+    def __init__(self, id, email, password, first_name, last_name, hockey_level, skill_level, hand):
+        self.id = id
         self.email = email
         self.set_password(password)
         self.first_name = first_name
         self.last_name = last_name
         self.hockey_level = hockey_level
         self.skill_level = skill_level
-        self.age = age
         self.hand = hand
 
     def set_password(self, password):
@@ -103,6 +102,19 @@ class Coach(db.Model):
     def _repr_(self):
         return "<Coach {}>".format(repr(self.id))
 
+    def __init__(self, id, email, password, first_name, last_name):
+        self.id = id
+        self.email = email
+        self.set_password(password)
+        self.first_name = first_name
+        self.last_name = last_name
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
 
 class Parent(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
@@ -116,6 +128,19 @@ class Parent(db.Model):
 
     def _repr_(self):
         return "<Parent {}>".format(repr(self.id))
+
+    def __init__(self, id, email, password, first_name, last_name):
+        self.id = id
+        self.email = email
+        self.set_password(password)
+        self.first_name = first_name
+        self.last_name = last_name
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
 
 class Drill(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
