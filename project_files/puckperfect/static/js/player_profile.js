@@ -1,19 +1,33 @@
+/**
+ * Setup the webpage
+ */
 function setup()
 {
     loadStats();
     var id = document.getElementById("player-id").value;
-    makeReq("GET", "/puckperfect/players/" + id, 200, populateProfile);
+    var token = localStorage.getItem("access_token");
+    makeTokenReq("GET", "/players/" + id, 200, populateProfile, null, token);
 }
 
+/**
+ * Callback
+ * Populate the profile with the player's information
+ * @param {String} responseText - HTTP response text
+ */
 function populateProfile(responseText)
 {
+    // Print response text to console for debugging
     console.log("-----Populating Player Profile-----");
     console.log(responseText);
+
+    // Parse the text into JSON
     var player = JSON.parse(responseText);
 
+    // Get the player's name from the response
     var first_name = player['first_name'];
     var last_name = player['last_name'];
 
+    // Display the player's name
     document.getElementById("player-name").innerHTML = first_name + " " + last_name;
     document.getElementById("player-name-2").innerHTML = first_name + " " + last_name;
 }
@@ -23,51 +37,84 @@ function logout()
 
 }
 
+/**
+ * Go to the login page
+ * @param  {String} responseText - HTTP response text
+ */
 function goToLogin(responseText)
 {
     window.location.href = "/";
 }
 
+/**
+ * Load the stats view
+ */
 function loadStats()
 {
+    // Change stats link to active
     document.getElementById("stats-link-2").classList.add("active");
+
+    // Change drills link to inactive
     document.getElementById("drills-link-2").classList.remove("active");
+
+    // Show stats view
     document.getElementById("stats").style.display = "block";
+
+    // Hide drills view
     document.getElementById("drills").style.display = "none";
 }
 
+/**
+ * Load the drills view
+ */
 function loadDrills()
 {
+    // Change drills link to active
     document.getElementById("drills-link-2").classList.add("active");
+
+    // Change stats link to inactive
     document.getElementById("stats-link-2").classList.remove("active");
+
+    // Show drills view
     document.getElementById("drills").style.display = "block";
+
+    // Hide stats view
     document.getElementById("stats").style.display = "none";
 
+    // Get the player's playlist of drills
     var id = document.getElementById("player-id").value;
-    makeReq("GET", "/puckperfect/playlists/" + id, 200, populateDrills);
-
+    makeReq("GET", "/playlists/" + id, 200, populateDrills);
 }
 
+/**
+ * Callback
+ * Populate the drills view with the player's playlist
+ * @param  {String} responseText - HTTP response text
+ */
 function populateDrills(responseText)
 {
+    // Print response text to console for debugging
     console.log("-----Repopulating drills-----");
     console.log(responseText);
+
+    // Parse the text to JSON
   	var drills = JSON.parse(responseText);
 
+    // Create variables
     var carousel = document.getElementById("drill-carousel");
     var drill, item, card, cardDeck, cardBody, cardImg, cardTitle, cardText, cardBtn;
+    var firstItem = true;
+    var cardCount = 0;
 
     // Remove old list of drills
     while(carousel.hasChildNodes()){
         carousel.removeChild(carousel.childNodes[0]);
     }
 
-    var firstItem = true;
-    var cardCount = 0;
-
     // Create new list of drills
     for(var i=(drills.length-1); i>=0; i--)
     {
+        // If first card in deck, add new deck to carousel
         if(cardCount == 0)
         {
             item = document.createElement("div");
@@ -76,6 +123,8 @@ function populateDrills(responseText)
             cardDeck = document.createElement("div");
             cardDeck.classList.add("card-deck");
         }
+
+        // Make first item active
         if(firstItem)
         {
             item.classList.add("active");
@@ -129,6 +178,7 @@ function populateDrills(responseText)
 
         cardCount++;
 
+        // Three cards per deck
         if(cardCount == 3 || i == 0)
         {
             // Add card deck to carousel item
@@ -143,17 +193,29 @@ function populateDrills(responseText)
 	  }
 }
 
+/**
+ * Create practice run for drill
+ * @param  {int} id - the id of the drill being practiced
+ */
 function practiceDrill(id)
 {
 
 }
 
+/**
+ * Load full catalog of drills
+ */
 function loadCatalog()
 {
   var id = document.getElementById("player-id").value;
-  makeReq("GET", "/puckperfect/catalog/" + id, 200, populateCatalog);
+  makeReq("GET", "/catalog/" + id, 200, populateCatalog);
 }
 
+/**
+ * Callback
+ * Populate catalog view with drills
+ * @param  {String} responseText - HTTP response text
+ */
 function populateCatalog(responseText)
 {
   // TODO: Filter out drills that the player already has in their playlist
@@ -162,18 +224,25 @@ function populateCatalog(responseText)
 
 }
 
+/**
+ * Load account settings
+ */
 function loadSettings()
 {
 
 }
 
-function addToCatalog(id)
+/**
+ * Add a drill to the player's playlist
+ * @param {int} id - the id of the drill to add
+ */
+function addToPlaylist(id)
 {
   var playerId = document.getElementById("player-id").value;
 
   var data = '{"player_id":"' + playerId + '", "drill_id": "' + id + '"}';
 
-  makeReq("PUT", "/puckperfect/playlists/" + id, 201, populateDrills);
+  makeReq("PUT", "/playlists/" + id, 201, populateDrills);
 }
 
 // setup load event

@@ -16,6 +16,9 @@
 <div class="login-box">
   <h1>Please sign in</h1>
   <div class="control-box">
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
     <form id="login-form" action="" method="post">
         <input type="email" id="email-input" class="form-control" placeholder="Email address" name="email" required autofocus>
         <input type="password" id="password-input" class="form-control" placeholder="Password" name= "password" required>

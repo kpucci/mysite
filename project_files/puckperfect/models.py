@@ -87,7 +87,6 @@ class Player(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-
 class Coach(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
     email = db.Column(db.String(80), unique = True, nullable = False)

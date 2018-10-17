@@ -1,4 +1,6 @@
 import os
+import datetime
+from datetime import timedelta
 from flask import Flask, request, abort, url_for, redirect, session, render_template, flash, Response, jsonify, json
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import exc
@@ -28,6 +30,7 @@ app.config.update(dict(
     SECRET_KEY='development key',
     USERNAME='owner',
     PASSWORD='pass',
+    JWT_EXPIRATION_DELTA = timedelta(days=7),
 
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(app.root_path, 'hockey.db')
 ))
@@ -106,17 +109,22 @@ def identity(payload):
 
 jwt = JWT(app, authenticate, identity)
 
-def requires_auth(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        auth = request.authorization
-        if not auth or not authenticate(auth.username, auth.password):
-            return Response(
-            'Could not verify your access level for that URL.\n'
-            'You have to login with proper credentials', 401,
-            {'WWW-Authenticate': 'Basic realm="Login Required"'})
-        return f(*args, **kwargs)
-    return decorated
+def login_required(function_to_protect):
+    @wraps(function_to_protect)
+    def wrapper(*args, **kwargs):
+        user_id = session.get('logged_in')
+        if user_id:
+            user = Player.query.filter_by(id=user_id).first()
+            if user:
+                # Success!
+                return function_to_protect(*args, **kwargs)
+            else:
+                flash("Please login again to renew your session")
+                return redirect(url_for('login'))
+        else:
+            flash("Please log in")
+            return redirect(url_for('login'))
+    return wrapper
 
 #--------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------
@@ -233,11 +241,11 @@ team_parser.add_argument('name', type=str, location='json')
 
 class PlayerResource(Resource):
     @marshal_with(player_fields)
-    # @jwt_required()
+    @jwt_required()
     def get(self, id):
         player = Player.query.filter_by(id=id).first()
 
-        if not player:
+        if not player or not player.id == current_identity.id:
             abort(404, "Player %d: not found." % id)
 
         return player
@@ -654,18 +662,25 @@ api.add_resource(PlayerEmailsResource, '/players/emails')
 # Login page:
 @app.route("/", methods=['GET','POST'])
 def login():
+    # If method is GET, render the login page
     if request.method == "GET":
         return render_template("login.html")
 
+    # If posting to login page, then user is trying to login
     elif request.method == "POST":
-        player = Player.query.filter_by(email=request.form["email"]).first()
+        # Query DB for player with the given email
+        player = Player.query.filter(Player.email==request.form["email"]).scalar()
+        # If DB returns a player object, then user is a player
         if player is not None:
+            # If password is correct, open their profile
             if player.check_password(request.form["password"]):
                 session['logged_in'] = player.id
                 return redirect(url_for("player_profile", id=player.id))
+            # If password is wrong, tell user and go back to login page
             flash('Incorrect email or password')
             return render_template("login.html")
 
+        # If DB doesn't return a player, then try a coach
         coach = Coach.query.filter_by(email=request.form["email"]).first()
         if coach is not None:
             if coach.check_password(request.form["password"]):
@@ -674,6 +689,7 @@ def login():
             flash('Incorrect email or password')
             return render_template("login.html")
 
+        # If DB doesn't return a coach, then try a parent
         parent = Parent.query.filter_by(email=request.form["email"]).first()
         if parent is not None:
             if parent.check_password(request.form["password"]):
@@ -682,6 +698,7 @@ def login():
             flash('Incorrect email or password')
             return render_template("login.html")
 
+        # If DB doesn't return a parent, then email isn't registered
         flash('Incorrect email or password')
         return render_template("login.html")
 
@@ -731,7 +748,11 @@ def open_profile():
 #--------------------------------------------------------------------------------------------
 
 # Player profile page:
+# If viewing the profile without authorization, will display a limited view
+# of the page. This is done in the javascript file when accessing the player's
+# information.
 @app.route("/player/<id>", methods=['GET'])
+@login_required
 def player_profile(id=None):
     return render_template("player_profile.html", id=id)
 
@@ -739,6 +760,7 @@ def player_profile(id=None):
 
 # Coach profile page:
 @app.route("/coach/<id>", methods=['GET'])
+@login_required
 def coach_profile(id=None):
     return render_template("coach_profile.html")
 
@@ -746,6 +768,7 @@ def coach_profile(id=None):
 
 # Parent profile page:
 @app.route("/parent/<id>", methods=['GET'])
+@login_required
 def parent_profile(id=None):
     return render_template("parent_profile.html")
 

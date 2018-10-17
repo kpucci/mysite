@@ -51,7 +51,7 @@ function makeTokenReq(method, target, retCode, callback, data, token)
 	}
 
     // On state change of request, makeHandler
-	httpRequest.onreadystatechange = makeHandler(httpRequest, retCode, callback);
+	httpRequest.onreadystatechange = makeTokenHandler(httpRequest, retCode, callback);
 
     // Open the request
 	httpRequest.open(method, target);
@@ -90,9 +90,39 @@ function makeHandler(httpRequest, retCode, callback)
 			}else if(httpRequest.status == 0){
 				console.log("received response text:  " + httpRequest.responseText);
 				callback(httpRequest.responseText);
+            }else if(httpRequest.status == 401){
+                alert("There was a problem with the request. You'll need to login again!");
+				window.location.href = "/";
 			}else{
 				alert("There was a problem with the request.  You'll need to refresh the page!");
 				alert(httpRequest.status);
+			}
+		}
+	}
+	return handler;
+}
+
+/**
+* Function to handle the reqeust
+* @param {XMLHttpRequest} httpRequest
+* @param {Number} retCode - Expected return code
+* @param {Function} callback - Callback method
+*/
+function makeTokenHandler(httpRequest, retCode, callback)
+{
+	function handler() {
+        // If request has been completed
+		if (httpRequest.readyState === XMLHttpRequest.DONE){
+            // If return code is as expected
+            if (httpRequest.status === retCode){
+				console.log("received response text:  " + httpRequest.responseText);
+				callback(httpRequest.responseText);     // Call callback method on response text
+			}else if(httpRequest.status == 0){
+				console.log("received response text:  " + httpRequest.responseText);
+				callback(httpRequest.responseText);
+			}else{
+				alert("There was a problem with the request. You'll need to login again!");
+				window.location.href = "/";
 			}
 		}
 	}
