@@ -10,6 +10,19 @@ function setup()
 }
 
 /**
+ * Get JWT access token by sending email and password
+ */
+function getJWT()
+{
+    var email = document.getElementById("email-input").value;
+    var password = document.getElementById("password-input").value;
+
+    var data = '{"username":"' + email + '", "password":"' + password + '"}';
+
+    makeLoginReq("POST", "/auth", 200, storeJWT, data);
+}
+
+/**
  * Callback
  * Populate the profile with the player's information
  * @param {String} responseText - HTTP response text
@@ -43,7 +56,7 @@ function logout()
  */
 function goToLogin(responseText)
 {
-    window.location.href = "/";
+    window.location.href = "/puckperfect";
 }
 
 /**

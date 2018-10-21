@@ -112,6 +112,7 @@ jwt = JWT(app, authenticate, identity)
 def login_required(function_to_protect):
     @wraps(function_to_protect)
     def wrapper(*args, **kwargs):
+        print("checking user credentials")
         user_id = session.get('logged_in')
         if user_id:
             user = Player.query.filter_by(id=user_id).first()
@@ -136,7 +137,6 @@ def login_required(function_to_protect):
 player_fields = {
     'id': fields.Integer,
 	'email': fields.String,
-    'password': fields.String,
     'first_name': fields.String,
     'last_name': fields.String,
     'hockey_level': fields.Integer,
@@ -241,11 +241,10 @@ team_parser.add_argument('name', type=str, location='json')
 
 class PlayerResource(Resource):
     @marshal_with(player_fields)
-    @jwt_required()
     def get(self, id):
         player = Player.query.filter_by(id=id).first()
 
-        if not player or not player.id == current_identity.id:
+        if not player:
             abort(404, "Player %d: not found." % id)
 
         return player
@@ -754,7 +753,13 @@ def open_profile():
 @app.route("/player/<id>", methods=['GET'])
 @login_required
 def player_profile(id=None):
-    return render_template("player_profile.html", id=id)
+    user_id = session.get("logged_in")
+    print(user_id)
+    print(id)
+    if int(id) == int(user_id):
+        return render_template("player_profile.html", id=id, authorized=True)
+    else:
+        return render_template("player_profile.html", id=id, authorized=False)
 
 #--------------------------------------------------------------------------------------------
 

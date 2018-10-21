@@ -25,9 +25,11 @@
     <a id="stats-link" class="nav-link active" href="#stats" onclick="loadStats();">Stats</a>
     <a id="drills-link" class="nav-link" href="#drills" onclick="loadDrills();">Drills</a>
     <a id="catalog-link" class="nav-link" href="#catalog" onclick="loadCatalog();">Catalog</a>
-    <h6 class="text-muted sidebar-heading">Account</h6>
-    <a id="settings-link" class="nav-link" href="#settings">Settings</a>
-    <a id="signout-link" class="nav-link" href="#signout">Sign out</a>
+    {% if authorized %}
+        <h6 class="text-muted sidebar-heading">Account</h6>
+        <a id="settings-link" class="nav-link" href="#settings">Settings</a>
+        <a id="signout-link" class="nav-link" href="#signout">Sign out</a>
+    {% endif %}
   </div>
 
 </nav>
@@ -40,9 +42,11 @@
       <a id="stats-link-2" class="nav-link active" href="#stats" onclick="loadStats();">Stats</a>
       <a id="drills-link-2" class="nav-link" href="#drills" onclick="loadDrills();">Drills</a>
       <a id="catalog-link-2" class="nav-link" href="#catalog" onclick="loadCatalog();">Catalog</a>
+      {% if authorized %}
       <h6 class="text-muted sidebar-heading">Account</h6>
       <a id="settings-link-2" class="nav-link" href="#settings">Settings</a>
       <a id="signout-link-2" class="nav-link" href="#signout">Sign out</a>
+      {% endif %}
     </nav>
 
     <!-- <nav class="col-2 d-md-block bg-dark sidebar">
