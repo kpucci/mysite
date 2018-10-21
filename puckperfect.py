@@ -665,7 +665,7 @@ def check_token():
     return
 
 # Get player id
-@app.route("/api/id")
+@app.route("/api/userid")
 @jwt_required
 def get_player_id():
     return jsonify(id=current_identity.id)
