@@ -660,13 +660,13 @@ api.add_resource(PlayerEmailsResource, '/players/emails')
 
 # Check JWT from client app
 @app.route("/api/token")
-@jwt_required
+@jwt_required()
 def check_token():
     return
 
 # Get player id
 @app.route("/api/userid")
-@jwt_required
+@jwt_required()
 def get_player_id():
     return jsonify(id=current_identity.id)
 
