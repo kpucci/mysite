@@ -662,7 +662,7 @@ api.add_resource(PlayerEmailsResource, '/players/emails')
 @app.route("/api/token")
 @jwt_required()
 def check_token():
-    return
+    return jsonify(result="authorized")
 
 # Get player id
 @app.route("/api/userid")
