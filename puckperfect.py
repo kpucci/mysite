@@ -175,7 +175,9 @@ practice_fields = {
     'id': fields.Integer,
     'player_id': fields.Integer,
     'drill_id': fields.Integer,
-    'speed': fields.Float
+    'score': fields.Integer,
+    'timestamp': fields.DateTime(dt_format='rfc822'),
+    'duration': fields.Integer
 }
 
 playlist_fields = {
@@ -225,7 +227,9 @@ practice_parser = reqparse.RequestParser(bundle_errors=True)
 practice_parser.add_argument('id', type=int, location='json')
 practice_parser.add_argument('player_id', type=int, required=True, location='json')
 practice_parser.add_argument('drill_id', type=int, required=True, location='json')
-practice_parser.add_argument('speed', type=float, required=True, location='json')
+practice_parser.add_argument('score', type=int, required=True, location='json')
+practice_parser.add_argument('timestamp', type=lambda x: datetime.strptime(x,'%Y-%m-%dT%H:%M:%S'), required=True, location='json')
+practice_parser.add_argument('duration', type=int, required=True, location='json')
 
 playlist_parser = reqparse.RequestParser(bundle_errors=True)
 playlist_parser.add_argument('player_id', type=int, location='json')

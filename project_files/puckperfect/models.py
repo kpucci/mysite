@@ -176,8 +176,9 @@ class Practice(db.Model):
     drill_id = db.Column(db.Integer, db.ForeignKey('drill.id'))
     drill = db.relationship("Drill")
 
-    speed = db.Column(db.Float)
-    # TODO: Add other data
+    score = db.Column(db.Integer)
+    timestamp = db.Column(db.DateTime)
+    duration = db.Column(db.Integer)    # In seconds
 
     def _repr_(self):
         return "<Practice {}>".format(repr(self.id))

@@ -6,7 +6,7 @@ function setup()
     loadStats();
     var id = document.getElementById("player-id").value;
     var token = localStorage.getItem("access_token");
-    makeTokenReq("GET", "/players/" + id, 200, populateProfile, null, token);
+    makeTokenReq("GET", "/puckperfect/players/" + id, 200, populateProfile, null, token);
 }
 
 /**
@@ -19,7 +19,7 @@ function getJWT()
 
     var data = '{"username":"' + email + '", "password":"' + password + '"}';
 
-    makeLoginReq("POST", "/auth", 200, storeJWT, data);
+    makeLoginReq("POST", "/puckperfect/auth", 200, storeJWT, data);
 }
 
 /**
@@ -96,7 +96,7 @@ function loadDrills()
 
     // Get the player's playlist of drills
     var id = document.getElementById("player-id").value;
-    makeReq("GET", "/playlists/" + id, 200, populateDrills);
+    makeReq("GET", "/puckperfect/playlists/" + id, 200, populateDrills);
 }
 
 /**
@@ -221,7 +221,7 @@ function practiceDrill(id)
 function loadCatalog()
 {
   var id = document.getElementById("player-id").value;
-  makeReq("GET", "/catalog/" + id, 200, populateCatalog);
+  makeReq("GET", "/puckperfect/catalog/" + id, 200, populateCatalog);
 }
 
 /**
@@ -255,7 +255,7 @@ function addToPlaylist(id)
 
   var data = '{"player_id":"' + playerId + '", "drill_id": "' + id + '"}';
 
-  makeReq("PUT", "/playlists/" + id, 201, populateDrills);
+  makeReq("PUT", "/puckperfect/playlists/" + id, 201, populateDrills);
 }
 
 // setup load event
