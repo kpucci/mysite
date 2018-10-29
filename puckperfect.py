@@ -775,7 +775,8 @@ def player_profile(id=None):
     if int(id) == int(user_id):
         return render_template("player_profile.html", id=id, authorized=True)
     else:
-        return render_template("player_profile.html", id=id, authorized=False)
+        abort(404, "Player %s: not found." % id)
+        # return render_template("player_profile.html", id=id, authorized=False)
 
 #--------------------------------------------------------------------------------------------
 
