@@ -497,7 +497,7 @@ class PracticeListResource(Resource):
             abort(404, "Drill %s: not found." % args['drill_id'])
 
         practice = Practice(id=practice_id, player_id=args['player_id'], drill_id=args['drill_id'],
-            speed=args['speed'])
+            score=args['score'],timestamp=args['timestamp'],duration=args['duration'])
 
         db.session.add(practice)
         db.session.commit()
