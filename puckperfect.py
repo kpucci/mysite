@@ -228,7 +228,7 @@ practice_parser.add_argument('id', type=int, location='json')
 practice_parser.add_argument('player_id', type=int, required=True, location='json')
 practice_parser.add_argument('drill_id', type=int, required=True, location='json')
 practice_parser.add_argument('score', type=int, required=True, location='json')
-practice_parser.add_argument('timestamp', type=lambda x: datetime.strptime(x,'%Y-%m-%dT%H:%M:%S'), required=True, location='json')
+practice_parser.add_argument('timestamp', type=lambda x: datetime.strptime(x,'%Y-%m-%dT%H:%M:%S%z'), required=True, location='json')
 practice_parser.add_argument('duration', type=int, required=True, location='json')
 
 playlist_parser = reqparse.RequestParser(bundle_errors=True)
