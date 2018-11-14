@@ -668,6 +668,7 @@ api.add_resource(TeamResource, '/teams/<int:id>')
 api.add_resource(TeamListResource, '/teams')
 api.add_resource(CatalogResource, '/catalog/<int:id>')
 api.add_resource(PlayerEmailsResource, '/players/emails')
+api.add_resource(PlayerPracticeListResource, '/players/<int:id>/practices')
 
 #--------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------
