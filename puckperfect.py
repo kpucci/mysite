@@ -322,6 +322,16 @@ class PlayerEmailsResource(Resource):
     def get(self):
         return Player.query.all()
 
+class PlayerPracticeListResource(Resource):
+    @marshal_with(practice_fields)
+    def get(self, id):
+        player = Player.query.filter_by(id=id).first()
+
+        if not player:
+            abort(404, "Player %d: not found." % id)
+
+        return player.practices
+
 class CoachResource(Resource):
     @marshal_with(coach_fields)
     def get(self, id):
