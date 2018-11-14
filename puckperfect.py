@@ -1,6 +1,6 @@
 import os
 import datetime
-from datetime import timedelta
+from datetime import timedelta, datetime
 from flask import Flask, request, abort, url_for, redirect, session, render_template, flash, Response, jsonify, json
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import exc
@@ -176,7 +176,7 @@ practice_fields = {
     'player_id': fields.Integer,
     'drill_id': fields.Integer,
     'score': fields.Integer,
-    'timestamp': fields.DateTime(dt_format='rfc822'),
+    'timestamp': fields.DateTime(dt_format='iso8601'),
     'duration': fields.Integer
 }
 
